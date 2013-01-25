@@ -26,14 +26,16 @@
 
 @implementation APMainViewController
 
-- (IBAction)close:(UIStoryboardSegue *)segue {
+- (IBAction)close:(UIStoryboardSegue *)segue
+{
     APGameViewController *sourceViewController = (APGameViewController *)segue.sourceViewController;
     NSAssert([sourceViewController isKindOfClass:[APGameViewController class]], @"Unknown source segue class.");
 
     [self updateGameResult:sourceViewController];
 }
 
-- (void)updateGameResult:(id<APGameResult>)gameResult {
+- (void)updateGameResult:(id<APGameResult>)gameResult
+{
     NSString *resultString = nil;
     NSString *scoreFormat = NSLocalizedString(@"Scory: %d", @"Строка на главном эеране для отображения очков.");
     NSString *scoreString = [NSString stringWithFormat:scoreFormat, [gameResult score]];

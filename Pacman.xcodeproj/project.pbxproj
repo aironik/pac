@@ -16,9 +16,7 @@
 		C4E3E504E4D138E0A151BEE3 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4E3EB101BC84CA6FA27DD1B /* GLKit.framework */; };
 		C4E3E52DDFBC6F9C3C6697FF /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4E3EBB19D3A1875286ABF4B /* OpenGLES.framework */; };
 		C4E3E641604C34F5F99D2473 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4E3EFCAF2D3208BA239679D /* Foundation.framework */; };
-		C4E3E959E1843E012098C254 /* Shader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = C4E3EF9397559D52343392DE /* Shader.fsh */; };
 		C4E3EB81BF44109A85B8B617 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4E3E18604FE38898ED8E96B /* UIKit.framework */; };
-		C4E3EBB801D73A52736DE1E4 /* Shader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = C4E3EF360D7A317CFB6DE04F /* Shader.vsh */; };
 		C4E3EBF9AA81C800C4BC0607 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4E3E6E716EB832FF07E6C3A /* CoreGraphics.framework */; };
 		C4E3ED361A697A56A66FD784 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C4E3EBDCB5AB99ECA280BA75 /* Default@2x.png */; };
 		C4E3ED732448B9DCE10BE438 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4E3E34D03F4F19E8636A797 /* MainStoryboard_iPad.storyboard */; };
@@ -48,8 +46,6 @@
 		C4E3EEC13E91F4BE354CFEE7 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		C4E3EEFB1DDA4F12AF3304B4 /* Pacman.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pacman.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4E3EF0389963C36C9559EE8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		C4E3EF360D7A317CFB6DE04F /* Shader.vsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = Shader.vsh; path = Shaders/Shader.vsh; sourceTree = "<group>"; };
-		C4E3EF9397559D52343392DE /* Shader.fsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = Shader.fsh; path = Shaders/Shader.fsh; sourceTree = "<group>"; };
 		C4E3EFCAF2D3208BA239679D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -96,9 +92,9 @@
 		C4E3E56A5508B0474756825C = {
 			isa = PBXGroup;
 			children = (
+				C4E3EAB930D71AC056C7FD10 /* Pacman */,
 				C4E3EFF4EB26EB8A6AD97B6A /* Products */,
 				C4E3E7E21DC3BD2F7FF5A9CC /* Frameworks */,
-				C4E3EAB930D71AC056C7FD10 /* Pacman */,
 			);
 			sourceTree = "<group>";
 		};
@@ -117,16 +113,14 @@
 		C4E3EAB930D71AC056C7FD10 /* Pacman */ = {
 			isa = PBXGroup;
 			children = (
+				C4E3E0B46C30205126C16C25 /* Game */,
 				C4E3E1FE1532C23308E00C18 /* Supporting Files */,
 				C4E3E901306A276732E7FEF9 /* APAppDelegate.h */,
 				C4E3E5AF6A818AD735EC7FE4 /* APAppDelegate.m */,
 				C4E3E4B660A33B9971CE975F /* MainStoryboard_iPhone.storyboard */,
 				C4E3E34D03F4F19E8636A797 /* MainStoryboard_iPad.storyboard */,
-				C4E3EF9397559D52343392DE /* Shader.fsh */,
-				C4E3EF360D7A317CFB6DE04F /* Shader.vsh */,
 				C4E3E4643CF640AA4234BCE6 /* APMainViewController.m */,
 				C4E3E15553142362C553F7BF /* APMainViewController.h */,
-				C4E3E0B46C30205126C16C25 /* Game */,
 			);
 			path = Pacman;
 			sourceTree = "<group>";
@@ -192,8 +186,6 @@
 				C4E3E2CF5B0A8551EFB5C8EC /* Default-568h@2x.png in Resources */,
 				C4E3E3123382D4180586D23E /* MainStoryboard_iPhone.storyboard in Resources */,
 				C4E3ED732448B9DCE10BE438 /* MainStoryboard_iPad.storyboard in Resources */,
-				C4E3E959E1843E012098C254 /* Shader.fsh in Resources */,
-				C4E3EBB801D73A52736DE1E4 /* Shader.vsh in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
