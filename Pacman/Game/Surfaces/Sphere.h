@@ -15,7 +15,7 @@
 
 namespace Surfaces {
 
-class Sphere {
+class Sphere : public Surface {
     virtual void generateVertexes();
 };
 

@@ -20,6 +20,7 @@ Surface::Surface()
         : name(0)
         , vertexesCount(0)
         , vertexes(NULL)
+        , mode(GL_TRIANGLES)
 {
 }
 
@@ -57,6 +58,10 @@ void Surface::bind() {
 
 void Surface::unbind() {
     glBindVertexArrayOES(0);
+}
+
+void Surface::draw() {
+    glDrawArrays(getMode(), 0, getVertexesCount());
 }
 
 void Surface::setVertexes(GLvoid *vertexes, GLsizeiptr count) {
@@ -99,16 +104,13 @@ void Surface::bindBuffer() {
 }
 
 void Surface::updateBuffer() {
-    glBufferData(GL_ARRAY_BUFFER, getVertexesCount(), getVertexes(), GL_STATIC_DRAW);
-
     const GLsizei positionSize = sizeof(GLfloat) * getComponentsCount();
     const GLvoid *positionPtr = (char *)NULL;
     const GLsizei normalsSize = haveNormals() ? (sizeof(GLfloat) * getComponentsCount()) : 0;
     const GLvoid *normalsPtr = haveNormals() ? ((char *)NULL + positionSize) : 0;
+    const GLsizeiptr bufferSize = getVertexesCount() * (positionSize + normalsSize);
 
-//    glVertexAttribPointer(GLKVertexAttribPosition, 3, GL_FLOAT, GL_FALSE, 24, BUFFER_OFFSET(0));
-//    glEnableVertexAttribArray(GLKVertexAttribNormal);
-//    glVertexAttribPointer(GLKVertexAttribNormal, 3, GL_FLOAT, GL_FALSE, 24, BUFFER_OFFSET(12));
+    glBufferData(GL_ARRAY_BUFFER, bufferSize, getVertexes(), GL_STATIC_DRAW);
 
     glEnableVertexAttribArray(GLKVertexAttribPosition);
     glVertexAttribPointer(GLKVertexAttribPosition, getComponentsCount(), GL_FLOAT, getIsNormalized(),

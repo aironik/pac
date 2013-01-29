@@ -24,6 +24,7 @@ public:
     void destroy();
     void bind();
     void unbind();
+    void draw();
 
 protected:
     virtual void generateVertexes() = 0;
@@ -35,6 +36,8 @@ protected:
     const GLint getComponentsCount() const { return 3; }
     const GLboolean getIsNormalized() const { return GL_FALSE; }
     const GLboolean haveNormals() const { return GL_TRUE; }
+    void setMode(GLenum newMode) { mode = newMode; }
+    const GLenum getMode() const { return mode; }
 
 private:
     const GLint getName() const;
@@ -55,6 +58,7 @@ private:
 
     GLsizeiptr vertexesCount;
     GLvoid *vertexes;
+    GLenum mode;
 };
 
 } // namespace Surfaces
