@@ -108,16 +108,17 @@ void Surface::updateBuffer() {
     const GLvoid *positionPtr = (char *)NULL;
     const GLsizei normalsSize = haveNormals() ? (sizeof(GLfloat) * getComponentsCount()) : 0;
     const GLvoid *normalsPtr = haveNormals() ? ((char *)NULL + positionSize) : 0;
-    const GLsizeiptr bufferSize = getVertexesCount() * (positionSize + normalsSize);
+    const GLsizeiptr vertexSize = positionSize + normalsSize;
+    const GLsizeiptr bufferSize = getVertexesCount() * vertexSize;
 
     glBufferData(GL_ARRAY_BUFFER, bufferSize, getVertexes(), GL_STATIC_DRAW);
 
     glEnableVertexAttribArray(GLKVertexAttribPosition);
     glVertexAttribPointer(GLKVertexAttribPosition, getComponentsCount(), GL_FLOAT, getIsNormalized(),
-                          normalsSize, positionPtr);
+                          vertexSize, positionPtr);
     glEnableVertexAttribArray(GLKVertexAttribNormal);
     glVertexAttribPointer(GLKVertexAttribNormal, getComponentsCount(), GL_FLOAT, getIsNormalized(),
-                          positionSize, normalsPtr);
+                          vertexSize, normalsPtr);
 }
 
 void Surface::deleteBuffer() {

@@ -13,6 +13,7 @@
 		C4E3E2CF5B0A8551EFB5C8EC /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C4E3E9D7EC4FC0BF83EE12BE /* Default-568h@2x.png */; };
 		C4E3E3123382D4180586D23E /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4E3E4B660A33B9971CE975F /* MainStoryboard_iPhone.storyboard */; };
 		C4E3E39A9951F99519203703 /* APMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4E3E4643CF640AA4234BCE6 /* APMainViewController.m */; };
+		C4E3E4C54D7F7449CD69A000 /* Square.mm in Sources */ = {isa = PBXBuildFile; fileRef = C4E3E5370653424AA45AA85A /* Square.mm */; };
 		C4E3E4ED76F05FA6D4C7418B /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = C4E3EEC13E91F4BE354CFEE7 /* Default.png */; };
 		C4E3E504E4D138E0A151BEE3 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4E3EB101BC84CA6FA27DD1B /* GLKit.framework */; };
 		C4E3E512040F27B7BEB0B50B /* Cube.mm in Sources */ = {isa = PBXBuildFile; fileRef = C4E3EDE96C6A123F68738CBC /* Cube.mm */; };
@@ -38,6 +39,7 @@
 		C4E3E42B6F6B8AAF66DAA8AD /* APGameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APGameViewController.h; sourceTree = "<group>"; };
 		C4E3E4643CF640AA4234BCE6 /* APMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APMainViewController.m; sourceTree = "<group>"; };
 		C4E3E46B41746D7D14296707 /* APGameResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APGameResult.h; sourceTree = "<group>"; };
+		C4E3E5370653424AA45AA85A /* Square.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Square.mm; sourceTree = "<group>"; };
 		C4E3E5AF6A818AD735EC7FE4 /* APAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APAppDelegate.m; sourceTree = "<group>"; };
 		C4E3E6E716EB832FF07E6C3A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		C4E3E6E959C4706EAB7D9EEB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -54,6 +56,7 @@
 		C4E3EBE9DFD17F90B67E0CDF /* Pacman-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = "Pacman-Info.plist"; sourceTree = "<group>"; };
 		C4E3EC1AB37242357197081E /* Cube.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cube.h; sourceTree = "<group>"; };
 		C4E3EDE96C6A123F68738CBC /* Cube.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Cube.mm; sourceTree = "<group>"; };
+		C4E3EE710F7339D44540371E /* Square.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Square.h; sourceTree = "<group>"; };
 		C4E3EEC13E91F4BE354CFEE7 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		C4E3EED01CABEC1F9E294202 /* Surface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Surface.h; sourceTree = "<group>"; };
 		C4E3EEFB1DDA4F12AF3304B4 /* Pacman.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pacman.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -149,6 +152,8 @@
 				C4E3EBE953B2D647BE18023A /* Sphere.h */,
 				C4E3E1959A269DED7C33C539 /* Surface.mm */,
 				C4E3EED01CABEC1F9E294202 /* Surface.h */,
+				C4E3E5370653424AA45AA85A /* Square.mm */,
+				C4E3EE710F7339D44540371E /* Square.h */,
 			);
 			path = Surfaces;
 			sourceTree = "<group>";
@@ -232,6 +237,7 @@
 				C4E3E904FC896A694A1A86BC /* Sphere.mm in Sources */,
 				C4E3E512040F27B7BEB0B50B /* Cube.mm in Sources */,
 				C4E3EEFC06166F3185EC111D /* Surface.mm in Sources */,
+				C4E3E4C54D7F7449CD69A000 /* Square.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
