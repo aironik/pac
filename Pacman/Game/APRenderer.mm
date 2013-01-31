@@ -13,12 +13,14 @@
 #import "APRenderer.h"
 
 #import "Cube.h"
+#import "Romb.h"
 #import "Sphere.h"
 #import "Square.h"
 
 
 @interface APRenderer () {
     Surfaces::Cube *_cube;
+    Surfaces::Romb *_romb;
     Surfaces::Sphere *_sphere;
     Surfaces::Square *_square;
 }
@@ -46,16 +48,18 @@
 
 - (void)setupSurfaces
 {
-    [self setupSphere];
     [self setupCube];
+    [self setupRomb];
     [self setupSquare];
+    [self setupSphere];
 }
 
 - (void)destroySurfaces
 {
-    [self destroySquare];
-    [self destroyCube];
     [self destroySphere];
+    [self destroySquare];
+    [self destroyRomb];
+    [self destroyCube];
 }
 
 - (void)setupSphere
@@ -97,6 +101,19 @@
     _square = 0;
 }
 
+- (void)setupRomb
+{
+    _romb = new Surfaces::Romb();
+    _romb->init();
+}
+
+- (void)destroyRomb
+{
+    _romb->destroy();
+    delete _romb;
+    _romb = 0;
+}
+
 - (void)renderSphere
 {
     _sphere->bind();
@@ -116,6 +133,14 @@
     _square->bind();
     _square->draw();
     _square->unbind();
+}
+
+- (void)renderRomb
+{
+    _romb->bind();
+    _romb->draw();
+    _romb->unbind();
+
 }
 
 @end

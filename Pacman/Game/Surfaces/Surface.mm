@@ -73,6 +73,15 @@ void Surface::setVertexes(GLvoid *vertexes, GLsizeiptr count) {
     updateBuffer();
 }
 
+void Surface::setCopyVertexes(GLvoid *vertexesSrc, GLsizeiptr componentsCount) {
+    const size_t bufferSize = sizeof(GLfloat) * componentsCount * (2 * getComponentsCount());
+    GLfloat *vertexData = (GLfloat *)malloc(bufferSize);
+
+    memcpy(vertexData, vertexesSrc, bufferSize);
+
+    setVertexes(vertexData, componentsCount);
+}
+
 void Surface::deleteVertexes() {
     if (vertexes != NULL) {
         free(vertexes);

@@ -13,5 +13,6 @@
 - (void)renderSphere;
 - (void)renderCube;
 - (void)renderSquare;
+- (void)renderRomb;
 
 @end

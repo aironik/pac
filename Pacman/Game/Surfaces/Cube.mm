@@ -12,9 +12,7 @@
 namespace Surfaces {
 
 void Cube::generateVertexes() {
-    const GLsizeiptr componentsCount = 36;
-    const size_t bufferSize = sizeof(GLfloat) * componentsCount * (2 * getComponentsCount());
-    GLfloat *vertexData = (GLfloat *)malloc(bufferSize);
+    const GLsizeiptr vertexesCount = 36;
     GLfloat vertexDataSrc[] = {
         // Data layout for each line below is:
         // positionX, positionY, positionZ,     normalX, normalY, normalZ,
@@ -60,9 +58,7 @@ void Cube::generateVertexes() {
         -0.5f, -0.5f, -0.5f,       0.0f, 0.0f, -1.0f,
         -0.5f, 0.5f, -0.5f,        0.0f, 0.0f, -1.0f
     };
-    memcpy(vertexData, vertexDataSrc, bufferSize);
-
-    setVertexes(vertexData, componentsCount);
+    setCopyVertexes(vertexDataSrc, vertexesCount);
 }
 
 } // namespace Surfaces

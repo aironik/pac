@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C4E3E02A24CA095228315EEF /* Ribbon.mm in Sources */ = {isa = PBXBuildFile; fileRef = C4E3EF24AE733F587586157E /* Ribbon.mm */; };
 		C4E3E037FB03C2A2D0583C02 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C4E3EDABF11B70F28DA69F4A /* InfoPlist.strings */; };
 		C4E3E049449E05A1E3C03C3D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C4E3EF0389963C36C9559EE8 /* main.m */; };
+		C4E3E0F35DA747924C7FB1A6 /* Romb.mm in Sources */ = {isa = PBXBuildFile; fileRef = C4E3ED1027EA8FE86BB1BC08 /* Romb.mm */; };
 		C4E3E1450CFC5F9D48EE2CF0 /* APRenderer.mm in Sources */ = {isa = PBXBuildFile; fileRef = C4E3E72C718E634013F2F5B6 /* APRenderer.mm */; };
 		C4E3E2CF5B0A8551EFB5C8EC /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C4E3E9D7EC4FC0BF83EE12BE /* Default-568h@2x.png */; };
 		C4E3E3123382D4180586D23E /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4E3E4B660A33B9971CE975F /* MainStoryboard_iPhone.storyboard */; };
@@ -34,6 +36,7 @@
 		C4E3E18604FE38898ED8E96B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C4E3E1959A269DED7C33C539 /* Surface.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Surface.mm; sourceTree = "<group>"; };
 		C4E3E19ED947A30A5B1F1B22 /* Pacman-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Pacman-Prefix.pch"; sourceTree = "<group>"; };
+		C4E3E21BE3F5A1881465F1B2 /* Ribbon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ribbon.h; sourceTree = "<group>"; };
 		C4E3E3C94A27DD49044F1139 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		C4E3E3F0D277723101822C98 /* Sphere.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Sphere.mm; sourceTree = "<group>"; };
 		C4E3E42B6F6B8AAF66DAA8AD /* APGameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APGameViewController.h; sourceTree = "<group>"; };
@@ -43,6 +46,7 @@
 		C4E3E5AF6A818AD735EC7FE4 /* APAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APAppDelegate.m; sourceTree = "<group>"; };
 		C4E3E6E716EB832FF07E6C3A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		C4E3E6E959C4706EAB7D9EEB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		C4E3E7137EC89A46BA37C8ED /* Romb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Romb.h; sourceTree = "<group>"; };
 		C4E3E72C718E634013F2F5B6 /* APRenderer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = APRenderer.mm; sourceTree = "<group>"; };
 		C4E3E80CC13BF3169564FD18 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		C4E3E8892178E3553E55CA79 /* APRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APRenderer.h; sourceTree = "<group>"; };
@@ -55,12 +59,14 @@
 		C4E3EBE953B2D647BE18023A /* Sphere.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sphere.h; sourceTree = "<group>"; };
 		C4E3EBE9DFD17F90B67E0CDF /* Pacman-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = "Pacman-Info.plist"; sourceTree = "<group>"; };
 		C4E3EC1AB37242357197081E /* Cube.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cube.h; sourceTree = "<group>"; };
+		C4E3ED1027EA8FE86BB1BC08 /* Romb.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Romb.mm; sourceTree = "<group>"; };
 		C4E3EDE96C6A123F68738CBC /* Cube.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Cube.mm; sourceTree = "<group>"; };
 		C4E3EE710F7339D44540371E /* Square.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Square.h; sourceTree = "<group>"; };
 		C4E3EEC13E91F4BE354CFEE7 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		C4E3EED01CABEC1F9E294202 /* Surface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Surface.h; sourceTree = "<group>"; };
 		C4E3EEFB1DDA4F12AF3304B4 /* Pacman.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pacman.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4E3EF0389963C36C9559EE8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C4E3EF24AE733F587586157E /* Ribbon.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Ribbon.mm; sourceTree = "<group>"; };
 		C4E3EFCAF2D3208BA239679D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -154,6 +160,10 @@
 				C4E3EED01CABEC1F9E294202 /* Surface.h */,
 				C4E3E5370653424AA45AA85A /* Square.mm */,
 				C4E3EE710F7339D44540371E /* Square.h */,
+				C4E3ED1027EA8FE86BB1BC08 /* Romb.mm */,
+				C4E3E7137EC89A46BA37C8ED /* Romb.h */,
+				C4E3EF24AE733F587586157E /* Ribbon.mm */,
+				C4E3E21BE3F5A1881465F1B2 /* Ribbon.h */,
 			);
 			path = Surfaces;
 			sourceTree = "<group>";
@@ -238,6 +248,8 @@
 				C4E3E512040F27B7BEB0B50B /* Cube.mm in Sources */,
 				C4E3EEFC06166F3185EC111D /* Surface.mm in Sources */,
 				C4E3E4C54D7F7449CD69A000 /* Square.mm in Sources */,
+				C4E3E0F35DA747924C7FB1A6 /* Romb.mm in Sources */,
+				C4E3E02A24CA095228315EEF /* Ribbon.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

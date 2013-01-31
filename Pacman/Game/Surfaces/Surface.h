@@ -30,6 +30,7 @@ protected:
     virtual void generateVertexes() = 0;
 
     void setVertexes(GLvoid *vertexes, GLsizeiptr count);
+    void setCopyVertexes(GLvoid *vertexesSrc, GLsizeiptr count);
     const GLsizeiptr &getVertexesCount() const { return vertexesCount; }
     const GLvoid *getVertexes() const { return vertexes; }
     /// @brief количество измерений (трехмерный мир)
