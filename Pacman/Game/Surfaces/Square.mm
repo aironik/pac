@@ -12,7 +12,6 @@ namespace Surfaces {
 
 void Square::generateVertexes() {
     const GLsizeiptr vertexCount = 6;
-    const size_t bufferSize = sizeof(GLfloat) * vertexCount * (2 * getComponentsCount());
     GLfloat vertexDataSrc[] = {
         // Data layout for each line below is:
         // positionX, positionY, positionZ,     normalX, normalY, normalZ,

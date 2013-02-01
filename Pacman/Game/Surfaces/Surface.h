@@ -12,6 +12,7 @@
 
 #include <iostream>
 
+extern const GLuint k3Dimensional;
 
 namespace Surfaces {
 
@@ -29,12 +30,12 @@ public:
 protected:
     virtual void generateVertexes() = 0;
 
-    void setVertexes(GLvoid *vertexes, GLsizeiptr count);
-    void setCopyVertexes(GLvoid *vertexesSrc, GLsizeiptr count);
+    void setVertexes(GLvoid *vertexes, GLsizeiptr dimentionsCount);
+    void setCopyVertexes(GLvoid *vertexesSrc, GLsizeiptr dimentionsCount);
     const GLsizeiptr &getVertexesCount() const { return vertexesCount; }
     const GLvoid *getVertexes() const { return vertexes; }
     /// @brief количество измерений (трехмерный мир)
-    const GLint getComponentsCount() const { return 3; }
+    const GLint getDimensionCount() const { return k3Dimensional; }
     const GLboolean getIsNormalized() const { return GL_FALSE; }
     const GLboolean haveNormals() const { return GL_TRUE; }
     void setMode(GLenum newMode) { mode = newMode; }

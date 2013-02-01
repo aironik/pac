@@ -26,8 +26,7 @@ void Romb::generateVertexes() {
     const GLsizeiptr componentsCount = vertexPerTriangle * trianglesPerSection * sectionsCount;
 
 
-    GLKVector3 *const vertexDataSrc = (GLKVector3 *)malloc(sizeof(GLKVector3) * vertexPerTriangle
-                                                           * trianglesPerSection);
+    GLKVector3 *const vertexDataSrc = (GLKVector3 *)malloc(sizeof(GLKVector3) * componentsCount);
     GLKVector3 *vertexDataPtr = vertexDataSrc;
 
     for (GLuint i = 0; i < sectionsCount; ++i) {

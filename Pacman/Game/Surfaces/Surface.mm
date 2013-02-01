@@ -13,6 +13,7 @@
 #import <OpenGLES/ES2/glext.h>
 #include "assert.h"
 
+const GLuint k3Dimensional = 3;
 
 namespace Surfaces {
 
@@ -64,22 +65,22 @@ void Surface::draw() {
     glDrawArrays(getMode(), 0, getVertexesCount());
 }
 
-void Surface::setVertexes(GLvoid *vertexes, GLsizeiptr count) {
+void Surface::setVertexes(GLvoid *vertexes, GLsizeiptr vertexesCount) {
     deleteVertexes();
 
     this->vertexes = vertexes;
-    this->vertexesCount = count;
+    this->vertexesCount = vertexesCount;
 
     updateBuffer();
 }
 
-void Surface::setCopyVertexes(GLvoid *vertexesSrc, GLsizeiptr componentsCount) {
-    const size_t bufferSize = sizeof(GLfloat) * componentsCount * (2 * getComponentsCount());
+void Surface::setCopyVertexes(GLvoid *vertexesSrc, GLsizeiptr vertexesCount) {
+    const size_t bufferSize = sizeof(GLfloat) * vertexesCount * (2 * getDimensionCount());
     GLfloat *vertexData = (GLfloat *)malloc(bufferSize);
 
     memcpy(vertexData, vertexesSrc, bufferSize);
 
-    setVertexes(vertexData, componentsCount);
+    setVertexes(vertexData, vertexesCount);
 }
 
 void Surface::deleteVertexes() {
@@ -114,9 +115,9 @@ void Surface::bindBuffer() {
 
 void Surface::updateBuffer() {
     if (buffer) {
-        const GLsizei positionSize = sizeof(GLfloat) * getComponentsCount();
+        const GLsizei positionSize = sizeof(GLfloat) * getDimensionCount();
         const GLvoid *positionPtr = (char *)NULL;
-        const GLsizei normalsSize = haveNormals() ? (sizeof(GLfloat) * getComponentsCount()) : 0;
+        const GLsizei normalsSize = haveNormals() ? (sizeof(GLfloat) * getDimensionCount()) : 0;
         const GLvoid *normalsPtr = haveNormals() ? ((char *)NULL + positionSize) : 0;
         const GLsizeiptr vertexSize = positionSize + normalsSize;
         const GLsizeiptr bufferSize = getVertexesCount() * vertexSize;
@@ -124,10 +125,10 @@ void Surface::updateBuffer() {
         glBufferData(GL_ARRAY_BUFFER, bufferSize, getVertexes(), GL_STATIC_DRAW);
 
         glEnableVertexAttribArray(GLKVertexAttribPosition);
-        glVertexAttribPointer(GLKVertexAttribPosition, getComponentsCount(), GL_FLOAT, getIsNormalized(),
+        glVertexAttribPointer(GLKVertexAttribPosition, getDimensionCount(), GL_FLOAT, getIsNormalized(),
                               vertexSize, positionPtr);
         glEnableVertexAttribArray(GLKVertexAttribNormal);
-        glVertexAttribPointer(GLKVertexAttribNormal, getComponentsCount(), GL_FLOAT, getIsNormalized(),
+        glVertexAttribPointer(GLKVertexAttribNormal, getDimensionCount(), GL_FLOAT, getIsNormalized(),
                               vertexSize, normalsPtr);
     }
 }
