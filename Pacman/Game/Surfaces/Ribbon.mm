@@ -33,7 +33,8 @@ void Ribbon::update() {
     GLKVector3 *const vertexDataSrc = (GLKVector3 *)malloc(sizeof(GLKVector3) * vertexesCount * 2);
     GLKVector3 *vertexDataPtr = vertexDataSrc;
 
-    const GLint startIndex = 5.0 - time;
+    const float startXPoint = 10.0f - time;
+    const GLint startIndex = startXPoint;
     const GLint lengthIndex = vertexesCount;
     const GLint endIndex = startIndex + lengthIndex;
     float length = 5.0f;
@@ -44,13 +45,16 @@ void Ribbon::update() {
         GLKVector3 vertex = GLKVector3Make(length * i * (1.0f / lengthIndex) - length / 2.0f, sign * width, 0);
         GLKVector3 normal = GLKVector3Make(0.0f, 0.0f, -1.0f);
 
-        printf("x = %3.3f, y = %3.3f, z = %3.3f\n", vertex.x, vertex.y, vertex.z);
-        if (i >= startIndex && i <= endIndex) {
-            float alpha = M_PI * (1.0f * (i - startIndex) / lengthIndex);
-            GLKMatrix3 rotateMatrix = GLKMatrix3RotateX(GLKMatrix3Identity, alpha);
-            vertex = GLKMatrix3MultiplyVector3(rotateMatrix, vertex);
-            normal = GLKMatrix3MultiplyVector3(rotateMatrix, normal);
+        float alpha = 0.0f;
+        if (i > startXPoint && i < endIndex) {
+            alpha = M_PI * (1.0f * (i - startXPoint) / lengthIndex);
+        } else if (i >= endIndex) {
+            alpha = M_PI;
         }
+        GLKMatrix3 rotateMatrix = GLKMatrix3RotateX(GLKMatrix3Identity, alpha);
+        vertex = GLKMatrix3MultiplyVector3(rotateMatrix, vertex);
+        normal = GLKMatrix3MultiplyVector3(rotateMatrix, normal);
+
         vertexDataPtr[0] = vertex;
         vertexDataPtr[1] = normal;
         vertexDataPtr +=2;
