@@ -13,7 +13,6 @@ namespace Surfaces {
 void Square::generateVertexes() {
     const GLsizeiptr vertexCount = 6;
     const size_t bufferSize = sizeof(GLfloat) * vertexCount * (2 * getComponentsCount());
-    GLfloat *vertexData = (GLfloat *)malloc(bufferSize);
     GLfloat vertexDataSrc[] = {
         // Data layout for each line below is:
         // positionX, positionY, positionZ,     normalX, normalY, normalZ,
@@ -24,8 +23,7 @@ void Square::generateVertexes() {
         0.5f, 0.5f, -0.5f,         1.0f, 0.0f, 0.0f,
         0.5f, 0.5f, 0.5f,          1.0f, 0.0f, 0.0f,
     };
-    memcpy(vertexData, vertexDataSrc, bufferSize);
-
-    setVertexes(vertexData, vertexCount);
+    setCopyVertexes(vertexDataSrc, 6);
 }
+
 } // namespace Surfaces

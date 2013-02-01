@@ -64,28 +64,28 @@
 
 - (void)setupSphere
 {
-    _cube = new Surfaces::Cube();
-    _cube->init();
-}
-
-- (void)destroySphere
-{
-    _cube->destroy();
-    delete _cube;
-    _cube = 0;
-}
-
-- (void)setupCube
-{
     _sphere = new Surfaces::Sphere();
     _sphere->init();
 }
 
-- (void)destroyCube
+- (void)destroySphere
 {
     _sphere->destroy();
     delete _sphere;
     _sphere = 0;
+}
+
+- (void)setupCube
+{
+    _cube = new Surfaces::Cube();
+    _cube->init();
+}
+
+- (void)destroyCube
+{
+    _cube->destroy();
+    delete _cube;
+    _cube = 0;
 }
 
 - (void)setupSquare

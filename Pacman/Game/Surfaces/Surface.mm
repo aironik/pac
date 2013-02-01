@@ -113,31 +113,28 @@ void Surface::bindBuffer() {
 }
 
 void Surface::updateBuffer() {
-    const GLsizei positionSize = sizeof(GLfloat) * getComponentsCount();
-    const GLvoid *positionPtr = (char *)NULL;
-    const GLsizei normalsSize = haveNormals() ? (sizeof(GLfloat) * getComponentsCount()) : 0;
-    const GLvoid *normalsPtr = haveNormals() ? ((char *)NULL + positionSize) : 0;
-    const GLsizeiptr vertexSize = positionSize + normalsSize;
-    const GLsizeiptr bufferSize = getVertexesCount() * vertexSize;
+    if (buffer) {
+        const GLsizei positionSize = sizeof(GLfloat) * getComponentsCount();
+        const GLvoid *positionPtr = (char *)NULL;
+        const GLsizei normalsSize = haveNormals() ? (sizeof(GLfloat) * getComponentsCount()) : 0;
+        const GLvoid *normalsPtr = haveNormals() ? ((char *)NULL + positionSize) : 0;
+        const GLsizeiptr vertexSize = positionSize + normalsSize;
+        const GLsizeiptr bufferSize = getVertexesCount() * vertexSize;
 
-    glBufferData(GL_ARRAY_BUFFER, bufferSize, getVertexes(), GL_STATIC_DRAW);
+        glBufferData(GL_ARRAY_BUFFER, bufferSize, getVertexes(), GL_STATIC_DRAW);
 
-    glEnableVertexAttribArray(GLKVertexAttribPosition);
-    glVertexAttribPointer(GLKVertexAttribPosition, getComponentsCount(), GL_FLOAT, getIsNormalized(),
-                          vertexSize, positionPtr);
-    glEnableVertexAttribArray(GLKVertexAttribNormal);
-    glVertexAttribPointer(GLKVertexAttribNormal, getComponentsCount(), GL_FLOAT, getIsNormalized(),
-                          vertexSize, normalsPtr);
+        glEnableVertexAttribArray(GLKVertexAttribPosition);
+        glVertexAttribPointer(GLKVertexAttribPosition, getComponentsCount(), GL_FLOAT, getIsNormalized(),
+                              vertexSize, positionPtr);
+        glEnableVertexAttribArray(GLKVertexAttribNormal);
+        glVertexAttribPointer(GLKVertexAttribNormal, getComponentsCount(), GL_FLOAT, getIsNormalized(),
+                              vertexSize, normalsPtr);
+    }
 }
 
 void Surface::deleteBuffer() {
     glDeleteBuffers(1, &buffer);
     buffer = 0;
 }
-
-//virtual void generateVertexes() = 0;
-//virtual const GLfloat *getVertexes() const = 0;
-//virtual const GLint &getVertexesCount() const = 0;
-
 
 } // namespace Surfaces

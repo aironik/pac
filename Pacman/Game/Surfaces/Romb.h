@@ -24,6 +24,9 @@ protected:
     virtual void generateVertexes();
 
 private:
+    void setTriangle(GLKVector3 *&vertexDataPtr, GLuint index, GLboolean isTop);
+
+private:
     GLuint sectionsCount;
 };
 
