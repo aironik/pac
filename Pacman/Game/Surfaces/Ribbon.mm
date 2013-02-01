@@ -33,13 +33,13 @@ void Ribbon::update() {
     GLKVector3 *const vertexDataSrc = (GLKVector3 *)malloc(sizeof(GLKVector3) * vertexesCount * 2);
     GLKVector3 *vertexDataPtr = vertexDataSrc;
 
-    const GLuint startIndex = 0;
-    const GLuint endIndex = vertexesCount;
-    const GLint lengthIndex = endIndex - startIndex;
+    const GLint startIndex = 5.0 - time;
+    const GLint lengthIndex = vertexesCount;
+    const GLint endIndex = startIndex + lengthIndex;
     float length = 5.0f;
     float width = 1.0f;
 
-    for (GLuint i = 0; i < vertexesCount; ++i) {
+    for (GLint i = 0; i < vertexesCount; ++i) {
         float sign = i % 2 ? 1.0f : -1.0f;
         GLKVector3 vertex = GLKVector3Make(length * i * (1.0f / lengthIndex) - length / 2.0f, sign * width, 0);
         GLKVector3 normal = GLKVector3Make(0.0f, 0.0f, -1.0f);
@@ -47,12 +47,10 @@ void Ribbon::update() {
         printf("x = %3.3f, y = %3.3f, z = %3.3f\n", vertex.x, vertex.y, vertex.z);
         if (i >= startIndex && i <= endIndex) {
             float alpha = M_PI * (1.0f * (i - startIndex) / lengthIndex);
-            printf("alpha == %3.3f => ", alpha);
             GLKMatrix3 rotateMatrix = GLKMatrix3RotateX(GLKMatrix3Identity, alpha);
             vertex = GLKMatrix3MultiplyVector3(rotateMatrix, vertex);
             normal = GLKMatrix3MultiplyVector3(rotateMatrix, normal);
         }
-        printf("x = %3.3f, y = %3.3f, z = %3.3f\n", vertex.x, vertex.y, vertex.z);
         vertexDataPtr[0] = vertex;
         vertexDataPtr[1] = normal;
         vertexDataPtr +=2;
