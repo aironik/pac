@@ -16,8 +16,18 @@
 namespace Surfaces {
 
 class Ribbon : public Surface {
+public:
+    Ribbon();
+    virtual void update(NSTimeInterval timeInterval);
+
 protected:
     virtual void generateVertexes();
+
+private:
+    void update();
+
+private:
+    NSTimeInterval time;
 
 };
 

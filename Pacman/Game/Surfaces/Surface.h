@@ -26,6 +26,7 @@ public:
     void bind();
     void unbind();
     void draw();
+    virtual void update(NSTimeInterval timeInterval) {};
 
 protected:
     virtual void generateVertexes() = 0;

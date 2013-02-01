@@ -13,6 +13,7 @@
 #import "APRenderer.h"
 
 #import "Cube.h"
+#import "Ribbon.h"
 #import "Romb.h"
 #import "Sphere.h"
 #import "Square.h"
@@ -20,6 +21,7 @@
 
 @interface APRenderer () {
     Surfaces::Cube *_cube;
+    Surfaces::Ribbon *_ribbon;
     Surfaces::Romb *_romb;
     Surfaces::Sphere *_sphere;
     Surfaces::Square *_square;
@@ -49,6 +51,7 @@
 - (void)setupSurfaces
 {
     [self setupCube];
+    [self setupRibbon];
     [self setupRomb];
     [self setupSquare];
     [self setupSphere];
@@ -59,6 +62,7 @@
     [self destroySphere];
     [self destroySquare];
     [self destroyRomb];
+    [self destroyRibbon];
     [self destroyCube];
 }
 
@@ -101,6 +105,19 @@
     _square = 0;
 }
 
+- (void)setupRibbon
+{
+    _ribbon = new Surfaces::Ribbon();
+    _ribbon->init();
+}
+
+- (void)destroyRibbon
+{
+    _ribbon->destroy();
+    delete _ribbon;
+    _ribbon = 0;
+}
+
 - (void)setupRomb
 {
     _romb = new Surfaces::Romb();
@@ -140,7 +157,18 @@
     _romb->bind();
     _romb->draw();
     _romb->unbind();
+}
 
+- (void)renderRibbon
+{
+    _ribbon->bind();
+    _ribbon->draw();
+    _ribbon->unbind();
+}
+
+- (void)updateRibbon:(NSTimeInterval)timeInterval
+{
+    _ribbon->update(timeInterval);
 }
 
 @end

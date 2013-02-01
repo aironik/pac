@@ -23,10 +23,10 @@ Romb::Romb(GLuint sectionsCount)
 void Romb::generateVertexes() {
     const GLuint vertexPerTriangle = 3;
     const GLuint trianglesPerSection = 2;
-    const GLsizeiptr componentsCount = vertexPerTriangle * trianglesPerSection * sectionsCount;
+    const GLsizeiptr vertexesCount = vertexPerTriangle * trianglesPerSection * sectionsCount;
 
 
-    GLKVector3 *const vertexDataSrc = (GLKVector3 *)malloc(sizeof(GLKVector3) * componentsCount);
+    GLKVector3 *const vertexDataSrc = (GLKVector3 *)malloc(sizeof(GLKVector3) * vertexesCount);
     GLKVector3 *vertexDataPtr = vertexDataSrc;
 
     for (GLuint i = 0; i < sectionsCount; ++i) {
@@ -34,7 +34,7 @@ void Romb::generateVertexes() {
         setTriangle(vertexDataPtr, i, GL_FALSE);
     }
 
-    setCopyVertexes(vertexDataSrc, componentsCount * 2 * 3);
+    setCopyVertexes(vertexDataSrc, vertexesCount * 2 * 3);
 }
 
 void Romb::setTriangle(GLKVector3 *&vertexDataPtr, GLuint index, GLboolean isTop) {
