@@ -25,6 +25,7 @@ protected:
 
 private:
     void update();
+    void rotateVertexAndNormal(GLKVector3 &vertex, GLKVector3 &normal) const;
 
 private:
     NSTimeInterval time;
