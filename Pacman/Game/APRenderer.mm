@@ -135,35 +135,30 @@
 {
     _sphere->bind();
     _sphere->draw();
-    _sphere->unbind();
 }
 
 - (void)renderCube
 {
     _cube->bind();
     _cube->draw();
-    _cube->unbind();
 }
 
 - (void)renderSquare
 {
     _square->bind();
     _square->draw();
-    _square->unbind();
 }
 
 - (void)renderRomb
 {
     _romb->bind();
     _romb->draw();
-    _romb->unbind();
 }
 
 - (void)renderRibbon
 {
     _ribbon->bind();
     _ribbon->draw();
-    _ribbon->unbind();
 }
 
 - (void)updateRibbon:(NSTimeInterval)timeInterval
