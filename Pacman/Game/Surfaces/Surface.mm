@@ -36,10 +36,8 @@ void Surface::init() {
     bind();
 
     genBuffer();
-    bindBuffer();
-
-    updateBuffer();
-
+    refreshBuffer();
+    
     unbind();
 }
 
@@ -47,6 +45,8 @@ void Surface::destroy() {
     deleteBuffer();
     deleteName();
     deleteVertexes();
+
+    destroyVertexes();
 }
 
 
@@ -131,6 +131,11 @@ void Surface::updateBuffer() {
         glVertexAttribPointer(GLKVertexAttribNormal, getDimensionCount(), GL_FLOAT, getIsNormalized(),
                               vertexSize, normalsPtr);
     }
+}
+
+void Surface::refreshBuffer() {
+    bindBuffer();
+    updateBuffer();
 }
 
 void Surface::deleteBuffer() {

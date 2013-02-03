@@ -34,7 +34,7 @@ void Romb::generateVertexes() {
         setTriangle(vertexDataPtr, i, GL_FALSE);
     }
 
-    setCopyVertexes(vertexDataSrc, vertexesCount * 2 * 3);
+    setVertexes(vertexDataSrc, vertexesCount * 2 * 3);
 }
 
 void Romb::setTriangle(GLKVector3 *&vertexDataPtr, GLuint index, GLboolean isTop) {

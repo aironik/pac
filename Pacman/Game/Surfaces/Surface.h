@@ -30,6 +30,8 @@ public:
 
 protected:
     virtual void generateVertexes() = 0;
+    virtual void destroyVertexes() {}
+    void refreshBuffer();
 
     void setVertexes(GLvoid *vertexes, GLsizeiptr dimentionsCount);
     void setCopyVertexes(GLvoid *vertexesSrc, GLsizeiptr dimentionsCount);
