@@ -10,7 +10,7 @@
 #ifndef __Surface_H_
 #define __Surface_H_
 
-#include <iostream>
+#include "Vertex.h"
 
 extern const GLuint k3Dimensional;
 
@@ -33,8 +33,8 @@ protected:
     virtual void destroyVertexes() {}
     void refreshBuffer();
 
-    void setVertexes(GLvoid *vertexes, GLsizeiptr dimentionsCount);
-    void setCopyVertexes(GLvoid *vertexesSrc, GLsizeiptr dimentionsCount);
+    void setVertexes(GLvoid *vertexes, GLsizeiptr vertexesCount);
+    void setCopyVertexes(GLvoid *vertexesSrc, GLsizeiptr vertexesCount);
     const GLsizeiptr &getVertexesCount() const { return vertexesCount; }
     const GLvoid *getVertexes() const { return vertexes; }
     /// @brief количество измерений (трехмерный мир)

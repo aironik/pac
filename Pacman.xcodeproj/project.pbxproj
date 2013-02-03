@@ -21,6 +21,7 @@
 		C4E3E512040F27B7BEB0B50B /* Cube.mm in Sources */ = {isa = PBXBuildFile; fileRef = C4E3EDE96C6A123F68738CBC /* Cube.mm */; };
 		C4E3E52DDFBC6F9C3C6697FF /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4E3EBB19D3A1875286ABF4B /* OpenGLES.framework */; };
 		C4E3E641604C34F5F99D2473 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4E3EFCAF2D3208BA239679D /* Foundation.framework */; };
+		C4E3E8F049EE7B05A718F49D /* Vertex.mm in Sources */ = {isa = PBXBuildFile; fileRef = C4E3E83180F9F0818C686872 /* Vertex.mm */; };
 		C4E3E904FC896A694A1A86BC /* Sphere.mm in Sources */ = {isa = PBXBuildFile; fileRef = C4E3E3F0D277723101822C98 /* Sphere.mm */; };
 		C4E3EB81BF44109A85B8B617 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4E3E18604FE38898ED8E96B /* UIKit.framework */; };
 		C4E3EBF9AA81C800C4BC0607 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4E3E6E716EB832FF07E6C3A /* CoreGraphics.framework */; };
@@ -44,11 +45,13 @@
 		C4E3E46B41746D7D14296707 /* APGameResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APGameResult.h; sourceTree = "<group>"; };
 		C4E3E5370653424AA45AA85A /* Square.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Square.mm; sourceTree = "<group>"; };
 		C4E3E5AF6A818AD735EC7FE4 /* APAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APAppDelegate.m; sourceTree = "<group>"; };
+		C4E3E5B648E224331E83F53E /* Vertex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vertex.h; sourceTree = "<group>"; };
 		C4E3E6E716EB832FF07E6C3A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		C4E3E6E959C4706EAB7D9EEB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C4E3E7137EC89A46BA37C8ED /* Romb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Romb.h; sourceTree = "<group>"; };
 		C4E3E72C718E634013F2F5B6 /* APRenderer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = APRenderer.mm; sourceTree = "<group>"; };
 		C4E3E80CC13BF3169564FD18 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
+		C4E3E83180F9F0818C686872 /* Vertex.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Vertex.mm; sourceTree = "<group>"; };
 		C4E3E8892178E3553E55CA79 /* APRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APRenderer.h; sourceTree = "<group>"; };
 		C4E3E901306A276732E7FEF9 /* APAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APAppDelegate.h; sourceTree = "<group>"; };
 		C4E3E9D7EC4FC0BF83EE12BE /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -164,6 +167,8 @@
 				C4E3EBE953B2D647BE18023A /* Sphere.h */,
 				C4E3E1959A269DED7C33C539 /* Surface.mm */,
 				C4E3EED01CABEC1F9E294202 /* Surface.h */,
+				C4E3E83180F9F0818C686872 /* Vertex.mm */,
+				C4E3E5B648E224331E83F53E /* Vertex.h */,
 			);
 			path = Surfaces;
 			sourceTree = "<group>";
@@ -250,6 +255,7 @@
 				C4E3E4C54D7F7449CD69A000 /* Square.mm in Sources */,
 				C4E3E0F35DA747924C7FB1A6 /* Romb.mm in Sources */,
 				C4E3E02A24CA095228315EEF /* Ribbon.mm in Sources */,
+				C4E3E8F049EE7B05A718F49D /* Vertex.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

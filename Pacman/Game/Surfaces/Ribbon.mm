@@ -8,6 +8,9 @@
 
 #include "Ribbon.h"
 
+#import <algorithm>
+
+
 namespace {
 static const GLuint vertexTrialglesDelta = 3;
 static const GLuint trianglesPerRobon = 40;
