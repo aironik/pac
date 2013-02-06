@@ -188,7 +188,7 @@ GLfloat gCubeVertexData[216] =
     NSString *fileName = [[NSBundle mainBundle] pathForResource:@"texture" ofType:@"png"];
     _textureInfo = [GLKTextureLoader textureWithContentsOfFile:fileName options:nil error:NULL];
     self.effect.texture2d0.enabled = GL_TRUE;
-    self.effect.texture2d0.name = textureInfo.name;
+    self.effect.texture2d0.name = _textureInfo.name;
     self.effect.texture2d0.target = GLKTextureTarget2D;
     self.effect.textureOrder = @[self.effect.texture2d0];
     
