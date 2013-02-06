@@ -11,7 +11,10 @@
 namespace Surfaces {
 
 void Sphere::generateVertexes() {
+    // TODO: write me
+}
 
+void  Sphere::destroyVertexes() {
 }
 
 } // namespace Surfaces

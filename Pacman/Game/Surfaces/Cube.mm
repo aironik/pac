@@ -12,53 +12,55 @@
 namespace Surfaces {
 
 void Cube::generateVertexes() {
-    const GLsizeiptr vertexesCount = 36;
-    GLfloat vertexDataSrc[] = {
-        // Data layout for each line below is:
-        // positionX, positionY, positionZ,     normalX, normalY, normalZ,
-        0.5f, -0.5f, -0.5f,        1.0f, 0.0f, 0.0f,
-        0.5f, 0.5f, -0.5f,         1.0f, 0.0f, 0.0f,
-        0.5f, -0.5f, 0.5f,         1.0f, 0.0f, 0.0f,
-        0.5f, -0.5f, 0.5f,         1.0f, 0.0f, 0.0f,
-        0.5f, 0.5f, -0.5f,         1.0f, 0.0f, 0.0f,
-        0.5f, 0.5f, 0.5f,          1.0f, 0.0f, 0.0f,
+    VertexList vertexDataSrc = {
+            // Data layout for each line below is:
+            // positionX, positionY, positionZ,     normalX, normalY, normalZ,
+            Vertex3D(0.5f, -0.5f, -0.5f,        1.0f, 0.0f, 0.0f),
+            Vertex3D(0.5f, 0.5f, -0.5f,         1.0f, 0.0f, 0.0f),
+            Vertex3D(0.5f, -0.5f, 0.5f,         1.0f, 0.0f, 0.0f),
+            Vertex3D(0.5f, -0.5f, 0.5f,         1.0f, 0.0f, 0.0f),
+            Vertex3D(0.5f, 0.5f, -0.5f,         1.0f, 0.0f, 0.0f),
+            Vertex3D(0.5f, 0.5f, 0.5f,          1.0f, 0.0f, 0.0f),
 
-        0.5f, 0.5f, -0.5f,         0.0f, 1.0f, 0.0f,
-        -0.5f, 0.5f, -0.5f,        0.0f, 1.0f, 0.0f,
-        0.5f, 0.5f, 0.5f,          0.0f, 1.0f, 0.0f,
-        0.5f, 0.5f, 0.5f,          0.0f, 1.0f, 0.0f,
-        -0.5f, 0.5f, -0.5f,        0.0f, 1.0f, 0.0f,
-        -0.5f, 0.5f, 0.5f,         0.0f, 1.0f, 0.0f,
+            Vertex3D(0.5f, 0.5f, -0.5f,         0.0f, 1.0f, 0.0f),
+            Vertex3D(-0.5f, 0.5f, -0.5f,        0.0f, 1.0f, 0.0f),
+            Vertex3D(0.5f, 0.5f, 0.5f,          0.0f, 1.0f, 0.0f),
+            Vertex3D(0.5f, 0.5f, 0.5f,          0.0f, 1.0f, 0.0f),
+            Vertex3D(-0.5f, 0.5f, -0.5f,        0.0f, 1.0f, 0.0f),
+            Vertex3D(-0.5f, 0.5f, 0.5f,         0.0f, 1.0f, 0.0f),
 
-        -0.5f, 0.5f, -0.5f,        -1.0f, 0.0f, 0.0f,
-        -0.5f, -0.5f, -0.5f,       -1.0f, 0.0f, 0.0f,
-        -0.5f, 0.5f, 0.5f,         -1.0f, 0.0f, 0.0f,
-        -0.5f, 0.5f, 0.5f,         -1.0f, 0.0f, 0.0f,
-        -0.5f, -0.5f, -0.5f,       -1.0f, 0.0f, 0.0f,
-        -0.5f, -0.5f, 0.5f,        -1.0f, 0.0f, 0.0f,
+            Vertex3D(-0.5f, 0.5f, -0.5f,        -1.0f, 0.0f, 0.0f),
+            Vertex3D(-0.5f, -0.5f, -0.5f,       -1.0f, 0.0f, 0.0f),
+            Vertex3D(-0.5f, 0.5f, 0.5f,         -1.0f, 0.0f, 0.0f),
+            Vertex3D(-0.5f, 0.5f, 0.5f,         -1.0f, 0.0f, 0.0f),
+            Vertex3D(-0.5f, -0.5f, -0.5f,       -1.0f, 0.0f, 0.0f),
+            Vertex3D(-0.5f, -0.5f, 0.5f,        -1.0f, 0.0f, 0.0f),
 
-        -0.5f, -0.5f, -0.5f,       0.0f, -1.0f, 0.0f,
-        0.5f, -0.5f, -0.5f,        0.0f, -1.0f, 0.0f,
-        -0.5f, -0.5f, 0.5f,        0.0f, -1.0f, 0.0f,
-        -0.5f, -0.5f, 0.5f,        0.0f, -1.0f, 0.0f,
-        0.5f, -0.5f, -0.5f,        0.0f, -1.0f, 0.0f,
-        0.5f, -0.5f, 0.5f,         0.0f, -1.0f, 0.0f,
+            Vertex3D(-0.5f, -0.5f, -0.5f,       0.0f, -1.0f, 0.0f),
+            Vertex3D(0.5f, -0.5f, -0.5f,        0.0f, -1.0f, 0.0f),
+            Vertex3D(-0.5f, -0.5f, 0.5f,        0.0f, -1.0f, 0.0f),
+            Vertex3D(-0.5f, -0.5f, 0.5f,        0.0f, -1.0f, 0.0f),
+            Vertex3D(0.5f, -0.5f, -0.5f,        0.0f, -1.0f, 0.0f),
+            Vertex3D(0.5f, -0.5f, 0.5f,         0.0f, -1.0f, 0.0f),
 
-        0.5f, 0.5f, 0.5f,          0.0f, 0.0f, 1.0f,
-        -0.5f, 0.5f, 0.5f,         0.0f, 0.0f, 1.0f,
-        0.5f, -0.5f, 0.5f,         0.0f, 0.0f, 1.0f,
-        0.5f, -0.5f, 0.5f,         0.0f, 0.0f, 1.0f,
-        -0.5f, 0.5f, 0.5f,         0.0f, 0.0f, 1.0f,
-        -0.5f, -0.5f, 0.5f,        0.0f, 0.0f, 1.0f,
+            Vertex3D(0.5f, 0.5f, 0.5f,          0.0f, 0.0f, 1.0f),
+            Vertex3D(-0.5f, 0.5f, 0.5f,         0.0f, 0.0f, 1.0f),
+            Vertex3D(0.5f, -0.5f, 0.5f,         0.0f, 0.0f, 1.0f),
+            Vertex3D(0.5f, -0.5f, 0.5f,         0.0f, 0.0f, 1.0f),
+            Vertex3D(-0.5f, 0.5f, 0.5f,         0.0f, 0.0f, 1.0f),
+            Vertex3D(-0.5f, -0.5f, 0.5f,        0.0f, 0.0f, 1.0f),
 
-        0.5f, -0.5f, -0.5f,        0.0f, 0.0f, -1.0f,
-        -0.5f, -0.5f, -0.5f,       0.0f, 0.0f, -1.0f,
-        0.5f, 0.5f, -0.5f,         0.0f, 0.0f, -1.0f,
-        0.5f, 0.5f, -0.5f,         0.0f, 0.0f, -1.0f,
-        -0.5f, -0.5f, -0.5f,       0.0f, 0.0f, -1.0f,
-        -0.5f, 0.5f, -0.5f,        0.0f, 0.0f, -1.0f
+            Vertex3D(0.5f, -0.5f, -0.5f,        0.0f, 0.0f, -1.0f),
+            Vertex3D(-0.5f, -0.5f, -0.5f,       0.0f, 0.0f, -1.0f),
+            Vertex3D(0.5f, 0.5f, -0.5f,         0.0f, 0.0f, -1.0f),
+            Vertex3D(0.5f, 0.5f, -0.5f,         0.0f, 0.0f, -1.0f),
+            Vertex3D(-0.5f, -0.5f, -0.5f,       0.0f, 0.0f, -1.0f),
+            Vertex3D(-0.5f, 0.5f, -0.5f,        0.0f, 0.0f, -1.0f)
     };
-    setCopyVertexes(vertexDataSrc, vertexesCount);
+    setVertexes(vertexDataSrc);
+}
+
+void Cube::destroyVertexes() {
 }
 
 } // namespace Surfaces

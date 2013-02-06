@@ -10,7 +10,9 @@
 #ifndef __Surface_H_
 #define __Surface_H_
 
-#include "Vertex.h"
+#include <vector>
+
+#include "Vertex3D.h"
 
 extern const GLuint k3Dimensional;
 
@@ -18,52 +20,51 @@ namespace Surfaces {
 
 class Surface {
 public:
+    typedef std::vector<Vertex3D> VertexList;
+public:
     Surface();
     virtual ~Surface();
 
     void init();
     void destroy();
-    void bind();
-    void unbind();
     void draw();
-    virtual void update(NSTimeInterval timeInterval) {};
+    virtual void update(NSTimeInterval timeInterval);        ///<
 
 protected:
     virtual void generateVertexes() = 0;
-    virtual void destroyVertexes() {}
-    void refreshBuffer();
+    virtual void destroyVertexes() = 0;
 
-    void setVertexes(GLvoid *vertexes, GLsizeiptr vertexesCount);
-    void setCopyVertexes(GLvoid *vertexesSrc, GLsizeiptr vertexesCount);
-    const GLsizeiptr &getVertexesCount() const { return vertexesCount; }
-    const GLvoid *getVertexes() const { return vertexes; }
-    /// @brief количество измерений (трехмерный мир)
-    const GLint getDimensionCount() const { return k3Dimensional; }
-    const GLboolean getIsNormalized() const { return GL_FALSE; }
-    const GLboolean haveNormals() const { return GL_TRUE; }
-    void setMode(GLenum newMode) { mode = newMode; }
-    const GLenum getMode() const { return mode; }
+    void rebindData();
+
+    size_t getVertexesCount() const { return vertexes.size(); }
+    const VertexList &getVertexes() const { return vertexes; }
+    void setVertexes(const VertexList &vertexes);
+    void setDrawMode(GLenum drawMode) { this->drawMode = drawMode; }
+    GLenum getDrawMode() const { return drawMode; }
+    float getTimeInterval() const { return timeInterval; }
+
+    virtual bool haveNormals() const { return true; }
+    virtual bool haveTexCoord() const { return false; }
+    virtual bool haveColor() const { return false; }
+
 
 private:
-    const GLint getName() const;
-
     void genName();
-    void deleteName();
-
+    void destroyName();
     void genBuffer();
+    void destroyBuffer();
+    void destroyData();
+    void bind();
     void bindBuffer();
-    void updateBuffer();
-    void deleteBuffer();
-
-    void deleteVertexes();
 
 private:
     GLuint name;
     GLuint buffer;
 
-    GLsizeiptr vertexesCount;
-    GLvoid *vertexes;
-    GLenum mode;
+    VertexList vertexes;
+    GLenum drawMode;
+
+    NSTimeInterval timeInterval;
 };
 
 } // namespace Surfaces

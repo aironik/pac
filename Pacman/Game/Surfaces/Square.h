@@ -18,7 +18,7 @@ namespace Surfaces {
 class Square : public Surface {
 protected:
     virtual void generateVertexes();
-
+    virtual void destroyVertexes();
 };
 
 } // namespace Surfaces

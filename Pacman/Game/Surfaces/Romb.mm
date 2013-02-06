@@ -21,20 +21,23 @@ Romb::Romb(GLuint sectionsCount)
 }
 
 void Romb::generateVertexes() {
-    const GLuint vertexPerTriangle = 3;
-    const GLuint trianglesPerSection = 2;
-    const GLsizeiptr vertexesCount = vertexPerTriangle * trianglesPerSection * sectionsCount;
+//    const GLuint vertexPerTriangle = 3;
+//    const GLuint trianglesPerSection = 2;
+//    const GLsizeiptr vertexesCount = vertexPerTriangle * trianglesPerSection * sectionsCount;
+//
+//
+//    VertexList vertexDataSrc;
+//    vertexDataSrc.resize(vertexesCount);
+//
+//    for (GLuint i = 0; i < sectionsCount; ++i) {
+//        setTriangle(vertexDataPtr, i, GL_TRUE);
+//        setTriangle(vertexDataPtr, i, GL_FALSE);
+//    }
+//
+//    setVertexes(vertexDataSrc, vertexesCount * 2 * 3);
+}
 
-
-    GLKVector3 *const vertexDataSrc = (GLKVector3 *)malloc(sizeof(GLKVector3) * vertexesCount);
-    GLKVector3 *vertexDataPtr = vertexDataSrc;
-
-    for (GLuint i = 0; i < sectionsCount; ++i) {
-        setTriangle(vertexDataPtr, i, GL_TRUE);
-        setTriangle(vertexDataPtr, i, GL_FALSE);
-    }
-
-    setVertexes(vertexDataSrc, vertexesCount * 2 * 3);
+void Romb::destroyVertexes() {
 }
 
 void Romb::setTriangle(GLKVector3 *&vertexDataPtr, GLuint index, GLboolean isTop) {

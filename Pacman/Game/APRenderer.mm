@@ -17,6 +17,7 @@
 #import "Romb.h"
 #import "Sphere.h"
 #import "Square.h"
+#import "Surface.h"
 
 
 @interface APRenderer () {
@@ -66,19 +67,6 @@
     [self destroyCube];
 }
 
-- (void)setupSphere
-{
-    _sphere = new Surfaces::Sphere();
-    _sphere->init();
-}
-
-- (void)destroySphere
-{
-    _sphere->destroy();
-    delete _sphere;
-    _sphere = 0;
-}
-
 - (void)setupCube
 {
     _cube = new Surfaces::Cube();
@@ -90,6 +78,24 @@
     _cube->destroy();
     delete _cube;
     _cube = 0;
+}
+
+- (void)renderCube
+{
+    _cube->draw();
+}
+
+- (void)setupSphere
+{
+    _sphere = new Surfaces::Sphere();
+    _sphere->init();
+}
+
+- (void)destroySphere
+{
+    _sphere->destroy();
+    delete _sphere;
+    _sphere = 0;
 }
 
 - (void)setupSquare
@@ -133,37 +139,32 @@
 
 - (void)renderSphere
 {
-    _sphere->bind();
     _sphere->draw();
-}
-
-- (void)renderCube
-{
-    _cube->bind();
-    _cube->draw();
 }
 
 - (void)renderSquare
 {
-    _square->bind();
     _square->draw();
 }
 
 - (void)renderRomb
 {
-    _romb->bind();
     _romb->draw();
 }
 
 - (void)renderRibbon
 {
-    _ribbon->bind();
     _ribbon->draw();
 }
 
-- (void)updateRibbon:(NSTimeInterval)timeInterval
+
+- (void)update:(NSTimeInterval)timeInterval
 {
-    _ribbon->update(timeInterval);
+    _cube->update(timeInterval);
+    ((Surfaces::Surface *)_ribbon)->update(timeInterval);
+    _romb->update(timeInterval);
+    _sphere->update(timeInterval);
+    _square->update(timeInterval);
 }
 
 @end

@@ -19,23 +19,21 @@ class Ribbon : public Surface {
 public:
     Ribbon();
 
-    virtual void init();
-    virtual void destroy();
-
-    virtual void update(NSTimeInterval timeInterval);
+    virtual void update(NSTimeInterval time);
 
 protected:
     virtual void generateVertexes();
     virtual void destroyVertexes();
 
+    virtual bool haveTexCoord() const { return true; }
+
 private:
-    void generateVertexesCoordinates(GLKVector3 *vertexDataSrc, GLsizeiptr vertexesCount) const;
+    void generateVertexesCoordinates(size_t vertexesCount);
     void rotateVertexesAndNormals();
     void rotateVertexAndNormal(GLKVector3 &vertex, GLKVector3 &normal) const;
 
 private:
-    NSTimeInterval time;
-    GLKVector3 *vertexDataOriginal;
+    VertexList vertexDataOriginal;
 };
 
 } // namespace Surfaces

@@ -22,6 +22,7 @@ public:
 
 protected:
     virtual void generateVertexes();
+    virtual void destroyVertexes();
 
 private:
     void setTriangle(GLKVector3 *&vertexDataPtr, GLuint index, GLboolean isTop);

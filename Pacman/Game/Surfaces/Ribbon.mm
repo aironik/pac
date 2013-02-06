@@ -12,94 +12,93 @@
 
 
 namespace {
-static const GLuint vertexTrialglesDelta = 3;
-static const GLuint trianglesPerRobon = 40;
+static const GLuint vertexTrialglesDelta = 2;
+static const GLuint trianglesPerRobon = 8;
 static const float startTorsionPosition = 6.0f;
-static const float torsionSpeed = 8.0f;
+static const float torsionSpeed = 2.0f;
+static const float torsionLength = 5.0f;
 } // namespace ::
 
 namespace Surfaces {
 
 Ribbon::Ribbon()
-        : time(0.0)
-        , vertexDataOriginal(0)
+        : vertexDataOriginal(0)
 {
-    setMode(GL_TRIANGLE_STRIP);
+    setDrawMode(GL_TRIANGLE_STRIP);
 }
 
-void Ribbon::init() {
-
-}
-
-void Ribbon::destroy() {
-
+void Ribbon::update(NSTimeInterval time) {
+    Surface::update(time);
+    
+    rotateVertexesAndNormals();
+    rebindData();
 }
 
 void Ribbon::generateVertexes() {
     const GLsizeiptr vertexesCount = trianglesPerRobon + vertexTrialglesDelta;
 
-    vertexDataOriginal = (GLKVector3 *)malloc(sizeof(GLKVector3) * vertexesCount * 2);
+    vertexDataOriginal.resize(vertexesCount);
 
-    generateVertexesCoordinates(vertexDataOriginal, vertexesCount);
-
-    setCopyVertexes(vertexDataOriginal, vertexesCount);
+    generateVertexesCoordinates(vertexesCount);
 
     update(0.0);
 }
 
 void Ribbon::destroyVertexes() {
-    free(vertexDataOriginal);
-    vertexDataOriginal = 0;
+    vertexDataOriginal.clear();
 }
 
-void Ribbon::generateVertexesCoordinates(GLKVector3 *vertexData, GLsizeiptr vertexesCount) const {
-    float length = 5.0f;
-    float width2 = 1.0f;
-    int lengthIndex = vertexesCount - vertexTrialglesDelta;
+void Ribbon::generateVertexesCoordinates(size_t vertexesCount) {
+    vertexDataOriginal.resize(vertexesCount);
+
+    const float width2 = 1.0f;
+    const float length = 5.0f;
+    const float xStep = length / (vertexesCount - vertexTrialglesDelta - 1);
+    const float xOffset = -(length / 2.0f + xStep);
 
     const float firstX = -length / 2.0f;
     const float lastX = length / 2.0f;
 
-    for (int i = -1; i < vertexesCount - 1; ++i) {
+    for (int i = 0; i < vertexesCount; ++i) {
         float y = i % 2 ? width2 : -width2;
-        float x = length * (i * (1.0f / lengthIndex) - 1.0f / 2.0f);
-        x = std::max(firstX, std::min(x, lastX));
+        float texY = i % 2 ? 1.0f : -0.0f;
+        float x = xOffset + i * xStep;
+        float texX = (i - 1) * xStep / length;
         GLKVector3 vertex = GLKVector3Make(x, y, 0.0f);
         GLKVector3 normal = GLKVector3Make(0.0f, 0.0f, -1.0f);
+        GLKVector2 texCoord = GLKVector2Make(texX, texY);
 
-        vertexData[0] = vertex;
-        vertexData[1] = normal;
-        vertexData +=2;
+        vertexDataOriginal[i].position = vertex;
+        vertexDataOriginal[i].normal = normal;
+        vertexDataOriginal[i].texCoord = texCoord;
     }
-}
+    // коорректируем координаты 1-й и последней точек
+    vertexDataOriginal[0].position.x = -length / 2.0f;
+    vertexDataOriginal[0].texCoord.x = 0.0f;
+    vertexDataOriginal[vertexesCount - 1].position.x = length / 2.0f;
+    vertexDataOriginal[vertexesCount - 1].texCoord.x = 1.0f;
 
-void Ribbon::update(NSTimeInterval timeInterval) {
-    time += timeInterval;
-    rotateVertexesAndNormals();
-    refreshBuffer();
+    NSCAssert(vertexDataOriginal[0].position.x == vertexDataOriginal[1].position.x, @"impropper start calculating");
+    NSCAssert(vertexDataOriginal[0].texCoord.x == vertexDataOriginal[1].texCoord.x, @"impropper start calculating");
+    NSCAssert(abs(vertexDataOriginal[vertexesCount - 1].position.x - vertexDataOriginal[vertexesCount - 2].position.x) < 0.00001, @"impropper finis clating");
+    NSCAssert(abs(vertexDataOriginal[vertexesCount - 1].texCoord.x - vertexDataOriginal[vertexesCount - 2].texCoord.x) < 0.00001, @"impropper finis clating");
 }
 
 void Ribbon::rotateVertexesAndNormals() {
-    GLsizeiptr count = getVertexesCount();
-    GLKVector3 *vertexDataDst = (GLKVector3 *)getVertexes();
-    GLKVector3 *vertexDataSrc = vertexDataOriginal;
-    for (int i = 0; i < count; ++i) {
-        GLKVector3 vertex = vertexDataSrc[0];
-        GLKVector3 normal = vertexDataSrc[1];
-
-        rotateVertexAndNormal(vertex, normal);
-
-        vertexDataDst[0] = vertex;
-        vertexDataDst[1] = normal;
-        
-        vertexDataSrc += 2;
-        vertexDataDst +=2;
+    size_t count = vertexDataOriginal.size();
+    NSCAssert(count, @"invoke generateVertexesCoordinates() before");
+    VertexList vertexDataDst;
+    vertexDataDst.resize(count);
+    for (size_t i = 0; i < count; ++i) {
+        Vertex3D vertex = vertexDataOriginal[i];
+        rotateVertexAndNormal(vertex.position, vertex.normal);
+        vertexDataDst[i] = vertex;
     }
+    setVertexes(vertexDataDst);
 }
 
 void Ribbon::rotateVertexAndNormal(GLKVector3 &vertex, GLKVector3 &normal) const {
-    const float torsionLength = 5.0f;
-    const float startX = startTorsionPosition - time * torsionSpeed;
+    const float startX = startTorsionPosition - getTimeInterval() * torsionSpeed;
 
     const float alpha = M_PI * std::max(0.0f, std::min((vertex.x - startX) / torsionLength, 1.0f));
 

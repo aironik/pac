@@ -17,7 +17,10 @@ namespace Surfaces {
 class Cube : public Surface {
 protected:
     virtual void generateVertexes();
+    virtual void destroyVertexes();
 
+    virtual bool haveNormals() const { return true; }
+    
 };
 
 } // namespace Surfaces

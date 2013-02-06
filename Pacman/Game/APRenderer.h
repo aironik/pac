@@ -16,6 +16,6 @@
 - (void)renderSquare;
 - (void)renderSphere;
 
-- (void)updateRibbon:(NSTimeInterval)timeInterval;
+- (void)update:(NSTimeInterval)timeInterval;
 
 @end

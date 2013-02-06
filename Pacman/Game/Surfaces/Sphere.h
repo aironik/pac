@@ -16,7 +16,9 @@
 namespace Surfaces {
 
 class Sphere : public Surface {
+protected:
     virtual void generateVertexes();
+    virtual void destroyVertexes();
 };
 
 } // namespace Surfaces

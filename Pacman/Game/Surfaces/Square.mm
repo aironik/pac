@@ -11,18 +11,20 @@
 namespace Surfaces {
 
 void Square::generateVertexes() {
-    const GLsizeiptr vertexCount = 6;
-    GLfloat vertexDataSrc[] = {
+    VertexList vertexDataSrc = {
         // Data layout for each line below is:
         // positionX, positionY, positionZ,     normalX, normalY, normalZ,
-        0.5f, -0.5f, -0.5f,        1.0f, 0.0f, 0.0f,
-        0.5f, 0.5f, -0.5f,         1.0f, 0.0f, 0.0f,
-        0.5f, -0.5f, 0.5f,         1.0f, 0.0f, 0.0f,
-        0.5f, -0.5f, 0.5f,         1.0f, 0.0f, 0.0f,
-        0.5f, 0.5f, -0.5f,         1.0f, 0.0f, 0.0f,
-        0.5f, 0.5f, 0.5f,          1.0f, 0.0f, 0.0f,
+        Vertex3D(0.5f, -0.5f, -0.5f,        1.0f, 0.0f, 0.0f),
+        Vertex3D(0.5f, 0.5f, -0.5f,         1.0f, 0.0f, 0.0f),
+        Vertex3D(0.5f, -0.5f, 0.5f,         1.0f, 0.0f, 0.0f),
+        Vertex3D(0.5f, -0.5f, 0.5f,         1.0f, 0.0f, 0.0f),
+        Vertex3D(0.5f, 0.5f, -0.5f,         1.0f, 0.0f, 0.0f),
+        Vertex3D(0.5f, 0.5f, 0.5f,          1.0f, 0.0f, 0.0f),
     };
-    setCopyVertexes(vertexDataSrc, 6);
+    setVertexes(vertexDataSrc);
+}
+    
+void Square::destroyVertexes() {
 }
 
 } // namespace Surfaces

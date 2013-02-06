@@ -86,6 +86,7 @@ GLfloat gCubeVertexData[216] =
     
     GLuint _vertexArray;
     GLuint _vertexBuffer;
+    GLKTextureInfo *_textureInfo;
 }
 
 @property (nonatomic, assign) BOOL win;
@@ -165,6 +166,8 @@ GLfloat gCubeVertexData[216] =
     [self loadShaders];
 
     self.effect = [[GLKBaseEffect alloc] init];
+    self.effect.useConstantColor = GL_FALSE;
+    self.effect.colorMaterialEnabled = GL_TRUE;
     self.effect.light0.enabled = GL_TRUE;
     self.effect.light0.diffuseColor = GLKVector4Make(1.0f, 0.4f, 0.4f, 1.0f);
     
@@ -181,6 +184,13 @@ GLfloat gCubeVertexData[216] =
     glVertexAttribPointer(GLKVertexAttribPosition, 3, GL_FLOAT, GL_FALSE, 24, BUFFER_OFFSET(0));
     glEnableVertexAttribArray(GLKVertexAttribNormal);
     glVertexAttribPointer(GLKVertexAttribNormal, 3, GL_FLOAT, GL_FALSE, 24, BUFFER_OFFSET(12));
+
+    NSString *fileName = [[NSBundle mainBundle] pathForResource:@"texture" ofType:@"png"];
+    _textureInfo = [GLKTextureLoader textureWithContentsOfFile:fileName options:nil error:NULL];
+    self.effect.texture2d0.enabled = GL_TRUE;
+    self.effect.texture2d0.name = textureInfo.name;
+    self.effect.texture2d0.target = GLKTextureTarget2D;
+    self.effect.textureOrder = @[self.effect.texture2d0];
     
     glBindVertexArrayOES(0);
 }
@@ -230,7 +240,7 @@ GLfloat gCubeVertexData[216] =
     
     _rotation += self.timeSinceLastUpdate * 0.5f;
 
-    [self.renderer updateRibbon:self.timeSinceLastUpdate];
+    [self.renderer update:self.timeSinceLastUpdate];
 }
 
 - (void)glkView:(GLKView *)view drawInRect:(CGRect)rect

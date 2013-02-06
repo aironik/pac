@@ -13,134 +13,137 @@
 #import <OpenGLES/ES2/glext.h>
 #include "assert.h"
 
-const GLuint k3Dimensional = 3;
-
 namespace Surfaces {
 
 Surface::Surface()
         : name(0)
-        , vertexesCount(0)
-        , vertexes(NULL)
-        , mode(GL_TRIANGLES)
+        , buffer(0)
+        , drawMode(GL_TRIANGLES)
+        , timeInterval(0.0f)
 {
 }
 
 Surface::~Surface() {
-    destroy();
+    NSCAssert(!name,  @"invoke destroy before");
+    NSCAssert(!buffer, @"invoke destroy before");
 }
 
 void Surface::init() {
-    generateVertexes();
-
     genName();
-    bind();
-
     genBuffer();
-    refreshBuffer();
-    
-    unbind();
+
+    generateVertexes();
+    rebindData();
 }
 
 void Surface::destroy() {
-    deleteBuffer();
-    deleteName();
-    deleteVertexes();
-
+    destroyData();
     destroyVertexes();
-}
 
-
-void Surface::bind() {
-    if (!name) {
-        init();
-    }
-    glBindVertexArrayOES(name);
-}
-
-void Surface::unbind() {
-    glBindVertexArrayOES(0);
+    destroyBuffer();
+    destroyName();
 }
 
 void Surface::draw() {
-    glDrawArrays(getMode(), 0, getVertexesCount());
-}
-
-void Surface::setVertexes(GLvoid *vertexes, GLsizeiptr vertexesCount) {
-    deleteVertexes();
-
-    this->vertexes = vertexes;
-    this->vertexesCount = vertexesCount;
-
-    updateBuffer();
-}
-
-void Surface::setCopyVertexes(GLvoid *vertexesSrc, GLsizeiptr vertexesCount) {
-    const size_t bufferSize = sizeof(GLfloat) * vertexesCount * (2 * getDimensionCount());
-    GLfloat *vertexData = (GLfloat *)malloc(bufferSize);
-
-    memcpy(vertexData, vertexesSrc, bufferSize);
-
-    setVertexes(vertexData, vertexesCount);
-}
-
-void Surface::deleteVertexes() {
-    if (vertexes != NULL) {
-        free(vertexes);
-        vertexes = NULL;
+    glEnableVertexAttribArray(GLKVertexAttribPosition);
+    if (haveNormals()) {
+        glEnableVertexAttribArray(GLKVertexAttribNormal);
+    } else {
+        glDisableVertexAttribArray(GLKVertexAttribNormal);
     }
-    vertexesCount = 0;
+
+    if (haveTexCoord()) {
+        glEnableVertexAttribArray(GLKVertexAttribTexCoord0);
+    } else {
+        glDisableVertexAttribArray(GLKVertexAttribTexCoord0);
+    }
+    if (haveColor()) {
+        glEnableVertexAttribArray(GLKVertexAttribColor);
+    } else {
+        glDisableVertexAttribArray(GLKVertexAttribColor);
+    }
+    bind();
+    glDrawArrays(getDrawMode(), 0, getVertexesCount());
 }
+
+void Surface::update(NSTimeInterval timeInterval) {
+    this->timeInterval += timeInterval;
+}
+
 
 void Surface::genName() {
+    NSCAssert(!name, @"Already inited");
+
     glGenVertexArraysOES(1, &name);
 }
 
-const GLint Surface::getName() const {
-    assert(name && "init before");
-    return name;
-}
-
-void Surface::deleteName() {
-    glDeleteVertexArraysOES(1, &name);
-    name = 0;
-}
-
-void Surface::genBuffer() {
-    glGenBuffers(1, &buffer);
-}
-
-void Surface::bindBuffer() {
-    glBindBuffer(GL_ARRAY_BUFFER, buffer);
-}
-
-void Surface::updateBuffer() {
-    if (buffer) {
-        const GLsizei positionSize = sizeof(GLfloat) * getDimensionCount();
-        const GLvoid *positionPtr = (char *)NULL;
-        const GLsizei normalsSize = haveNormals() ? (sizeof(GLfloat) * getDimensionCount()) : 0;
-        const GLvoid *normalsPtr = haveNormals() ? ((char *)NULL + positionSize) : 0;
-        const GLsizeiptr vertexSize = positionSize + normalsSize;
-        const GLsizeiptr bufferSize = getVertexesCount() * vertexSize;
-
-        glBufferData(GL_ARRAY_BUFFER, bufferSize, getVertexes(), GL_STATIC_DRAW);
-
-        glEnableVertexAttribArray(GLKVertexAttribPosition);
-        glVertexAttribPointer(GLKVertexAttribPosition, getDimensionCount(), GL_FLOAT, getIsNormalized(),
-                              vertexSize, positionPtr);
-        glEnableVertexAttribArray(GLKVertexAttribNormal);
-        glVertexAttribPointer(GLKVertexAttribNormal, getDimensionCount(), GL_FLOAT, getIsNormalized(),
-                              vertexSize, normalsPtr);
+void Surface::destroyName() {
+    if (name) {
+        glDeleteVertexArraysOES(1, &name);
+        name = 0;
     }
 }
 
-void Surface::refreshBuffer() {
-    bindBuffer();
-    updateBuffer();
+void Surface::genBuffer() {
+    NSCAssert(!buffer, @"Already inited");
+    glGenBuffers(1, &buffer);
 }
 
-void Surface::deleteBuffer() {
-    glDeleteBuffers(1, &buffer);
-    buffer = 0;
+void Surface::destroyBuffer() {
+    if (buffer) {
+        glDeleteBuffers(1, &buffer);
+        buffer = 0;
+    }
 }
+
+void Surface::destroyData() {
+    vertexes.clear();
+}
+
+void Surface::bind() {
+    NSCAssert(name, @"invoke init before.");
+    glBindVertexArrayOES(name);
+}
+
+void Surface::bindBuffer() {
+    NSCAssert(name, @"invoke init before.");
+    glBindBuffer(GL_ARRAY_BUFFER, buffer);
+}
+
+void Surface::rebindData() {
+    bind();
+    bindBuffer();
+
+    const GLsizeiptr bufferSize = getVertexesCount() * sizeof(Vertex3D);
+
+    glBufferData(GL_ARRAY_BUFFER, bufferSize, &getVertexes().front(), GL_STATIC_DRAW);
+
+    glEnableVertexAttribArray(GLKVertexAttribPosition);
+    glVertexAttribPointer(GLKVertexAttribPosition, 3, GL_FLOAT, haveNormals(), sizeof(Vertex3D), Vertex3D::positionPtr());
+
+    if (haveNormals()) {
+        glEnableVertexAttribArray(GLKVertexAttribNormal);
+        glVertexAttribPointer(GLKVertexAttribNormal, 3, GL_FLOAT, haveNormals(), sizeof(Vertex3D), Vertex3D::normalPtr());
+    }
+
+    if (haveTexCoord()) {
+        glEnableVertexAttribArray(GLKVertexAttribTexCoord0);
+        glVertexAttribPointer(GLKVertexAttribTexCoord0, 2, GL_FLOAT, haveNormals(), sizeof(Vertex3D), Vertex3D::texCoordPtr());
+    }
+    
+    if (haveColor()) {
+        glEnableVertexAttribArray(GLKVertexAttribColor);
+        glVertexAttribPointer(GLKVertexAttribColor, 4, GL_FLOAT, GL_FALSE, sizeof(Vertex3D), Vertex3D::colorPtr());
+    }
+}
+
+void Surface::setVertexes(const VertexList &vertexes) {
+    destroyData();
+
+    this->vertexes = vertexes;
+
+    rebindData();
+}
+
 
 } // namespace Surfaces
