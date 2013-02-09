@@ -16,6 +16,11 @@
 namespace Surfaces {
 
 class Sphere : public Surface {
+public:
+    Sphere();
+
+    virtual void update(NSTimeInterval time);
+
 protected:
     virtual void generateVertexes();
     virtual void destroyVertexes();
