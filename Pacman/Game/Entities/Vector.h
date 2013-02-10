@@ -40,7 +40,7 @@ struct Vector {
     Vector &operator/=(const float c) { x /= c; y /= c; return *this; }
 
     void normalize() { *this = GLKVector2Normalize(this->glkVector); }
-    float distance(const Vector &other) { return GLKVector2Distance(this->glkVector, other.glkVector); }
+    float distance(const Vector &other) const { return GLKVector2Distance(this->glkVector, other.glkVector); }
     float length() const { return GLKVector2Length(this->glkVector); };
     Vector crossproduct(const Vector &other) const { return GLKVector2Project(this->glkVector, other.glkVector); }
     float dotproduct(const Vector &other) const { return GLKVector2DotProduct(this->glkVector, other.glkVector); }

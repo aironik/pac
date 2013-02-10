@@ -27,15 +27,18 @@ public:
     virtual void update(NSTimeInterval timeInterval);
 
     virtual float dimensionsSize() const { return 1.0f; }
-    bool isIntersect(const Entity &other);
+    bool isIntersect(const Entity &other) const;
+
+    virtual void draw() const;
 
 protected:
+    typedef std::vector<Surfaces::Surface::SharedPtr> Model;
 
 protected:
-    const Surfaces::Surface::SharedPtr &getModel() const { return model; }
+    const Model &getModel() const { return model; }
 
 private:
-    Surfaces::Surface::SharedPtr model;
+    Model model;
 
     Vector position;
     Vector direction;

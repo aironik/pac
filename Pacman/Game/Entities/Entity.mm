@@ -21,9 +21,19 @@ Entity::~Entity() {
 
 void Entity::update(NSTimeInterval timeInterval) {
     position += speed * timeInterval;
+    for (Model::iterator it = model.begin(); it != model.end(); ++it) {
+        (*it)->update(timeInterval);
+    };
 }
 
-bool Entity::isIntersect(const Entity &other) {
+void Entity::draw() const {
+    NSCAssert(model.begin() == model.end(), @"No surfaces for draw!");
+    for (Model::const_iterator it = model.begin(); it != model.end(); ++it) {
+        (*it)->draw();
+    };
+}
+
+bool Entity::isIntersect(const Entity &other) const {
     return dimensionsSize() + other.dimensionsSize() < position.distance(other.position);
 }
 

@@ -29,7 +29,7 @@ public:
 
     void init();
     void destroy();
-    void draw();
+    void draw() const;
     virtual void update(NSTimeInterval timeInterval);        ///<
 
 protected:
@@ -49,15 +49,14 @@ protected:
     virtual bool haveTexCoord() const { return false; }
     virtual bool haveColor() const { return false; }
 
-
 private:
     void genName();
     void destroyName();
     void genBuffer();
     void destroyBuffer();
     void destroyData();
-    void bind();
-    void bindBuffer();
+    void bind() const;
+    void bindBuffer() const;
 
 private:
     GLuint name;

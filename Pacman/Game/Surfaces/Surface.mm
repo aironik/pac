@@ -44,7 +44,7 @@ void Surface::destroy() {
     destroyName();
 }
 
-void Surface::draw() {
+void Surface::draw() const {
     glEnableVertexAttribArray(GLKVertexAttribPosition);
     if (haveNormals()) {
         glEnableVertexAttribArray(GLKVertexAttribNormal);
@@ -100,12 +100,12 @@ void Surface::destroyData() {
     vertexes.clear();
 }
 
-void Surface::bind() {
+void Surface::bind() const {
     NSCAssert(name, @"invoke init before.");
     glBindVertexArrayOES(name);
 }
 
-void Surface::bindBuffer() {
+void Surface::bindBuffer() const {
     NSCAssert(name, @"invoke init before.");
     glBindBuffer(GL_ARRAY_BUFFER, buffer);
 }

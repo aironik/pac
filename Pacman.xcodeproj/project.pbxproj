@@ -106,7 +106,7 @@
 				C4E3E46B41746D7D14296707 /* APGameResult.h */,
 				C4E3E72C718E634013F2F5B6 /* APRenderer.mm */,
 				C4E3E8892178E3553E55CA79 /* APRenderer.h */,
-				C4E3E6FF840053EF4B960492 /* Entity */,
+				C4E3E7F06AFAEE225147DDB1 /* Entities */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -135,17 +135,6 @@
 			);
 			sourceTree = "<group>";
 		};
-		C4E3E6FF840053EF4B960492 /* Entity */ = {
-			isa = PBXGroup;
-			children = (
-				C4E3E1B9D3A06CF2F55ACD24 /* Entity.mm */,
-				C4E3E0E50E4D0494E4013D28 /* Entity.h */,
-				C4E3E57E95EF5EFC4FD48AD6 /* Vector.mm */,
-				C4E3EB541594867FE4AB20A9 /* Vector.h */,
-			);
-			path = Entity;
-			sourceTree = "<group>";
-		};
 		C4E3E7E21DC3BD2F7FF5A9CC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -156,6 +145,17 @@
 				C4E3EBB19D3A1875286ABF4B /* OpenGLES.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C4E3E7F06AFAEE225147DDB1 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				C4E3E0E50E4D0494E4013D28 /* Entity.h */,
+				C4E3E1B9D3A06CF2F55ACD24 /* Entity.mm */,
+				C4E3EB541594867FE4AB20A9 /* Vector.h */,
+				C4E3E57E95EF5EFC4FD48AD6 /* Vector.mm */,
+			);
+			path = Entities;
 			sourceTree = "<group>";
 		};
 		C4E3EAB930D71AC056C7FD10 /* Pacman */ = {
