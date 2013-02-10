@@ -14,6 +14,7 @@
 
 #include "Vertex3D.h"
 
+
 extern const GLuint k3Dimensional;
 
 namespace Surfaces {

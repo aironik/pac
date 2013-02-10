@@ -10,9 +10,9 @@
 #ifndef __Entity_H_
 #define __Entity_H_
 
-#import <memory>
-#import "Surface.h"
-#import "Vector.h"
+#include <memory>
+#include "Surface.h"
+#include "Vector.h"
 
 
 namespace Entities {

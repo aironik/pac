@@ -8,7 +8,7 @@
 
 #include "Ribbon.h"
 
-#import <algorithm>
+#include <algorithm>
 
 
 namespace {
