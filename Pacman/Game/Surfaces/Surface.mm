@@ -19,7 +19,7 @@ Surface::Surface()
         : name(0)
         , buffer(0)
         , drawMode(GL_TRIANGLES)
-        , timeInterval(0.0f)
+        , time(0.0f)
 {
 }
 
@@ -63,11 +63,12 @@ void Surface::draw() const {
         glDisableVertexAttribArray(GLKVertexAttribColor);
     }
     bind();
-    glDrawArrays(getDrawMode(), 0, getVertexesCount());
+    GLsizei count = (GLsizei)getVertexesCount();
+    glDrawArrays(getDrawMode(), 0, count);
 }
 
 void Surface::update(NSTimeInterval timeInterval) {
-    this->timeInterval += timeInterval;
+    this->time += timeInterval;
 }
 
 
@@ -114,7 +115,7 @@ void Surface::rebindData() {
     bind();
     bindBuffer();
 
-    const GLsizeiptr bufferSize = getVertexesCount() * sizeof(Vertex3D);
+    const GLsizeiptr bufferSize = (GLsizeiptr)(getVertexesCount() * sizeof(Vertex3D));
 
     glBufferData(GL_ARRAY_BUFFER, bufferSize, &getVertexes().front(), GL_STATIC_DRAW);
 
@@ -137,10 +138,10 @@ void Surface::rebindData() {
     }
 }
 
-void Surface::setVertexes(const VertexList &vertexes) {
+void Surface::setVertexes(const VertexList &newVertexes) {
     destroyData();
 
-    this->vertexes = vertexes;
+    this->vertexes = newVertexes;
 
     rebindData();
 }

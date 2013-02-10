@@ -18,26 +18,26 @@ Vertex3D::Vertex3D()
 {
 }
 
-Vertex3D::Vertex3D(GLKVector3 position)
-        : position(position)
+Vertex3D::Vertex3D(GLKVector3 aPosition)
+        : position(aPosition)
         , normal(GLKVector3Make(0.0f, 0.0f, 0.0f))
         , texCoord(GLKVector2Make(0.0f, 0.0f))
         , color(GLKVector4Make(0.0f, 0.0f, 0.0f, 0.0f))
 {
 }
 
-Vertex3D::Vertex3D(GLKVector3 position, GLKVector3 normal)
-        : position(position)
-        , normal(normal)
+Vertex3D::Vertex3D(GLKVector3 aPosition, GLKVector3 aNormal)
+        : position(aPosition)
+        , normal(aNormal)
         , texCoord(GLKVector2Make(0.0f, 0.0f))
         , color(GLKVector4Make(0.0f, 0.0f, 0.0f, 0.0f))
 {
 }
 
-Vertex3D::Vertex3D(GLKVector3 position, GLKVector3 normal, GLKVector2 texCoord)
-        : position(position)
-        , normal(normal)
-        , texCoord(texCoord)
+Vertex3D::Vertex3D(GLKVector3 aPosition, GLKVector3 aNormal, GLKVector2 aTexCoord)
+        : position(aPosition)
+        , normal(aNormal)
+        , texCoord(aTexCoord)
         , color(GLKVector4Make(0.0f, 0.0f, 0.0f, 0.0f))
 {
 }

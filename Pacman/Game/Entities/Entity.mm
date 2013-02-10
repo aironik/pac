@@ -8,7 +8,7 @@
 
 #include "Entity.h"
 
-#include "Vector.h"
+#include "Vector2D.h"
 
 
 namespace Entities {
@@ -21,16 +21,11 @@ Entity::~Entity() {
 
 void Entity::update(NSTimeInterval timeInterval) {
     position += speed * timeInterval;
-    for (Model::iterator it = model.begin(); it != model.end(); ++it) {
-        (*it)->update(timeInterval);
-    };
+    model->update(timeInterval);
 }
 
 void Entity::draw() const {
-    NSCAssert(model.begin() == model.end(), @"No surfaces for draw!");
-    for (Model::const_iterator it = model.begin(); it != model.end(); ++it) {
-        (*it)->draw();
-    };
+    model->draw();
 }
 
 bool Entity::isIntersect(const Entity &other) const {

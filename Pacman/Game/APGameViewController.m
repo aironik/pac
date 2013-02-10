@@ -360,7 +360,7 @@ GLfloat gCubeVertexData[216] =
     GLint logLength;
     glGetShaderiv(*shader, GL_INFO_LOG_LENGTH, &logLength);
     if (logLength > 0) {
-        GLchar *log = (GLchar *)malloc(logLength);
+        GLchar *log = (GLchar *)malloc((size_t)logLength);
         glGetShaderInfoLog(*shader, logLength, &logLength, log);
         NSLog(@"Shader compile log:\n%s", log);
         free(log);
@@ -385,7 +385,7 @@ GLfloat gCubeVertexData[216] =
     GLint logLength;
     glGetProgramiv(prog, GL_INFO_LOG_LENGTH, &logLength);
     if (logLength > 0) {
-        GLchar *log = (GLchar *)malloc(logLength);
+        GLchar *log = (GLchar *)malloc((size_t)logLength);
         glGetProgramInfoLog(prog, logLength, &logLength, log);
         NSLog(@"Program link log:\n%s", log);
         free(log);
@@ -407,7 +407,7 @@ GLfloat gCubeVertexData[216] =
     glValidateProgram(prog);
     glGetProgramiv(prog, GL_INFO_LOG_LENGTH, &logLength);
     if (logLength > 0) {
-        GLchar *log = (GLchar *)malloc(logLength);
+        GLchar *log = (GLchar *)malloc((size_t)logLength);
         glGetProgramInfoLog(prog, logLength, &logLength, log);
         NSLog(@"Program validate log:\n%s", log);
         free(log);

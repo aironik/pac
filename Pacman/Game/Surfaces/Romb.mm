@@ -15,8 +15,8 @@ Romb::Romb()
 {
 }
 
-Romb::Romb(GLuint sectionsCount)
-        : sectionsCount(sectionsCount)
+Romb::Romb(GLuint aSectionsCount)
+        : sectionsCount(aSectionsCount)
 {
 }
 

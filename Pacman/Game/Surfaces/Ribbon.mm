@@ -56,11 +56,11 @@ void Ribbon::generateVertexesCoordinates(size_t vertexesCount) {
     const float xStep = length / (vertexesCount - vertexTrialglesDelta - 1);
     const float xOffset = -(length / 2.0f + xStep);
 
-    for (int i = 0; i < vertexesCount; ++i) {
+    for (size_t i = 0; i < vertexesCount; ++i) {
         float y = i % 2 ? width2 : -width2;
         float texY = i % 2 ? 1.0f : -0.0f;
         float x = xOffset + i * xStep;
-        float texX = (i - 1) * xStep / length;
+        float texX = ((float)i - 1) * xStep / length;
         GLKVector3 vertex = GLKVector3Make(x, y, 0.0f);
         GLKVector3 normal = GLKVector3Make(0.0f, 0.0f, -1.0f);
         GLKVector2 texCoord = GLKVector2Make(texX, texY);

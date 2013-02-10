@@ -42,9 +42,9 @@ protected:
     size_t getVertexesCount() const { return vertexes.size(); }
     const VertexList &getVertexes() const { return vertexes; }
     void setVertexes(const VertexList &vertexes);
-    void setDrawMode(GLenum drawMode) { this->drawMode = drawMode; }
+    void setDrawMode(GLenum newDrawMode) { drawMode = newDrawMode; }
     GLenum getDrawMode() const { return drawMode; }
-    float getTimeInterval() const { return timeInterval; }
+    float getTimeInterval() const { return time; }
 
     virtual bool haveNormals() const { return true; }
     virtual bool haveTexCoord() const { return false; }
@@ -66,7 +66,7 @@ private:
     VertexList vertexes;
     GLenum drawMode;
 
-    NSTimeInterval timeInterval;
+    NSTimeInterval time;
 };
 
 } // namespace Surfaces

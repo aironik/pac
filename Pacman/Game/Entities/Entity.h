@@ -11,8 +11,10 @@
 #define __Entity_H_
 
 #include <memory>
+
+#include "Model.h"
 #include "Surface.h"
-#include "Vector.h"
+#include "Vector2D.h"
 
 
 namespace Entities {
@@ -32,17 +34,15 @@ public:
     virtual void draw() const;
 
 protected:
-    typedef std::vector<Surfaces::Surface::SharedPtr> Model;
-
-protected:
-    const Model &getModel() const { return model; }
+    const Models::Model::SharedPtr getModel() const { return model; }
+    void setModel(const Models::Model::SharedPtr newModel) { this->model = newModel; }
 
 private:
-    Model model;
+    Models::Model::SharedPtr model;
 
-    Vector position;
-    Vector direction;
-    Vector speed;
+    Vector2D position;
+    Vector2D direction;
+    Vector2D speed;
 };
 
 } // namespace Entities
