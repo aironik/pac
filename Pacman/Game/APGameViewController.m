@@ -421,4 +421,10 @@ GLfloat gCubeVertexData[216] =
     return YES;
 }
 
+#pragma mark - APUserCommandDelegate protocol implementation
+
+- (void)userCommand:(NSObject<APUserCommand> *)userCommand didChangeValue:(GLKVector2)value {
+
+}
+
 @end
