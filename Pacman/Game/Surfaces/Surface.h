@@ -20,7 +20,9 @@ namespace Surfaces {
 
 class Surface {
 public:
+    typedef std::shared_ptr<Surface> SharedPtr;
     typedef std::vector<Vertex3D> VertexList;
+
 public:
     Surface();
     virtual ~Surface();

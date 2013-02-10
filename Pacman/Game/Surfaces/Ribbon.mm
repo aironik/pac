@@ -56,9 +56,6 @@ void Ribbon::generateVertexesCoordinates(size_t vertexesCount) {
     const float xStep = length / (vertexesCount - vertexTrialglesDelta - 1);
     const float xOffset = -(length / 2.0f + xStep);
 
-    const float firstX = -length / 2.0f;
-    const float lastX = length / 2.0f;
-
     for (int i = 0; i < vertexesCount; ++i) {
         float y = i % 2 ? width2 : -width2;
         float texY = i % 2 ? 1.0f : -0.0f;
