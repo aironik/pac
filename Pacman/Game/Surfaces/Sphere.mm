@@ -44,8 +44,10 @@ void Sphere::generateVertexes() {
 
             Vertex3D position1(GLKMatrix3MultiplyVector3(rotateMatrix1, position));
             position1.normal = position1.position;
+            position1.texCoord = GLKVector2Make((float)j * (1.0f / bettaSectorsCount), (float)(i - 1) * (1.0f / alphaSectorsCount));
             Vertex3D position2(GLKMatrix3MultiplyVector3(rotateMatrix2, position));
             position2.normal = position2.position;
+            position2.texCoord = GLKVector2Make((float)j * (1.0f / bettaSectorsCount), (float)i * (1.0f / alphaSectorsCount));
             vertexDataOriginal.push_back(position1);
             vertexDataOriginal.push_back(position2);
         }

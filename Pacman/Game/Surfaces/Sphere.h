@@ -24,6 +24,9 @@ public:
 protected:
     virtual void generateVertexes();
     virtual void destroyVertexes();
+
+    virtual bool haveTexCoord() const { return true; }
+
 };
 
 } // namespace Surfaces
