@@ -12,7 +12,7 @@
 
 #include <memory>
 
-#include "Model.h"
+#include "Program.h"
 #include "Surface.h"
 #include "Vector2D.h"
 
@@ -24,21 +24,27 @@ public:
     Entity();
     virtual ~Entity();
 
-    void moveTo(const GLKVector2 &newPosition) { position = newPosition; }
-    void setSpeed(const GLKVector2 &newSpeed) { speed = newSpeed; }
+    virtual void moveTo(const GLKVector2 &newPosition);
+    virtual void setSpeed(const GLKVector2 &newSpeed);
     virtual void update(NSTimeInterval timeInterval);
 
     virtual float dimensionsSize() const { return 1.0f; }
     bool isIntersect(const Entity &other) const;
 
-    virtual void draw() const;
+    void draw() const;
 
 protected:
-    const Models::Model::SharedPtr getModel() const { return model; }
-    void setModel(const Models::Model::SharedPtr newModel) { this->model = newModel; }
+    // TODO: separate pair into Model class. That let make define offset and rotation.
+    typedef std::pair<Surfaces::Surface::SharedPtr, ProgramGl::Program::SharedPtr> SurfacePair;
+    typedef std::vector<SurfacePair> Model;
+
+protected:
+    const Model &getModel() const { return model; }
+    void setModel(const Model &newModel) { this->model = newModel; }
+    const Vector2D &getPosition() const { return position; }
 
 private:
-    Models::Model::SharedPtr model;
+    Model model;
 
     Vector2D position;
     Vector2D direction;

@@ -17,6 +17,9 @@ namespace Surfaces {
 
 class Sphere : public Surface {
 public:
+    typedef std::shared_ptr<Sphere> SharedPtr;
+
+public:
     Sphere();
 
     virtual void update(NSTimeInterval time);
@@ -24,9 +27,6 @@ public:
 protected:
     virtual void generateVertexes();
     virtual void destroyVertexes();
-
-    virtual bool haveTexCoord() const { return true; }
-
 };
 
 } // namespace Surfaces

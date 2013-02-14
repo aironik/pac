@@ -14,7 +14,6 @@
 namespace ProgramGl {
 
 Program::SharedPtr Program::createDefaultProgram() {
-    // TODO: write me
     const GLchar *vertexShaderStr = NULL;
     const GLchar *fragmentShaderStr = NULL;
 
@@ -139,7 +138,13 @@ void Program::validateProgram() {
 }
 
 void Program::loadIdentity() {
-    setProjectionMatrix(GLKMatrix4Identity);
+    // TODO: use other closed algorithm calculate projection matrix
+    UIWindow *window = [[UIApplication sharedApplication] keyWindow];
+    CGSize size = window.bounds.size;
+    float aspect = fabsf(size.width / size.height);
+    GLKMatrix4 newProjectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(65.0f), aspect, 0.1f, 10.0f);
+    setProjectionMatrix(newProjectionMatrix);
+
     setModelViewMatrix(GLKMatrix4Identity);
 
     setLightPosition(GLKVector3Make(0.0f, 0.0f, 0.0f));

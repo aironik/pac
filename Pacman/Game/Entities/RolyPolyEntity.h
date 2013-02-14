@@ -20,6 +20,7 @@ class RolyPolyEntity : public Entity {
 public:
     RolyPolyEntity();
     virtual ~RolyPolyEntity();
+
 };
 
 } // namespace Entities

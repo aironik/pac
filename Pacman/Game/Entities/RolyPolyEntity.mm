@@ -8,17 +8,29 @@
 
 #include "RolyPolyEntity.h"
 
-#include "RolyPolyModel.h"
+#include "Program.h"
+#include "Sphere.h"
 
 
 namespace Entities {
 
 RolyPolyEntity::RolyPolyEntity() {
-    setModel(Models::RolyPolyModel::SharedPtr::make_shared());
+    Surfaces::Sphere::SharedPtr sphere = Surfaces::Sphere::SharedPtr::make_shared();
+    sphere->init();
+
+    ProgramGl::Program::SharedPtr program = ProgramGl::Program::createDefaultProgram();
+    program->setDiffuseColor(GLKVector4Make(1.0f, 1.0f, 0.0f, 1.0f));
+
+    Model model;
+    model.push_back(SurfacePair(sphere, program));
+    setModel(model);
 }
 
 RolyPolyEntity::~RolyPolyEntity() {
-
+    Model model = getModel();
+    for (Model::const_iterator it = model.begin(); it != model.end(); ++it) {
+        it->first->destroy();
+    }
 }
 
 } // namespace Entities

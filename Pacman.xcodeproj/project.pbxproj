@@ -15,7 +15,6 @@
 		00E57A4016C05BC200C722AF /* Romb.mm in Sources */ = {isa = PBXBuildFile; fileRef = C4E3ED1027EA8FE86BB1BC08 /* Romb.mm */; };
 		C4E3E037FB03C2A2D0583C02 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C4E3EDABF11B70F28DA69F4A /* InfoPlist.strings */; };
 		C4E3E049449E05A1E3C03C3D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C4E3EF0389963C36C9559EE8 /* main.m */; };
-		C4E3E0881FC835D0834F7B2C /* RolyPolyModel.mm in Sources */ = {isa = PBXBuildFile; fileRef = C4E3E916D792810153331202 /* RolyPolyModel.mm */; };
 		C4E3E133F88EE87450667702 /* Program.mm in Sources */ = {isa = PBXBuildFile; fileRef = C4E3EB0DA0DB0496367225AB /* Program.mm */; };
 		C4E3E1450CFC5F9D48EE2CF0 /* APRenderer.mm in Sources */ = {isa = PBXBuildFile; fileRef = C4E3E72C718E634013F2F5B6 /* APRenderer.mm */; };
 		C4E3E2CF5B0A8551EFB5C8EC /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C4E3E9D7EC4FC0BF83EE12BE /* Default-568h@2x.png */; };
@@ -75,7 +74,6 @@
 		C4E3E83180F9F0818C686872 /* Vertex3D.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Vertex3D.mm; sourceTree = "<group>"; };
 		C4E3E8892178E3553E55CA79 /* APRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APRenderer.h; sourceTree = "<group>"; };
 		C4E3E901306A276732E7FEF9 /* APAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APAppDelegate.h; sourceTree = "<group>"; };
-		C4E3E916D792810153331202 /* RolyPolyModel.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RolyPolyModel.mm; sourceTree = "<group>"; };
 		C4E3E9D7EC4FC0BF83EE12BE /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		C4E3E9E230D05ADD86A380E5 /* APGameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APGameViewController.m; sourceTree = "<group>"; };
 		C4E3EA9DDA19A6B4D3289795 /* Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Model.h; sourceTree = "<group>"; };
@@ -98,7 +96,6 @@
 		C4E3EEFB1DDA4F12AF3304B4 /* Pacman.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pacman.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4E3EF0389963C36C9559EE8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C4E3EF24AE733F587586157E /* Ribbon.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Ribbon.mm; sourceTree = "<group>"; };
-		C4E3EFC1964B59AD41B86CC4 /* RolyPolyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RolyPolyModel.h; sourceTree = "<group>"; };
 		C4E3EFCAF2D3208BA239679D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -227,8 +224,6 @@
 			children = (
 				C4E3E6DE972AFBB0F3F67B3D /* Model.mm */,
 				C4E3EA9DDA19A6B4D3289795 /* Model.h */,
-				C4E3E916D792810153331202 /* RolyPolyModel.mm */,
-				C4E3EFC1964B59AD41B86CC4 /* RolyPolyModel.h */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -351,7 +346,6 @@
 				C4E3E6B98039C7EF55674481 /* Entity.mm in Sources */,
 				C4E3E3F892B0E3B2911037E2 /* RolyPolyEntity.mm in Sources */,
 				C4E3E369776C36444991F60A /* Model.mm in Sources */,
-				C4E3E0881FC835D0834F7B2C /* RolyPolyModel.mm in Sources */,
 				C4E3E894AAF88CF062B2DAD7 /* APUserCommandViewController.m in Sources */,
 				C4E3E133F88EE87450667702 /* Program.mm in Sources */,
 			);

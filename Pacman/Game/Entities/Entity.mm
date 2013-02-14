@@ -19,13 +19,29 @@ Entity::Entity() {
 Entity::~Entity() {
 }
 
+void Entity::moveTo(const GLKVector2 &newPosition) {
+    position = newPosition;
+}
+
+void Entity::setSpeed(const GLKVector2 &newSpeed) {
+    speed = newSpeed;
+}
+
 void Entity::update(NSTimeInterval timeInterval) {
     position += speed * timeInterval;
-    model->update(timeInterval);
+
+    GLKMatrix4 modelViewMatrix = GLKMatrix4MakeTranslation(position.x, position.y, 0.0f);
+    for (Model::const_iterator it = model.begin(); it != model.end(); ++it) {
+        it->first->update(timeInterval);
+        it->second->setModelViewMatrix(modelViewMatrix);
+    }
 }
 
 void Entity::draw() const {
-    model->draw();
+    for (Model::const_iterator it = model.begin(); it != model.end(); ++it) {
+        it->second->apply();
+        it->first->draw();
+    }
 }
 
 bool Entity::isIntersect(const Entity &other) const {
