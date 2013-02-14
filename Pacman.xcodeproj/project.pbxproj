@@ -11,10 +11,12 @@
 		00C74AB516BFF58300A3DC9E /* Sphere.mm in Sources */ = {isa = PBXBuildFile; fileRef = C4E3E3F0D277723101822C98 /* Sphere.mm */; };
 		00C74AB616BFF60600A3DC9E /* Square.mm in Sources */ = {isa = PBXBuildFile; fileRef = C4E3E5370653424AA45AA85A /* Square.mm */; };
 		00C74AB716BFFFBA00A3DC9E /* Ribbon.mm in Sources */ = {isa = PBXBuildFile; fileRef = C4E3EF24AE733F587586157E /* Ribbon.mm */; };
+		00CBD11916CC3CA200EBEFDD /* libc.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 00CBD11816CC3CA200EBEFDD /* libc.dylib */; };
 		00E57A4016C05BC200C722AF /* Romb.mm in Sources */ = {isa = PBXBuildFile; fileRef = C4E3ED1027EA8FE86BB1BC08 /* Romb.mm */; };
 		C4E3E037FB03C2A2D0583C02 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C4E3EDABF11B70F28DA69F4A /* InfoPlist.strings */; };
 		C4E3E049449E05A1E3C03C3D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C4E3EF0389963C36C9559EE8 /* main.m */; };
 		C4E3E0881FC835D0834F7B2C /* RolyPolyModel.mm in Sources */ = {isa = PBXBuildFile; fileRef = C4E3E916D792810153331202 /* RolyPolyModel.mm */; };
+		C4E3E133F88EE87450667702 /* Program.mm in Sources */ = {isa = PBXBuildFile; fileRef = C4E3EB0DA0DB0496367225AB /* Program.mm */; };
 		C4E3E1450CFC5F9D48EE2CF0 /* APRenderer.mm in Sources */ = {isa = PBXBuildFile; fileRef = C4E3E72C718E634013F2F5B6 /* APRenderer.mm */; };
 		C4E3E2CF5B0A8551EFB5C8EC /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C4E3E9D7EC4FC0BF83EE12BE /* Default-568h@2x.png */; };
 		C4E3E3123382D4180586D23E /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4E3E4B660A33B9971CE975F /* MainStoryboard_iPhone.storyboard */; };
@@ -27,10 +29,12 @@
 		C4E3E641604C34F5F99D2473 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4E3EFCAF2D3208BA239679D /* Foundation.framework */; };
 		C4E3E69DBC882BB5C862FBC7 /* texture.png in Resources */ = {isa = PBXBuildFile; fileRef = C4E3EB129679FFA2A7437AFE /* texture.png */; };
 		C4E3E6B98039C7EF55674481 /* Entity.mm in Sources */ = {isa = PBXBuildFile; fileRef = C4E3E1B9D3A06CF2F55ACD24 /* Entity.mm */; };
+		C4E3E826871567307FBFDF9B /* Shader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = C4E3E3F8CBB7223DFF4CE127 /* Shader.fsh */; };
 		C4E3E894AAF88CF062B2DAD7 /* APUserCommandViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4E3E42476BCA8A246876FF3 /* APUserCommandViewController.m */; };
 		C4E3E8F049EE7B05A718F49D /* Vertex3D.mm in Sources */ = {isa = PBXBuildFile; fileRef = C4E3E83180F9F0818C686872 /* Vertex3D.mm */; };
 		C4E3EB81BF44109A85B8B617 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4E3E18604FE38898ED8E96B /* UIKit.framework */; };
 		C4E3EBF9AA81C800C4BC0607 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4E3E6E716EB832FF07E6C3A /* CoreGraphics.framework */; };
+		C4E3ECF02B8059310C318F3C /* Shader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = C4E3E7949ABE401A019BE91E /* Shader.vsh */; };
 		C4E3ED361A697A56A66FD784 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C4E3EBDCB5AB99ECA280BA75 /* Default@2x.png */; };
 		C4E3ED732448B9DCE10BE438 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4E3E34D03F4F19E8636A797 /* MainStoryboard_iPad.storyboard */; };
 		C4E3EED6C516589D5DE9864C /* APGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4E3E9E230D05ADD86A380E5 /* APGameViewController.m */; };
@@ -39,6 +43,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		00CBD11816CC3CA200EBEFDD /* libc.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libc.dylib; path = usr/lib/libc.dylib; sourceTree = SDKROOT; };
 		C4E3E0E50E4D0494E4013D28 /* Entity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Entity.h; sourceTree = "<group>"; };
 		C4E3E15553142362C553F7BF /* APMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APMainViewController.h; sourceTree = "<group>"; };
 		C4E3E18604FE38898ED8E96B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -48,6 +53,7 @@
 		C4E3E21BE3F5A1881465F1B2 /* Ribbon.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = Ribbon.h; sourceTree = "<group>"; };
 		C4E3E3C94A27DD49044F1139 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		C4E3E3F0D277723101822C98 /* Sphere.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Sphere.mm; sourceTree = "<group>"; };
+		C4E3E3F8CBB7223DFF4CE127 /* Shader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = Shader.fsh; path = Shaders/Shader.fsh; sourceTree = "<group>"; };
 		C4E3E42476BCA8A246876FF3 /* APUserCommandViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APUserCommandViewController.m; sourceTree = "<group>"; };
 		C4E3E42B6F6B8AAF66DAA8AD /* APGameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APGameViewController.h; sourceTree = "<group>"; };
 		C4E3E4643CF640AA4234BCE6 /* APMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APMainViewController.m; sourceTree = "<group>"; };
@@ -57,12 +63,14 @@
 		C4E3E5B648E224331E83F53E /* Vertex3D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vertex3D.h; sourceTree = "<group>"; };
 		C4E3E5C48AAE9AEBBE696B2A /* APUserCommandViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APUserCommandViewController.h; sourceTree = "<group>"; };
 		C4E3E5D26536523F6E68C5FD /* RolyPolyEntity.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RolyPolyEntity.mm; sourceTree = "<group>"; };
+		C4E3E6B3A2BB88F856FD55CF /* Program.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Program.h; sourceTree = "<group>"; };
 		C4E3E6C86234201E225836F6 /* APUserCommandDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APUserCommandDelegate.h; sourceTree = "<group>"; };
 		C4E3E6DE972AFBB0F3F67B3D /* Model.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Model.mm; sourceTree = "<group>"; };
 		C4E3E6E716EB832FF07E6C3A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		C4E3E6E959C4706EAB7D9EEB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C4E3E7137EC89A46BA37C8ED /* Romb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Romb.h; sourceTree = "<group>"; };
 		C4E3E72C718E634013F2F5B6 /* APRenderer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = APRenderer.mm; sourceTree = "<group>"; };
+		C4E3E7949ABE401A019BE91E /* Shader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = Shader.vsh; path = Shaders/Shader.vsh; sourceTree = "<group>"; };
 		C4E3E80CC13BF3169564FD18 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		C4E3E83180F9F0818C686872 /* Vertex3D.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Vertex3D.mm; sourceTree = "<group>"; };
 		C4E3E8892178E3553E55CA79 /* APRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APRenderer.h; sourceTree = "<group>"; };
@@ -71,6 +79,7 @@
 		C4E3E9D7EC4FC0BF83EE12BE /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		C4E3E9E230D05ADD86A380E5 /* APGameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APGameViewController.m; sourceTree = "<group>"; };
 		C4E3EA9DDA19A6B4D3289795 /* Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Model.h; sourceTree = "<group>"; };
+		C4E3EB0DA0DB0496367225AB /* Program.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Program.mm; sourceTree = "<group>"; };
 		C4E3EB101BC84CA6FA27DD1B /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 		C4E3EB129679FFA2A7437AFE /* texture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = texture.png; sourceTree = "<group>"; };
 		C4E3EB541594867FE4AB20A9 /* Vector2D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vector2D.h; sourceTree = "<group>"; };
@@ -98,6 +107,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00CBD11916CC3CA200EBEFDD /* libc.dylib in Frameworks */,
 				C4E3EB81BF44109A85B8B617 /* UIKit.framework in Frameworks */,
 				C4E3E641604C34F5F99D2473 /* Foundation.framework in Frameworks */,
 				C4E3EBF9AA81C800C4BC0607 /* CoreGraphics.framework in Frameworks */,
@@ -124,6 +134,7 @@
 				C4E3E42476BCA8A246876FF3 /* APUserCommandViewController.m */,
 				C4E3E5C48AAE9AEBBE696B2A /* APUserCommandViewController.h */,
 				C4E3EE2AC46EE3123E3B88BB /* APUserCommand.h */,
+				C4E3E47DC55E617072323257 /* ShaderProgram */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -142,14 +153,33 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		C4E3E47DC55E617072323257 /* ShaderProgram */ = {
+			isa = PBXGroup;
+			children = (
+				C4E3EB0DA0DB0496367225AB /* Program.mm */,
+				C4E3E6B3A2BB88F856FD55CF /* Program.h */,
+			);
+			path = ShaderProgram;
+			sourceTree = "<group>";
+		};
 		C4E3E56A5508B0474756825C = {
 			isa = PBXGroup;
 			children = (
+				00CBD11816CC3CA200EBEFDD /* libc.dylib */,
 				C4E3EAB930D71AC056C7FD10 /* Pacman */,
 				C4E3EFF4EB26EB8A6AD97B6A /* Products */,
 				C4E3E7E21DC3BD2F7FF5A9CC /* Frameworks */,
 				C4E3EF4A1D0DEA841E1DA4F6 /* Resources */,
 			);
+			sourceTree = "<group>";
+		};
+		C4E3E693772A509E67EF5772 /* Shaders */ = {
+			isa = PBXGroup;
+			children = (
+				C4E3E3F8CBB7223DFF4CE127 /* Shader.fsh */,
+				C4E3E7949ABE401A019BE91E /* Shader.vsh */,
+			);
+			name = Shaders;
 			sourceTree = "<group>";
 		};
 		C4E3E7E21DC3BD2F7FF5A9CC /* Frameworks */ = {
@@ -187,6 +217,7 @@
 				C4E3E15553142362C553F7BF /* APMainViewController.h */,
 				C4E3E4B660A33B9971CE975F /* MainStoryboard_iPhone.storyboard */,
 				C4E3E34D03F4F19E8636A797 /* MainStoryboard_iPad.storyboard */,
+				C4E3E693772A509E67EF5772 /* Shaders */,
 			);
 			path = Pacman;
 			sourceTree = "<group>";
@@ -293,6 +324,8 @@
 				C4E3E3123382D4180586D23E /* MainStoryboard_iPhone.storyboard in Resources */,
 				C4E3ED732448B9DCE10BE438 /* MainStoryboard_iPad.storyboard in Resources */,
 				C4E3E69DBC882BB5C862FBC7 /* texture.png in Resources */,
+				C4E3E826871567307FBFDF9B /* Shader.fsh in Resources */,
+				C4E3ECF02B8059310C318F3C /* Shader.vsh in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,6 +353,7 @@
 				C4E3E369776C36444991F60A /* Model.mm in Sources */,
 				C4E3E0881FC835D0834F7B2C /* RolyPolyModel.mm in Sources */,
 				C4E3E894AAF88CF062B2DAD7 /* APUserCommandViewController.m in Sources */,
+				C4E3E133F88EE87450667702 /* Program.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
