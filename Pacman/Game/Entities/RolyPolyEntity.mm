@@ -21,16 +21,12 @@ RolyPolyEntity::RolyPolyEntity() {
     ProgramGl::Program::SharedPtr program = ProgramGl::Program::createDefaultProgram();
     program->setDiffuseColor(GLKVector4Make(1.0f, 1.0f, 0.0f, 1.0f));
 
-    Model model;
-    model.push_back(SurfacePair(sphere, program));
+    ModelList model;
+    model.push_back(Models::Model::SharedPtr::make_shared(sphere, program));
     setModel(model);
 }
 
 RolyPolyEntity::~RolyPolyEntity() {
-    Model model = getModel();
-    for (Model::const_iterator it = model.begin(); it != model.end(); ++it) {
-        it->first->destroy();
-    }
 }
 
 } // namespace Entities

@@ -13,6 +13,7 @@
 #include <memory>
 #include <vector>
 
+#include "Program.h"
 #include "Surface.h"
 
 
@@ -23,20 +24,40 @@ public:
     typedef std::shared_ptr<Model> SharedPtr;
 
 public:
-    Model();
+    Model(Surfaces::Surface::SharedPtr surface, ProgramGl::Program::SharedPtr program);
     virtual ~Model();
 
     virtual void update(NSTimeInterval timeInterval);
     virtual void draw() const;
 
-protected:
-    typedef std::vector<Surfaces::Surface::SharedPtr> SurfacesList;
+    void setSurfaceOffset(const GLKVector3 &offset);
+    void setSurfaceRotation(const float angle, const GLKVector3 &rotation);
 
-protected:
-    void setSurfaces(SurfacesList &aSurfaces) { this->surfaces = aSurfaces; }
+    void setCenterOffset(const GLKVector3 &position);
+    void setCenterRotation(const float angle, const GLKVector3 &rotation);
+
+    void setSizeScale(const GLKVector3 &scale);
 
 private:
-    SurfacesList surfaces;
+    void updateModelViewMatrix();
+
+private:
+    Surfaces::Surface::SharedPtr surface;
+    ProgramGl::Program::SharedPtr program;
+
+    // Положение данного объекта относительно центральной точки большой конструкции
+    GLKVector3 surfaceOffset;
+    GLKVector3 surfaceRotationVector;
+    float surfaceRotationAngle;
+
+    // Положение всей большой конструкции, частью которой является этот объект
+    GLKVector3 centerOffset;
+    GLKVector3 centerRotationVector;
+    float centerRotationAngle;
+
+    GLKVector3 sizeScale;
+
+    GLKMatrix4 modelViewMatrix;
 };
 
 } // namespace Models

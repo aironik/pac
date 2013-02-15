@@ -43,7 +43,10 @@ struct Vector2D {
     float length() const { return GLKVector2Length(this->glkVector); };
     Vector2D crossproduct(const Vector2D &other) const { return GLKVector2Project(this->glkVector, other.glkVector); }
     float dotproduct(const Vector2D &other) const { return GLKVector2DotProduct(this->glkVector, other.glkVector); }
+
+    GLKVector3 upSize(float z) { return GLKVector3Make(x, y, z); }
 };
+
 
 } // namespace Entities
 

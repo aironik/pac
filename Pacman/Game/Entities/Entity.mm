@@ -30,17 +30,16 @@ void Entity::setSpeed(const GLKVector2 &newSpeed) {
 void Entity::update(NSTimeInterval timeInterval) {
     position += speed * timeInterval;
 
-    GLKMatrix4 modelViewMatrix = GLKMatrix4MakeTranslation(position.x, position.y, 0.0f);
-    for (Model::const_iterator it = model.begin(); it != model.end(); ++it) {
-        it->first->update(timeInterval);
-        it->second->setModelViewMatrix(modelViewMatrix);
+    for (ModelList::const_iterator it = model.begin(); it != model.end(); ++it) {
+        Models::Model::SharedPtr m = *it;
+        m->setCenterOffset(position.upSize(0.0f));
+        m->update(timeInterval);
     }
 }
 
 void Entity::draw() const {
-    for (Model::const_iterator it = model.begin(); it != model.end(); ++it) {
-        it->second->apply();
-        it->first->draw();
+    for (ModelList::const_iterator it = model.begin(); it != model.end(); ++it) {
+        (*it)->draw();
     }
 }
 

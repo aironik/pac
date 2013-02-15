@@ -186,6 +186,8 @@ void Program::setLightPosition(GLKVector3 const &aLightPosition) {
 }
 
 void Program::apply() {
+    glUseProgram(program);
+
     if (uniformDataUpdated[uniformModelViewProjectionMatrix]) {
         glUniformMatrix4fv(uniformLocations[uniformModelViewProjectionMatrix], 1, GL_FALSE, modelViewProjectionMatrix.m);
         glUniformMatrix4fv(uniformLocations[uniformNormalMatrix], 1, GL_FALSE, normalMatrix.m);
