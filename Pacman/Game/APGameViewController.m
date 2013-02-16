@@ -117,7 +117,7 @@
 #pragma mark - APUserCommandDelegate protocol implementation
 
 - (void)userInput:(NSObject<APUserInput> *)userCommand didChangeValue:(GLKVector2)value {
-    [self.renderer setDirection:value];
+    [self.renderer setUserInput:value];
 }
 
 @end

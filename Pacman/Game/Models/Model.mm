@@ -71,26 +71,17 @@ void Model::setSizeScale(const GLKVector3 &scale) {
 void Model::updateModelViewMatrix() {
     GLKMatrix4 identity = GLKMatrix4Identity;
 
-    GLKMatrix4 scale = GLKMatrix4Scale(identity, sizeScale.x, sizeScale.y, sizeScale.z);
+    GLKMatrix4 scale = GLKMatrix4ScaleWithVector3(identity, sizeScale);
 
-    GLKMatrix4 surfaceRotated = GLKMatrix4Rotate(scale,
-                                                 surfaceRotationAngle,
-                                                 surfaceRotationVector.x,
-                                                 surfaceRotationVector.y,
-                                                 surfaceRotationVector.z);
+    GLKMatrix4 surfaceRotated = GLKMatrix4RotateWithVector3(scale, surfaceRotationAngle, surfaceRotationVector);
 
-    GLKMatrix4 surfaceTranslated = GLKMatrix4Translate(surfaceRotated,
-                                                       surfaceOffset.x,
-                                                       surfaceOffset.y,
-                                                       surfaceOffset.z);
+    GLKMatrix4 surfaceTranslated = GLKMatrix4TranslateWithVector3(surfaceRotated, surfaceOffset);
 
-    GLKMatrix4 centerRotated = GLKMatrix4Rotate(surfaceTranslated,
-                                                centerRotationAngle,
-                                                centerRotationVector.x,
-                                                centerRotationVector.y,
-                                                centerRotationVector.z);
+    GLKMatrix4 centerRotated = GLKMatrix4RotateWithVector3(surfaceTranslated,
+                                                           centerRotationAngle,
+                                                           centerRotationVector);
 
-    modelViewMatrix = GLKMatrix4Translate(centerRotated, centerOffset.x, centerOffset.y, centerOffset.z);
+    modelViewMatrix = GLKMatrix4TranslateWithVector3(centerRotated, centerOffset);
 }
 
 } // namespace Models

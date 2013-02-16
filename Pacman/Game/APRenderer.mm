@@ -187,7 +187,7 @@
     _rolyPoly->draw();
 }
 
-- (void)setDirection:(GLKVector2)direction {
+- (void)setUserInput:(GLKVector2)direction {
     _rolyPoly->setSpeed(GLKVector2Make(direction.x * 0.1f, direction.y * 0.1f));
 }
 
