@@ -17,8 +17,8 @@ Program::SharedPtr Program::createDefaultProgram() {
     const GLchar *vertexShaderStr = NULL;
     const GLchar *fragmentShaderStr = NULL;
 
-    NSString *vertShaderPathname = [[NSBundle mainBundle] pathForResource:@"Shader" ofType:@"fsh"];
-    NSString *fragmentShaderPathname = [[NSBundle mainBundle] pathForResource:@"Shader" ofType:@"vsh"];
+    NSString *vertShaderPathname = [[NSBundle mainBundle] pathForResource:@"Shader" ofType:@"vsh"];
+    NSString *fragmentShaderPathname = [[NSBundle mainBundle] pathForResource:@"Shader" ofType:@"fsh"];
     vertexShaderStr = (GLchar *)[[NSString stringWithContentsOfFile:vertShaderPathname encoding:NSUTF8StringEncoding error:nil] UTF8String];
     fragmentShaderStr = (GLchar *)[[NSString stringWithContentsOfFile:fragmentShaderPathname encoding:NSUTF8StringEncoding error:nil] UTF8String];
     return SharedPtr::make_shared(vertexShaderStr, fragmentShaderStr);
@@ -94,6 +94,17 @@ GLuint Program::compileShader(const GLchar *shaderStr, GLenum type) {
     GLuint result = glCreateShader(type);
     glShaderSource(result, 1, &shaderStr, NULL);
     glCompileShader(result);
+    
+#if defined(DEBUG)
+    GLint logLength;
+    glGetShaderiv(result, GL_INFO_LOG_LENGTH, &logLength);
+    if (logLength > 0) {
+        GLchar *log = (GLchar *)malloc((size_t)logLength);
+        glGetShaderInfoLog(result, logLength, &logLength, log);
+        NSLog(@"Shader compile log:\n%s", log);
+        free(log);
+    }
+#endif
 
     GLint status;
     glGetShaderiv(result, GL_COMPILE_STATUS, &status);
@@ -127,9 +138,17 @@ void Program::linkProgram() {
 
 void Program::validateProgram() {
     GLint status;
-
+    GLint logLength;
+    
     glValidateProgram(program);
-
+    glGetProgramiv(program, GL_INFO_LOG_LENGTH, &logLength);
+    if (logLength > 0) {
+        GLchar *log = (GLchar *)malloc((size_t)logLength);
+        glGetProgramInfoLog(program, logLength, &logLength, log);
+        NSLog(@"Program validate log:\n%s", log);
+        free(log);
+    }
+    
     glGetProgramiv(program, GL_VALIDATE_STATUS, &status);
     if (!status) {
         // TODO: handle error
@@ -158,28 +177,28 @@ void Program::updateModelViewProjectionMatrix() {
 }
 
 void Program::setProjectionMatrix(GLKMatrix4 const &aProjectionMatrix) {
-    if (!strncmp((const char *)this->projectionMatrix.m, (const char *)aProjectionMatrix.m, sizeof(this->projectionMatrix))) {
+    if (strncmp((const char *)this->projectionMatrix.m, (const char *)aProjectionMatrix.m, sizeof(this->projectionMatrix))) {
         this->projectionMatrix = aProjectionMatrix;
         updateModelViewProjectionMatrix();
     }
 }
 
 void Program::setModelViewMatrix(const GLKMatrix4 &aModelViewMatrix) {
-    if (!strncmp((const char *)this->modelViewMatrix.m, (const char *)aModelViewMatrix.m, sizeof(this->modelViewMatrix))) {
+    if (strncmp((const char *)this->modelViewMatrix.m, (const char *)aModelViewMatrix.m, sizeof(this->modelViewMatrix))) {
         this->modelViewMatrix = aModelViewMatrix;
         updateModelViewProjectionMatrix();
     }
 }
 
 void Program::setDiffuseColor(GLKVector4 const &aDiffuseColor) {
-    if (!strncmp((const char *)this->diffuseColor.v, (const char *)aDiffuseColor.v, sizeof(this->diffuseColor))) {
+    if (strncmp((const char *)this->diffuseColor.v, (const char *)aDiffuseColor.v, sizeof(this->diffuseColor))) {
         this->diffuseColor = aDiffuseColor;
         uniformDataUpdated[uniformDiffuseColor] = true;
     }
 }
 
 void Program::setLightPosition(GLKVector3 const &aLightPosition) {
-    if (!strncmp((const char *)this->lightPosition.v, (const char *)aLightPosition.v, sizeof(this->lightPosition))) {
+    if (strncmp((const char *)this->lightPosition.v, (const char *)aLightPosition.v, sizeof(this->lightPosition))) {
         this->lightPosition = aLightPosition;
         uniformDataUpdated[uniformLightPosition] = true;
     }

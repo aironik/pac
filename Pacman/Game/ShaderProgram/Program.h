@@ -35,12 +35,13 @@ public:
 
     void apply();
 
+    void validateProgram();
+
 private:
     Program() {}
     GLuint compileShader(const GLchar *shaderStr, GLenum type);
     void deleteShader(GLuint shader);
     void linkProgram();
-    void validateProgram();
 
     void updateModelViewProjectionMatrix();
 
