@@ -119,9 +119,10 @@
 		C4E3E0B46C30205126C16C25 /* Game */ = {
 			isa = PBXGroup;
 			children = (
-				C4E3EDFEA697439879456E6D /* Surfaces */,
 				C4E3E7F06AFAEE225147DDB1 /* Entities */,
 				C4E3EBEBEDCAD231CA402915 /* Models */,
+				C4E3E47DC55E617072323257 /* ShaderProgram */,
+				C4E3EDFEA697439879456E6D /* Surfaces */,
 				C4E3E42B6F6B8AAF66DAA8AD /* APGameViewController.h */,
 				C4E3E9E230D05ADD86A380E5 /* APGameViewController.m */,
 				C4E3E46B41746D7D14296707 /* APGameResult.h */,
@@ -131,7 +132,6 @@
 				C4E3E42476BCA8A246876FF3 /* APUserCommandViewController.m */,
 				C4E3E5C48AAE9AEBBE696B2A /* APUserCommandViewController.h */,
 				C4E3EE2AC46EE3123E3B88BB /* APUserCommand.h */,
-				C4E3E47DC55E617072323257 /* ShaderProgram */,
 			);
 			path = Game;
 			sourceTree = "<group>";

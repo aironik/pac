@@ -22,6 +22,9 @@ namespace Entities {
 
 class Entity {
 public:
+    typedef std::shared_ptr<Entity> SharedPtr;
+
+public:
     Entity();
     virtual ~Entity();
 
@@ -39,7 +42,9 @@ protected:
 
 protected:
     const ModelList &getModel() const { return model; }
+
     void setModel(const ModelList &newModel) { this->model = newModel; }
+
     const Vector2D &getPosition() const { return position; }
 
 private:

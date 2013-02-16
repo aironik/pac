@@ -19,8 +19,12 @@
 #import "Square.h"
 #import "Surface.h"
 
+#import "Entity.h"
+#import "RolyPolyEntity.h"
 
 @interface APRenderer () {
+    Entities::RolyPolyEntity::SharedPtr _rolyPoly;
+
     Surfaces::Cube *_cube;
     Surfaces::Ribbon *_ribbon;
     Surfaces::Romb *_romb;
@@ -36,16 +40,18 @@
 
 @implementation APRenderer
 
-- (id)init
-{
+- (id)init {
     if (self = [super init]) {
         [self setupSurfaces];
+
+        [self setupEntities];
     }
     return self;
 }
 
-- (void)dealloc
-{
+- (void)dealloc {
+    [self destroyEntities];
+
     [self destroySurfaces];
 }
 
@@ -158,13 +164,27 @@
 }
 
 
-- (void)update:(NSTimeInterval)timeInterval
-{
+
+- (void)setupEntities {
+    _rolyPoly = Entities::RolyPolyEntity::SharedPtr::make_shared();
+}
+
+- (void)destroyEntities {
+    _rolyPoly.reset();
+}
+
+- (void)update:(NSTimeInterval)timeInterval {
     _cube->update(timeInterval);
     ((Surfaces::Surface *)_ribbon)->update(timeInterval);
     _romb->update(timeInterval);
     _sphere->update(timeInterval);
     _square->update(timeInterval);
+
+    _rolyPoly->update(timeInterval);
+}
+
+- (void)render {
+    _rolyPoly->draw();
 }
 
 @end

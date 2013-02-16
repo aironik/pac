@@ -45,7 +45,7 @@ Program::Program(const GLchar *vertexShaderStr, const GLchar *fragmentShaderStr)
         , diffuseColor(GLKVector4Make(1.0f, 1.0f, 1.0f, 1.0f))
 {
     for (size_t i = 0; i < uniformCount; ++i) {
-        uniformLocations[i] = true;
+        uniformDataUpdated[i] = true;
     }
 
     GLuint vertShader = 0;
@@ -74,7 +74,7 @@ Program::Program(const GLchar *vertexShaderStr, const GLchar *fragmentShaderStr)
         deleteShader(vertShader);
         deleteShader(fragShader);
 
-        validateProgram();
+//        validateProgram();
 
         loadIdentity();
     }
@@ -160,13 +160,13 @@ void Program::loadIdentity() {
     // TODO: use other closed algorithm calculate projection matrix
     UIWindow *window = [[UIApplication sharedApplication] keyWindow];
     CGSize size = window.bounds.size;
-    float aspect = fabsf(size.width / size.height);
+    float aspect = fabsf(size.height / size.width);
     GLKMatrix4 newProjectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(65.0f), aspect, 0.1f, 10.0f);
     setProjectionMatrix(newProjectionMatrix);
 
     setModelViewMatrix(GLKMatrix4Identity);
 
-    setLightPosition(GLKVector3Make(0.0f, 0.0f, 0.0f));
+    setLightPosition(GLKVector3Make(-1.0f, 0.0f, 0.0f));
     setDiffuseColor(GLKVector4Make(1.0f, 1.0f, 1.0f, 1.0f));
 }
 
@@ -177,31 +177,23 @@ void Program::updateModelViewProjectionMatrix() {
 }
 
 void Program::setProjectionMatrix(GLKMatrix4 const &aProjectionMatrix) {
-    if (strncmp((const char *)this->projectionMatrix.m, (const char *)aProjectionMatrix.m, sizeof(this->projectionMatrix))) {
-        this->projectionMatrix = aProjectionMatrix;
-        updateModelViewProjectionMatrix();
-    }
+    this->projectionMatrix = aProjectionMatrix;
+    updateModelViewProjectionMatrix();
 }
 
 void Program::setModelViewMatrix(const GLKMatrix4 &aModelViewMatrix) {
-    if (strncmp((const char *)this->modelViewMatrix.m, (const char *)aModelViewMatrix.m, sizeof(this->modelViewMatrix))) {
-        this->modelViewMatrix = aModelViewMatrix;
-        updateModelViewProjectionMatrix();
-    }
+    this->modelViewMatrix = aModelViewMatrix;
+    updateModelViewProjectionMatrix();
 }
 
 void Program::setDiffuseColor(GLKVector4 const &aDiffuseColor) {
-    if (strncmp((const char *)this->diffuseColor.v, (const char *)aDiffuseColor.v, sizeof(this->diffuseColor))) {
-        this->diffuseColor = aDiffuseColor;
-        uniformDataUpdated[uniformDiffuseColor] = true;
-    }
+    diffuseColor = aDiffuseColor;
+    uniformDataUpdated[uniformDiffuseColor] = true;
 }
 
 void Program::setLightPosition(GLKVector3 const &aLightPosition) {
-    if (strncmp((const char *)this->lightPosition.v, (const char *)aLightPosition.v, sizeof(this->lightPosition))) {
-        this->lightPosition = aLightPosition;
-        uniformDataUpdated[uniformLightPosition] = true;
-    }
+    this->lightPosition = aLightPosition;
+    uniformDataUpdated[uniformLightPosition] = true;
 }
 
 void Program::apply() {
@@ -209,7 +201,7 @@ void Program::apply() {
 
     if (uniformDataUpdated[uniformModelViewProjectionMatrix]) {
         glUniformMatrix4fv(uniformLocations[uniformModelViewProjectionMatrix], 1, GL_FALSE, modelViewProjectionMatrix.m);
-        glUniformMatrix4fv(uniformLocations[uniformNormalMatrix], 1, GL_FALSE, normalMatrix.m);
+        glUniformMatrix3fv(uniformLocations[uniformNormalMatrix], 1, GL_FALSE, normalMatrix.m);
         uniformDataUpdated[uniformModelViewProjectionMatrix] = false;
     }
     if (uniformDataUpdated[uniformDiffuseColor]) {

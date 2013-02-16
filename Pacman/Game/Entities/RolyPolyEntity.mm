@@ -16,7 +16,6 @@ namespace Entities {
 
 RolyPolyEntity::RolyPolyEntity() {
     Surfaces::Sphere::SharedPtr sphere = Surfaces::Sphere::SharedPtr::make_shared();
-    sphere->init();
 
     ProgramGl::Program::SharedPtr program = ProgramGl::Program::createDefaultProgram();
     program->setDiffuseColor(GLKVector4Make(1.0f, 1.0f, 0.0f, 1.0f));

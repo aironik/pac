@@ -16,11 +16,12 @@
 namespace Entities {
 
 class RolyPolyEntity : public Entity {
+public:
+    typedef std::shared_ptr<RolyPolyEntity> SharedPtr;
 
 public:
     RolyPolyEntity();
     virtual ~RolyPolyEntity();
-
 };
 
 } // namespace Entities

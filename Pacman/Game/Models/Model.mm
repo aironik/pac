@@ -14,10 +14,10 @@ Model::Model(Surfaces::Surface::SharedPtr aSurface, ProgramGl::Program::SharedPt
         : surface(aSurface)
         , program(aProgram)
         , surfaceOffset(GLKVector3Make(0.0f, 0.0f, 0.0f))
-        , surfaceRotationVector(GLKVector3Make(0.0f, 0.0f, 0.0f))
+        , surfaceRotationVector(GLKVector3Make(0.0f, 0.0f, 1.0f))
         , surfaceRotationAngle(0.0f)
         , centerOffset(GLKVector3Make(0.0f, 0.0f, 0.0f))
-        , centerRotationVector(GLKVector3Make(0.0f, 0.0f, 0.0f))
+        , centerRotationVector(GLKVector3Make(0.0f, 0.0f, 1.0f))
         , centerRotationAngle(0.0f)
         , sizeScale(GLKVector3Make(1.0f, 1.0f, 1.0f))
         , modelViewMatrix(GLKMatrix4Identity)
@@ -45,6 +45,7 @@ void Model::setSurfaceOffset(const GLKVector3 &offset) {
 }
 
 void Model::setSurfaceRotation(const float angle, const GLKVector3 &rotationVector) {
+    NSCAssert(GLKVector3Length(rotationVector) > 0.0f, @"Rotation vactor can't be 0");
     surfaceRotationVector = rotationVector;
     surfaceRotationAngle = angle;
     updateModelViewMatrix();
@@ -56,6 +57,7 @@ void Model::setCenterOffset(const GLKVector3 &position) {
 }
 
 void Model::setCenterRotation(const float angle, const GLKVector3 &rotationVector) {
+    NSCAssert(GLKVector3Length(rotationVector) > 0.0f, @"Rotation vactor can't be 0");
     centerRotationVector = rotationVector;
     centerRotationAngle = angle;
     updateModelViewMatrix();
@@ -69,27 +71,26 @@ void Model::setSizeScale(const GLKVector3 &scale) {
 void Model::updateModelViewMatrix() {
     GLKMatrix4 identity = GLKMatrix4Identity;
 
-    GLKMatrix4 scale = GLKMatrix4Multiply(identity, GLKMatrix4MakeScale(sizeScale.x, sizeScale.y, sizeScale.z));
+    GLKMatrix4 scale = GLKMatrix4Scale(identity, sizeScale.x, sizeScale.y, sizeScale.z);
 
-    GLKMatrix4 surfaceRotated = GLKMatrix4Multiply(scale,
-                                                   GLKMatrix4MakeRotation(surfaceRotationAngle,
-                                                                          surfaceRotationVector.x,
-                                                                          surfaceRotationVector.y,
-                                                                          surfaceRotationVector.z));
+    GLKMatrix4 surfaceRotated = GLKMatrix4Rotate(scale,
+                                                 surfaceRotationAngle,
+                                                 surfaceRotationVector.x,
+                                                 surfaceRotationVector.y,
+                                                 surfaceRotationVector.z);
 
-    GLKMatrix4 surfaceTranslated = GLKMatrix4Multiply(surfaceRotated,
-                                                      GLKMatrix4MakeTranslation(surfaceOffset.x,
-                                                                                surfaceOffset.y,
-                                                                                surfaceOffset.z));
+    GLKMatrix4 surfaceTranslated = GLKMatrix4Translate(surfaceRotated,
+                                                       surfaceOffset.x,
+                                                       surfaceOffset.y,
+                                                       surfaceOffset.z);
 
-    GLKMatrix4 centerRotated = GLKMatrix4Multiply(surfaceTranslated,
-                                                  GLKMatrix4MakeRotation(centerRotationAngle,
-                                                                         centerRotationVector.x,
-                                                                         centerRotationVector.y,
-                                                                         centerRotationVector.z));
+    GLKMatrix4 centerRotated = GLKMatrix4Rotate(surfaceTranslated,
+                                                centerRotationAngle,
+                                                centerRotationVector.x,
+                                                centerRotationVector.y,
+                                                centerRotationVector.z);
 
-    modelViewMatrix = GLKMatrix4Multiply(centerRotated,
-                                         GLKMatrix4MakeTranslation(centerOffset.x, centerOffset.y, centerOffset.z));
+    modelViewMatrix = GLKMatrix4Translate(centerRotated, centerOffset.x, centerOffset.y, centerOffset.z);
 }
 
 } // namespace Models

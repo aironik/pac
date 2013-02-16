@@ -32,7 +32,7 @@ void Entity::update(NSTimeInterval timeInterval) {
 
     for (ModelList::const_iterator it = model.begin(); it != model.end(); ++it) {
         Models::Model::SharedPtr m = *it;
-        m->setCenterOffset(position.upSize(0.0f));
+        m->setCenterOffset(position.upSize(-4.0f));
         m->update(timeInterval);
     }
 }

@@ -17,5 +17,6 @@
 - (void)renderSphere;
 
 - (void)update:(NSTimeInterval)timeInterval;
+- (void)render;
 
 @end
