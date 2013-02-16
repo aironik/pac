@@ -10,9 +10,9 @@
 #import <GLKit/GLKit.h>
 
 #import "APGameResult.h"
-#import "APUserCommandDelegate.h"
+#import "APUserInputDelegate.h"
 
 
-@interface APGameViewController : GLKViewController <APGameResult, APUserCommandDelegate>
+@interface APGameViewController : GLKViewController <APGameResult, APUserInputDelegate>
 
 @end

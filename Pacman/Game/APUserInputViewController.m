@@ -1,5 +1,5 @@
 //
-//  APUserCommandViewController.m
+//  APUserInputViewController.m
 //  Pacman
 //
 //  Created by Oleg Lobachev  (aironik@gmail.com) on 10.02.2013.
@@ -10,10 +10,10 @@
 #error ARC required. Add -fobjc-arc compiler flag for this file.
 #endif
 
-#import "APUserCommandViewController.h"
+#import "APUserInputViewController.h"
 
 
-@interface APUserCommandViewController ()
+@interface APUserInputViewController ()
 
 @property (nonatomic, assign) GLKVector2 value;
 
@@ -21,7 +21,7 @@
 
 #pragma mark - Implementation
 
-@implementation APUserCommandViewController
+@implementation APUserInputViewController
 
 - (IBAction)left:(id)sender {
     self.value = GLKVector2Make(-1.0f, 0.0f);
@@ -46,7 +46,7 @@
 - (void)setValue:(GLKVector2)value {
     if (!GLKVector2AllEqualToVector2(_value, value)) {
         _value = value;
-        [self.delegate userCommand:self didChangeValue:self.value];
+        [self.delegate userInput:self didChangeValue:self.value];
     }
 }
 

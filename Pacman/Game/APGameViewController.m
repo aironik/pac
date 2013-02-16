@@ -9,9 +9,12 @@
 #import "APGameViewController.h"
 
 #import "APRenderer.h"
+#import "APUserInputViewController.h"
 
 
 @interface APGameViewController ()
+
+@property (nonatomic, strong) IBOutlet APUserInputViewController *userInputController;
 
 @property (nonatomic, assign) BOOL win;
 @property (nonatomic, assign) NSUInteger score;
@@ -100,11 +103,21 @@
 //    [self.renderer renderSphere];
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([@"APUserInputViewControllerSegue" isEqual:segue.identifier]) {
+        APUserInputViewController *inputController = (APUserInputViewController *)segue.destinationViewController;
+        inputController.delegate = self;
+    } else if ([@"Close" isEqual:segue.identifier]) {
+    } else {
+        NSAssert(NO, @"Unknown segue.");
+    }
+}
+
 
 #pragma mark - APUserCommandDelegate protocol implementation
 
-- (void)userCommand:(NSObject<APUserCommand> *)userCommand didChangeValue:(GLKVector2)value {
-
+- (void)userInput:(NSObject<APUserInput> *)userCommand didChangeValue:(GLKVector2)value {
+    [self.renderer setDirection:value];
 }
 
 @end

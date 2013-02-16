@@ -19,4 +19,6 @@
 - (void)update:(NSTimeInterval)timeInterval;
 - (void)render;
 
+- (void)setDirection:(GLKVector2)direction;
+
 @end

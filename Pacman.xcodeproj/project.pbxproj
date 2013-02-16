@@ -29,7 +29,7 @@
 		C4E3E69DBC882BB5C862FBC7 /* texture.png in Resources */ = {isa = PBXBuildFile; fileRef = C4E3EB129679FFA2A7437AFE /* texture.png */; };
 		C4E3E6B98039C7EF55674481 /* Entity.mm in Sources */ = {isa = PBXBuildFile; fileRef = C4E3E1B9D3A06CF2F55ACD24 /* Entity.mm */; };
 		C4E3E826871567307FBFDF9B /* Shader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = C4E3E3F8CBB7223DFF4CE127 /* Shader.fsh */; };
-		C4E3E894AAF88CF062B2DAD7 /* APUserCommandViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4E3E42476BCA8A246876FF3 /* APUserCommandViewController.m */; };
+		C4E3E894AAF88CF062B2DAD7 /* APUserInputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4E3E42476BCA8A246876FF3 /* APUserInputViewController.m */; };
 		C4E3E8F049EE7B05A718F49D /* Vertex3D.mm in Sources */ = {isa = PBXBuildFile; fileRef = C4E3E83180F9F0818C686872 /* Vertex3D.mm */; };
 		C4E3EB81BF44109A85B8B617 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4E3E18604FE38898ED8E96B /* UIKit.framework */; };
 		C4E3EBF9AA81C800C4BC0607 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4E3E6E716EB832FF07E6C3A /* CoreGraphics.framework */; };
@@ -53,17 +53,17 @@
 		C4E3E3C94A27DD49044F1139 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		C4E3E3F0D277723101822C98 /* Sphere.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Sphere.mm; sourceTree = "<group>"; };
 		C4E3E3F8CBB7223DFF4CE127 /* Shader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = Shader.fsh; path = Shaders/Shader.fsh; sourceTree = "<group>"; };
-		C4E3E42476BCA8A246876FF3 /* APUserCommandViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APUserCommandViewController.m; sourceTree = "<group>"; };
+		C4E3E42476BCA8A246876FF3 /* APUserInputViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APUserInputViewController.m; sourceTree = "<group>"; };
 		C4E3E42B6F6B8AAF66DAA8AD /* APGameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APGameViewController.h; sourceTree = "<group>"; };
 		C4E3E4643CF640AA4234BCE6 /* APMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APMainViewController.m; sourceTree = "<group>"; };
 		C4E3E46B41746D7D14296707 /* APGameResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APGameResult.h; sourceTree = "<group>"; };
 		C4E3E5370653424AA45AA85A /* Square.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Square.mm; sourceTree = "<group>"; };
 		C4E3E5AF6A818AD735EC7FE4 /* APAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APAppDelegate.m; sourceTree = "<group>"; };
 		C4E3E5B648E224331E83F53E /* Vertex3D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vertex3D.h; sourceTree = "<group>"; };
-		C4E3E5C48AAE9AEBBE696B2A /* APUserCommandViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APUserCommandViewController.h; sourceTree = "<group>"; };
+		C4E3E5C48AAE9AEBBE696B2A /* APUserInputViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APUserInputViewController.h; sourceTree = "<group>"; };
 		C4E3E5D26536523F6E68C5FD /* RolyPolyEntity.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RolyPolyEntity.mm; sourceTree = "<group>"; };
 		C4E3E6B3A2BB88F856FD55CF /* Program.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Program.h; sourceTree = "<group>"; };
-		C4E3E6C86234201E225836F6 /* APUserCommandDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APUserCommandDelegate.h; sourceTree = "<group>"; };
+		C4E3E6C86234201E225836F6 /* APUserInputDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APUserInputDelegate.h; sourceTree = "<group>"; };
 		C4E3E6DE972AFBB0F3F67B3D /* Model.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Model.mm; sourceTree = "<group>"; };
 		C4E3E6E716EB832FF07E6C3A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		C4E3E6E959C4706EAB7D9EEB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -89,7 +89,7 @@
 		C4E3EC44BB3707FFCD54F4D4 /* RolyPolyEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RolyPolyEntity.h; sourceTree = "<group>"; };
 		C4E3ED1027EA8FE86BB1BC08 /* Romb.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Romb.mm; sourceTree = "<group>"; };
 		C4E3EDE96C6A123F68738CBC /* Cube.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Cube.mm; sourceTree = "<group>"; };
-		C4E3EE2AC46EE3123E3B88BB /* APUserCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APUserCommand.h; sourceTree = "<group>"; };
+		C4E3EE2AC46EE3123E3B88BB /* APUserInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APUserInput.h; sourceTree = "<group>"; };
 		C4E3EE710F7339D44540371E /* Square.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Square.h; sourceTree = "<group>"; };
 		C4E3EEC13E91F4BE354CFEE7 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		C4E3EED01CABEC1F9E294202 /* Surface.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = Surface.h; sourceTree = "<group>"; };
@@ -128,10 +128,10 @@
 				C4E3E46B41746D7D14296707 /* APGameResult.h */,
 				C4E3E72C718E634013F2F5B6 /* APRenderer.mm */,
 				C4E3E8892178E3553E55CA79 /* APRenderer.h */,
-				C4E3E6C86234201E225836F6 /* APUserCommandDelegate.h */,
-				C4E3E42476BCA8A246876FF3 /* APUserCommandViewController.m */,
-				C4E3E5C48AAE9AEBBE696B2A /* APUserCommandViewController.h */,
-				C4E3EE2AC46EE3123E3B88BB /* APUserCommand.h */,
+				C4E3E6C86234201E225836F6 /* APUserInputDelegate.h */,
+				C4E3E42476BCA8A246876FF3 /* APUserInputViewController.m */,
+				C4E3E5C48AAE9AEBBE696B2A /* APUserInputViewController.h */,
+				C4E3EE2AC46EE3123E3B88BB /* APUserInput.h */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -346,7 +346,7 @@
 				C4E3E6B98039C7EF55674481 /* Entity.mm in Sources */,
 				C4E3E3F892B0E3B2911037E2 /* RolyPolyEntity.mm in Sources */,
 				C4E3E369776C36444991F60A /* Model.mm in Sources */,
-				C4E3E894AAF88CF062B2DAD7 /* APUserCommandViewController.m in Sources */,
+				C4E3E894AAF88CF062B2DAD7 /* APUserInputViewController.m in Sources */,
 				C4E3E133F88EE87450667702 /* Program.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
