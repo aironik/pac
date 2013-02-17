@@ -19,6 +19,7 @@
 
 - (void)win;
 - (void)lose;
+- (void)scoreDidIncremented:(NSInteger)score;
 
 - (void)setUserInput:(GLKVector2)direction;
 

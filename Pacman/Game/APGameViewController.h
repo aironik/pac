@@ -17,5 +17,6 @@
 
 - (void)finishWithWin;
 - (void)finishWithLose;
+- (void)addScore:(NSInteger)score;
 
 @end

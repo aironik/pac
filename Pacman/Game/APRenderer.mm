@@ -25,6 +25,7 @@ struct GameResultDelegateImpl : public Word::GameResultDelegate {
 
     virtual void gameWin() { [renderer win]; }
     virtual void gameLose() { [renderer lose]; }
+    virtual void gameScoreDidIncremened(int score) { [renderer scoreDidIncremented:score]; }
 
     __weak APRenderer *renderer;
 };
@@ -85,6 +86,10 @@ struct GameResultDelegateImpl : public Word::GameResultDelegate {
 
 - (void)lose {
     [self.gameViewController finishWithLose];
+}
+
+- (void)scoreDidIncremented:(NSInteger)score {
+    [self.gameViewController addScore:score];
 }
 
 @end

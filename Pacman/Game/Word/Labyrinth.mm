@@ -71,6 +71,7 @@ void Labyrinth::updateConumingFood(NSTimeInterval timeInterval) {
         conumingFood->update(timeInterval);
         if ((conumingFood->getPosition() - rolyPoly->getPosition()).length() < 0.1f) {
             conumingFood.reset();
+            gameResultDelegate.lock()->gameScoreDidIncremened(1);
         }
     }
 }

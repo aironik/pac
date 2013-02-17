@@ -22,6 +22,7 @@ struct GameResultDelegate {
 
     virtual void gameWin() = 0;
     virtual void gameLose() = 0;
+    virtual void gameScoreDidIncremened(int score) = 0;
 };
 
 } // namespace Word

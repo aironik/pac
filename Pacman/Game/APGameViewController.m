@@ -125,6 +125,9 @@
     [self performSegueWithIdentifier:@"Close" sender:self];
 }
 
+- (void)addScore:(NSInteger)score {
+    self.score += score;
+}
 
 #pragma mark - APUserCommandDelegate protocol implementation
 
