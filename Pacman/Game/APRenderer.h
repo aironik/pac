@@ -13,6 +13,9 @@
 - (void)update:(NSTimeInterval)timeInterval;
 - (void)render;
 
+- (void)win;
+- (void)lose;
+
 - (void)setUserInput:(GLKVector2)direction;
 
 @end

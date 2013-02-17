@@ -23,7 +23,6 @@ class Labyrinth {
 public:
     typedef std::shared_ptr<Labyrinth> SharedPtr;
 public:
-    Labyrinth();
     virtual ~Labyrinth();
 
     static SharedPtr createLabyrinth(int wordNumber);
@@ -39,6 +38,8 @@ private:
     typedef std::vector<Entities::Entity::SharedPtr> EntitiesList;
 
 private:
+    Labyrinth();
+
     void handleCollisions();
     void handleCollisionsFood();
     void handleCollisionsGhost();

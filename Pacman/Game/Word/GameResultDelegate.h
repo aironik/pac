@@ -18,7 +18,7 @@ struct GameResultDelegate {
     typedef std::shared_ptr<GameResultDelegate> SharedPtr;
     typedef std::weak_ptr<GameResultDelegate> WeakPtr;
 
-    virtual ~GameResultDelegate() = 0;
+    virtual ~GameResultDelegate() {}
 
     virtual void gameWin() = 0;
     virtual void gameLose() = 0;

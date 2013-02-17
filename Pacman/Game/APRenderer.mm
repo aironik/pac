@@ -12,20 +12,28 @@
 
 #import "APRenderer.h"
 
-#import "Cube.h"
-#import "Ribbon.h"
-#import "Romb.h"
-#import "Sphere.h"
-#import "Square.h"
-#import "Surface.h"
+#import "Labyrinth.h"
 
-#import "Entity.h"
-#import "RolyPolyEntity.h"
-#import "WallEntity.h"
+namespace {
+
+struct GameResultDelegateImpl : public Word::GameResultDelegate {
+    typedef std::shared_ptr<GameResultDelegateImpl> SharedPtr;
+    GameResultDelegateImpl() : renderer(nil) {}
+    GameResultDelegateImpl(APRenderer *aRenderer) : renderer(aRenderer) {}
+    virtual ~GameResultDelegateImpl() { renderer = nil; }
+
+    virtual void gameWin() { [renderer win]; }
+    virtual void gameLose() { [renderer lose]; }
+
+    __weak APRenderer *renderer;
+};
+
+} // namespace ::
+
 
 @interface APRenderer () {
-    Entities::RolyPolyEntity::SharedPtr _rolyPoly;
-    Entities::WallEntity::SharedPtr _wall;
+    Word::Labyrinth::SharedPtr _word;
+    GameResultDelegateImpl::SharedPtr _gameResultDelegateImpl;
 }
 
 
@@ -38,38 +46,44 @@
 
 - (id)init {
     if (self = [super init]) {
-        [self setupEntities];
+        [self setupWord];
     }
     return self;
 }
 
 - (void)dealloc {
-    [self destroyEntities];
+    [self destroyWord];
 }
 
-- (void)setupEntities {
-    _rolyPoly = Entities::RolyPolyEntity::SharedPtr::make_shared();
-    _wall = Entities::WallEntity::SharedPtr::make_shared();
+- (void)setupWord {
+    _gameResultDelegateImpl = ::GameResultDelegateImpl::SharedPtr::make_shared(self);
+    _word = Word::Labyrinth::createLabyrinth(0);
+    _word->setGameResultDelegate(_gameResultDelegateImpl);
 }
 
-- (void)destroyEntities {
-    _wall.reset();
-    _rolyPoly.reset();
+- (void)destroyWord {
+    _word.reset();
+    _gameResultDelegateImpl.reset();
 }
 
 - (void)update:(NSTimeInterval)timeInterval {
-    _rolyPoly->update(timeInterval);
-    _wall->update(timeInterval);
+    _word->update(timeInterval);
 }
 
 - (void)render {
-    _rolyPoly->draw();
-    _wall->draw();
+    _word->draw();
 }
 
 - (void)setUserInput:(GLKVector2)direction {
-    _rolyPoly->setSpeed(GLKVector2Make(direction.x * 0.5f, direction.y * 0.5f));
-    _wall->setSpeed(GLKVector2Make(direction.x * 1.0f, direction.y * 1.0f));
+    _word->handleUserInput(direction);
+}
+
+- (void)win {
+    // TODO: write me
+}
+
+- (void)lose {
+    // TODO: write me
 }
 
 @end

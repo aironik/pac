@@ -28,6 +28,7 @@ namespace Word {
 
 Labyrinth::Labyrinth()
         : nextSpeed(GLKVector2Make(0.0f, 0.0f))
+        , rolyPoly(Entities::RolyPolyEntity::SharedPtr::make_shared())
 {
 }
 
@@ -85,7 +86,7 @@ void Labyrinth::handleSwitchSpeed() {
 
 Labyrinth::SharedPtr Labyrinth::createLabyrinth(int wordNumber) {
     // TODO: write me
-    SharedPtr result = SharedPtr::make_shared();
+    SharedPtr result = SharedPtr(new Labyrinth());
     return result;
 }
 
