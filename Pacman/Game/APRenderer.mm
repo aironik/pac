@@ -13,6 +13,7 @@
 #import "APRenderer.h"
 
 #import "Labyrinth.h"
+#import "APGameViewController.h"
 
 namespace {
 
@@ -79,11 +80,11 @@ struct GameResultDelegateImpl : public Word::GameResultDelegate {
 }
 
 - (void)win {
-    // TODO: write me
+    [self.gameViewController finishWithWin];
 }
 
 - (void)lose {
-    // TODO: write me
+    [self.gameViewController finishWithLose];
 }
 
 @end

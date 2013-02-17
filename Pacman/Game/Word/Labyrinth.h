@@ -56,6 +56,7 @@ private:
     void handleSwitchSpeed();
     void handleSwitchSpeedRolyPoly();
     void handleSwitchSpeedGhosts();
+    void checkGameFinished();
     
     void consumeFood(Entities::Entity::SharedPtr);
 

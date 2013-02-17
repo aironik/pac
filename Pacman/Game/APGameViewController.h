@@ -15,4 +15,7 @@
 
 @interface APGameViewController : GLKViewController <APGameResult, APUserInputDelegate>
 
+- (void)finishWithWin;
+- (void)finishWithLose;
+
 @end

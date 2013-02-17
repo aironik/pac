@@ -79,6 +79,7 @@
     [EAGLContext setCurrentContext:self.context];
 
     self.renderer = [[APRenderer alloc] init];
+    self.renderer.gameViewController = self;
 
     glEnable(GL_DEPTH_TEST);
 }
@@ -86,6 +87,7 @@
 - (void)tearDownGL {
     [EAGLContext setCurrentContext:self.context];
 
+    self.renderer.gameViewController = nil;
     self.renderer = nil;
 }
 
@@ -111,6 +113,16 @@
     } else {
         NSAssert(NO, @"Unknown segue.");
     }
+}
+
+- (void)finishWithWin {
+    self.win = YES;
+    [self performSegueWithIdentifier:@"Close" sender:self];
+}
+
+- (void)finishWithLose {
+    self.win = NO;
+    [self performSegueWithIdentifier:@"Close" sender:self];
 }
 
 

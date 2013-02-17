@@ -7,8 +7,12 @@
 //
 
 
+@class APGameViewController;
+
 
 @interface APRenderer : NSObject
+
+@property (nonatomic, weak) APGameViewController *gameViewController;
 
 - (void)update:(NSTimeInterval)timeInterval;
 - (void)render;

@@ -57,8 +57,8 @@ void Labyrinth::update(NSTimeInterval timeInterval) {
     rolyPoly->update(timeInterval);
 
     handleCollisions();
-
     handleSwitchSpeed();
+    checkGameFinished();
 }
 
 void Labyrinth::updateConumingFood(NSTimeInterval timeInterval) {
@@ -120,8 +120,8 @@ void Labyrinth::addFood(const EntitiesList &aFood) {
 
 
 void Labyrinth::handleCollisions() {
-    handleCollisionsFood();     //< Мы съели нечто съедобное?
-    handleCollisionsGhosts();    //< Или нас слопали?
+    handleCollisionsFood();         //< Мы съели нечто съедобное?
+    handleCollisionsGhosts();       //< Или нас слопали?
 }
 
 void Labyrinth::handleCollisionsFood() {
@@ -136,16 +136,28 @@ void Labyrinth::handleCollisionsFood() {
 }
 
 void Labyrinth::handleCollisionsGhosts() {
-    // TODO: write me
+    EntitiesList::const_iterator it = ghosts.begin();
+    for (; it != ghosts.end(); ++it) {
+        if (rolyPoly->isIntersect(*it)) {
+            gameResultDelegate.lock()->gameLose();
+        }
+    }
+}
+
+void Labyrinth::checkGameFinished() {
+    if (food.empty()) {
+        gameResultDelegate.lock()->gameWin();
+    }
 }
 
 void Labyrinth::handleSwitchSpeed() {
-    // TODO: write me
-    rolyPoly->setSpeed(nextSpeed);
+    handleSwitchSpeedRolyPoly();
+    handleSwitchSpeedGhosts();
 }
 
 void Labyrinth::handleSwitchSpeedRolyPoly() {
     // TODO: write me
+    rolyPoly->setSpeed(nextSpeed);
 }
 
 void Labyrinth::handleSwitchSpeedGhosts() {
@@ -171,15 +183,6 @@ Labyrinth::SharedPtr Labyrinth::createLabyrinth(int wordNumber) {
         {2, 4, 3, 3, 3, 3, 3, 3, 4, 2},
         {2, 2, 2, 2, 2, 2, 2, 2, 2, 2}
     };
-//    const char word[height][width] = {
-//        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-//        {0, 0, 0, 0, 0, 0, 0, 3, 0, 0},
-//        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-//        {0, 0, 0, 0, 0, 1, 0, 0, 0, 0},
-//        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-//        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-//        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
-//    };
     for (int x = 0; x < width; ++x) {
         for (int y = 0; y < height; ++y) {
             const int xPos = x - width / 2;
