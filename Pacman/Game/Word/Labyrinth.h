@@ -48,18 +48,25 @@ private:
     void addFood(const Entities::Entity::SharedPtr food);
     void addFood(const EntitiesList &food);
 
+    void updateConumingFood(NSTimeInterval timeInterval);
+
     void handleCollisions();
     void handleCollisionsFood();
     void handleCollisionsGhosts();
     void handleSwitchSpeed();
     void handleSwitchSpeedRolyPoly();
     void handleSwitchSpeedGhosts();
+    
+    void consumeFood(Entities::Entity::SharedPtr);
 
 private:
     EntitiesList walls;
     EntitiesList ghosts;
     EntitiesList food;
     Entities::RolyPolyEntity::SharedPtr rolyPoly;
+
+    Entities::Entity::SharedPtr conumingFood;
+
     GameResultDelegate::WeakPtr gameResultDelegate;
 
     GLKVector2 nextSpeed;

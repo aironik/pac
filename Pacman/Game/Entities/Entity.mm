@@ -44,7 +44,11 @@ void Entity::draw() const {
 }
 
 bool Entity::isIntersect(const Entity &other) const {
-    return dimensionsSize() + other.dimensionsSize() < position.distance(other.position);
+    return dimensionsSize() / 2.0f + other.dimensionsSize() / 2.0f > position.distance(other.position);
+}
+
+bool Entity::isIntersect(const Entity::SharedPtr other) const {
+    return isIntersect(*other);
 }
 
 } // namespace Entities

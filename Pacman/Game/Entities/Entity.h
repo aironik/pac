@@ -32,8 +32,12 @@ public:
     virtual void setSpeed(const GLKVector2 &newSpeed);
     virtual void update(NSTimeInterval timeInterval);
 
+    const Vector2D &getPosition() const { return position; }
+    const Vector2D &getSpeed() const { return speed; }
+
     virtual float dimensionsSize() const { return 1.0f; }
     bool isIntersect(const Entity &other) const;
+    bool isIntersect(const Entity::SharedPtr other) const;
 
     void draw() const;
 
@@ -44,8 +48,6 @@ protected:
     const ModelList &getModel() const { return model; }
 
     void setModel(const ModelList &newModel) { this->model = newModel; }
-
-    const Vector2D &getPosition() const { return position; }
 
 private:
     ModelList model;

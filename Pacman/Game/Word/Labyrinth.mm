@@ -52,6 +52,8 @@ void Labyrinth::update(NSTimeInterval timeInterval) {
     std::for_each(ghosts.begin(), ghosts.end(), f);
     std::for_each(food.begin(), food.end(), f);
 
+    updateConumingFood(timeInterval);
+
     rolyPoly->update(timeInterval);
 
     handleCollisions();
@@ -59,15 +61,31 @@ void Labyrinth::update(NSTimeInterval timeInterval) {
     handleSwitchSpeed();
 }
 
+void Labyrinth::updateConumingFood(NSTimeInterval timeInterval) {
+    if (conumingFood) {
+        Entities::Vector2D speed = (rolyPoly->getPosition() - conumingFood->getPosition());
+        speed.normalize();
+        speed *= (rolyPoly->getSpeed().length()) * 2.0f;
+        conumingFood->setSpeed(speed.glkVector);
+
+        conumingFood->update(timeInterval);
+        if ((conumingFood->getPosition() - rolyPoly->getPosition()).length() < 0.1f) {
+            conumingFood.reset();
+        }
+    }
+}
+
 void Labyrinth::draw() const {
     DrawUnaryFunction f;
-
-    rolyPoly->draw();
-
     std::for_each(walls.begin(), walls.end(), f);
     std::for_each(ghosts.begin(), ghosts.end(), f);
     std::for_each(food.begin(), food.end(), f);
 
+    rolyPoly->draw();
+
+    if (conumingFood) {
+        conumingFood->draw();
+    }
 }
 
 void Labyrinth::setRolyPoly(const Entities::RolyPolyEntity::SharedPtr aRolyPoly) {
@@ -107,7 +125,14 @@ void Labyrinth::handleCollisions() {
 }
 
 void Labyrinth::handleCollisionsFood() {
-    // TODO: write me
+    EntitiesList::const_iterator it = food.begin();
+    for (; it != food.end(); ++it) {
+        if (rolyPoly->isIntersect(*it)) {
+            conumingFood = *it;
+            food.erase(it);
+            break;
+        }
+    }
 }
 
 void Labyrinth::handleCollisionsGhosts() {
@@ -120,11 +145,11 @@ void Labyrinth::handleSwitchSpeed() {
 }
 
 void Labyrinth::handleSwitchSpeedRolyPoly() {
-
+    // TODO: write me
 }
 
 void Labyrinth::handleSwitchSpeedGhosts() {
-
+    // TODO: write me
 }
 
 Labyrinth::SharedPtr Labyrinth::createLabyrinth(int wordNumber) {
