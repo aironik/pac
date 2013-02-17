@@ -7,8 +7,10 @@
 //
 
 #include "Labyrinth.h"
-#import "WallEntity.h"
+
 #import "FoodEntity.h"
+#import "GhostEntity.h"
+#import "WallEntity.h"
 
 
 namespace {
@@ -135,24 +137,24 @@ Labyrinth::SharedPtr Labyrinth::createLabyrinth(int wordNumber) {
     // 4 - сторож
     const int width = 10;
     const int height = 7;
-//    const char word[height][width] = {
-//        {2, 0, 0, 0, 0, 0, 0, 0, 0, 2},
-//        {2, 3, 3, 3, 3, 3, 3, 3, 0, 2},
-//        {2, 0, 0, 0, 0, 0, 0, 0, 0, 2},
-//        {2, 0, 0, 0, 0, 1, 0, 0, 0, 2},
-//        {2, 0, 0, 0, 0, 0, 0, 0, 0, 2},
-//        {2, 0, 3, 3, 3, 3, 3, 3, 3, 2},
-//        {2, 0, 0, 0, 0, 0, 0, 0, 0, 2}
-//    };
     const char word[height][width] = {
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 3, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 1, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+        {2, 0, 0, 0, 0, 0, 0, 0, 0, 2},
+        {2, 3, 3, 3, 3, 3, 3, 3, 0, 2},
+        {2, 0, 0, 0, 0, 0, 0, 0, 0, 2},
+        {2, 0, 0, 0, 0, 1, 0, 0, 0, 2},
+        {2, 0, 0, 0, 0, 0, 0, 0, 0, 2},
+        {2, 4, 3, 3, 3, 3, 3, 3, 3, 2},
+        {2, 0, 0, 0, 0, 0, 0, 0, 0, 2}
     };
+//    const char word[height][width] = {
+//        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+//        {0, 0, 0, 0, 0, 0, 0, 3, 0, 0},
+//        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+//        {0, 0, 0, 0, 0, 1, 0, 0, 0, 0},
+//        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+//        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+//        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+//    };
     for (int x = 0; x < width; ++x) {
         for (int y = 0; y < height; ++y) {
             const int xPos = x - width / 2;
@@ -177,10 +179,13 @@ Labyrinth::SharedPtr Labyrinth::createLabyrinth(int wordNumber) {
                     food->moveTo(GLKVector2Make(xPos, yPos));
                     result->addFood(food);
                     break;
+                }
+                case 4: {
+                    Entities::GhostEntity::SharedPtr ghost = Entities::GhostEntity::SharedPtr::make_shared();
+                    ghost->moveTo(GLKVector2Make(xPos, yPos));
+                    result->addGhost(ghost);
                     break;
                 }
-                case 4:
-                    break;
             }
         }
     }

@@ -16,6 +16,7 @@
 		C4E3E037FB03C2A2D0583C02 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C4E3EDABF11B70F28DA69F4A /* InfoPlist.strings */; };
 		C4E3E049449E05A1E3C03C3D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C4E3EF0389963C36C9559EE8 /* main.m */; };
 		C4E3E133F88EE87450667702 /* Program.mm in Sources */ = {isa = PBXBuildFile; fileRef = C4E3EB0DA0DB0496367225AB /* Program.mm */; };
+		C4E3E1376AF3BA96EE347A8B /* GhostEntity.mm in Sources */ = {isa = PBXBuildFile; fileRef = C4E3E45BA88A600ECEE03E53 /* GhostEntity.mm */; };
 		C4E3E1450CFC5F9D48EE2CF0 /* APRenderer.mm in Sources */ = {isa = PBXBuildFile; fileRef = C4E3E72C718E634013F2F5B6 /* APRenderer.mm */; };
 		C4E3E2CF5B0A8551EFB5C8EC /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C4E3E9D7EC4FC0BF83EE12BE /* Default-568h@2x.png */; };
 		C4E3E3123382D4180586D23E /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4E3E4B660A33B9971CE975F /* MainStoryboard_iPhone.storyboard */; };
@@ -59,6 +60,7 @@
 		C4E3E3F8CBB7223DFF4CE127 /* Shader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = Shader.fsh; path = Shaders/Shader.fsh; sourceTree = "<group>"; };
 		C4E3E42476BCA8A246876FF3 /* APUserInputViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APUserInputViewController.m; sourceTree = "<group>"; };
 		C4E3E42B6F6B8AAF66DAA8AD /* APGameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APGameViewController.h; sourceTree = "<group>"; };
+		C4E3E45BA88A600ECEE03E53 /* GhostEntity.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GhostEntity.mm; sourceTree = "<group>"; };
 		C4E3E4643CF640AA4234BCE6 /* APMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APMainViewController.m; sourceTree = "<group>"; };
 		C4E3E46B41746D7D14296707 /* APGameResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APGameResult.h; sourceTree = "<group>"; };
 		C4E3E4777A214A0F23D276C8 /* Labyrinth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Labyrinth.h; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 		C4E3EC1AB37242357197081E /* Cube.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cube.h; sourceTree = "<group>"; };
 		C4E3EC44BB3707FFCD54F4D4 /* RolyPolyEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RolyPolyEntity.h; sourceTree = "<group>"; };
 		C4E3EC50BB661D01D0A0822E /* Labyrinth.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Labyrinth.mm; sourceTree = "<group>"; };
+		C4E3ECD33F47305CDF68C471 /* GhostEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GhostEntity.h; sourceTree = "<group>"; };
 		C4E3ED1027EA8FE86BB1BC08 /* Romb.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Romb.mm; sourceTree = "<group>"; };
 		C4E3ED30D07B83EA07B0E60F /* GameResultDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GameResultDelegate.mm; sourceTree = "<group>"; };
 		C4E3EDE96C6A123F68738CBC /* Cube.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Cube.mm; sourceTree = "<group>"; };
@@ -227,6 +230,8 @@
 				C4E3E5F8494757E75BE1C2B4 /* WallEntity.h */,
 				C4E3E893014F68E163510442 /* FoodEntity.mm */,
 				C4E3EF73C33B7232D08AFBDD /* FoodEntity.h */,
+				C4E3E45BA88A600ECEE03E53 /* GhostEntity.mm */,
+				C4E3ECD33F47305CDF68C471 /* GhostEntity.h */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -380,6 +385,7 @@
 				C4E3EBECC2C3C501C7AD687D /* Labyrinth.mm in Sources */,
 				C4E3EDB030DA7A4B0E0A6863 /* GameResultDelegate.mm in Sources */,
 				C4E3E3E047D32D3BD746D4D6 /* FoodEntity.mm in Sources */,
+				C4E3E1376AF3BA96EE347A8B /* GhostEntity.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
