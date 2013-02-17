@@ -20,10 +20,9 @@ void main()
 {
     vec4 vertPosition = modelViewProjectionMatrix * position;
 
-    vec3 lightPositionRel = lightPosition - vertPosition.xyz;
-    lightPositionRel.z = -lightPositionRel.z;
-    vec3 eyeNormal = normalize(normalMatrix * normal);
-    float nDotVP = max(0.0, dot(eyeNormal, normalize(lightPositionRel)));
+    vec3 lightPositionRel = vertPosition.xyz - lightPosition;
+
+    float nDotVP = max(0.0, dot(normalize(vec3(-lightPositionRel.x, -lightPositionRel.y, lightPositionRel.z)), normalize(normal)));
     colorVarying = diffuseColor * nDotVP;
     
     gl_Position = vertPosition;
