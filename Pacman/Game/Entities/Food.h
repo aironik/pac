@@ -10,11 +10,20 @@
 #ifndef __Food_H_
 #define __Food_H_
 
-#include <iostream>
+#include "Entity.h"
 
 
-class Food {
+namespace Entities {
 
+class Food : public Entity {
+public:
+    typedef std::shared_ptr<Food> SharedPtr;
+
+public:
+    Food();
+    virtual ~Food();
 };
+
+} // namespace Entities
 
 #endif //__Food_H_

@@ -21,6 +21,7 @@
 		C4E3E3123382D4180586D23E /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4E3E4B660A33B9971CE975F /* MainStoryboard_iPhone.storyboard */; };
 		C4E3E369776C36444991F60A /* Model.mm in Sources */ = {isa = PBXBuildFile; fileRef = C4E3E6DE972AFBB0F3F67B3D /* Model.mm */; };
 		C4E3E39A9951F99519203703 /* APMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4E3E4643CF640AA4234BCE6 /* APMainViewController.m */; };
+		C4E3E3E047D32D3BD746D4D6 /* Food.mm in Sources */ = {isa = PBXBuildFile; fileRef = C4E3E893014F68E163510442 /* Food.mm */; };
 		C4E3E3F892B0E3B2911037E2 /* RolyPolyEntity.mm in Sources */ = {isa = PBXBuildFile; fileRef = C4E3E5D26536523F6E68C5FD /* RolyPolyEntity.mm */; };
 		C4E3E4ED76F05FA6D4C7418B /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = C4E3EEC13E91F4BE354CFEE7 /* Default.png */; };
 		C4E3E504E4D138E0A151BEE3 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4E3EB101BC84CA6FA27DD1B /* GLKit.framework */; };
@@ -78,6 +79,7 @@
 		C4E3E80CC13BF3169564FD18 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		C4E3E83180F9F0818C686872 /* Vertex3D.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Vertex3D.mm; sourceTree = "<group>"; };
 		C4E3E8892178E3553E55CA79 /* APRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APRenderer.h; sourceTree = "<group>"; };
+		C4E3E893014F68E163510442 /* Food.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Food.mm; sourceTree = "<group>"; };
 		C4E3E901306A276732E7FEF9 /* APAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APAppDelegate.h; sourceTree = "<group>"; };
 		C4E3E91477DC45322A61C687 /* WallEntity.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = WallEntity.mm; sourceTree = "<group>"; };
 		C4E3E9D7EC4FC0BF83EE12BE /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 		C4E3EEFB1DDA4F12AF3304B4 /* Pacman.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pacman.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4E3EF0389963C36C9559EE8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C4E3EF24AE733F587586157E /* Ribbon.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Ribbon.mm; sourceTree = "<group>"; };
+		C4E3EF73C33B7232D08AFBDD /* Food.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Food.h; sourceTree = "<group>"; };
 		C4E3EFCAF2D3208BA239679D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -222,6 +225,8 @@
 				C4E3EB541594867FE4AB20A9 /* Vector2D.h */,
 				C4E3E91477DC45322A61C687 /* WallEntity.mm */,
 				C4E3E5F8494757E75BE1C2B4 /* WallEntity.h */,
+				C4E3E893014F68E163510442 /* Food.mm */,
+				C4E3EF73C33B7232D08AFBDD /* Food.h */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -374,6 +379,7 @@
 				C4E3EB194F278DDC67543A32 /* WallEntity.mm in Sources */,
 				C4E3EBECC2C3C501C7AD687D /* Labyrinth.mm in Sources */,
 				C4E3EDB030DA7A4B0E0A6863 /* GameResultDelegate.mm in Sources */,
+				C4E3E3E047D32D3BD746D4D6 /* Food.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

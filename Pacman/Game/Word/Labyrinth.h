@@ -40,10 +40,20 @@ private:
 private:
     Labyrinth();
 
+    void setRolyPoly(const Entities::RolyPolyEntity::SharedPtr rolyPoly);
+    void addWall(const Entities::Entity::SharedPtr wall);
+    void addWalls(const EntitiesList &walls);
+    void addGhost(const Entities::Entity::SharedPtr ghost);
+    void addGhosts(const EntitiesList &ghosts);
+    void addFood(const Entities::Entity::SharedPtr food);
+    void addFood(const EntitiesList &food);
+
     void handleCollisions();
     void handleCollisionsFood();
-    void handleCollisionsGhost();
+    void handleCollisionsGhosts();
     void handleSwitchSpeed();
+    void handleSwitchSpeedRolyPoly();
+    void handleSwitchSpeedGhosts();
 
 private:
     EntitiesList walls;
