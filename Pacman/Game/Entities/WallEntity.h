@@ -7,8 +7,8 @@
 //
 
 
-#ifndef __Wall_H_
-#define __Wall_H_
+#ifndef __WallEntity_H_
+#define __WallEntity_H_
 
 #include "Entity.h"
 
@@ -26,4 +26,4 @@ public:
 
 } // namespace Entities
 
-#endif //__Wall_H_
+#endif //__WallEntity_H_

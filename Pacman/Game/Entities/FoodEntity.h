@@ -1,5 +1,5 @@
 //
-//  Food.cpp
+//  FoodEntity.cpp
 //  Pacman
 //
 //  Created by Oleg Lobachev  (aironik@gmail.com) on 18.02.2013.
@@ -7,23 +7,23 @@
 //
 
 
-#ifndef __Food_H_
-#define __Food_H_
+#ifndef __FoodEntity_H_
+#define __FoodEntity_H_
 
 #include "Entity.h"
 
 
 namespace Entities {
 
-class Food : public Entity {
+class FoodEntity : public Entity {
 public:
-    typedef std::shared_ptr<Food> SharedPtr;
+    typedef std::shared_ptr<FoodEntity> SharedPtr;
 
 public:
-    Food();
-    virtual ~Food();
+    FoodEntity();
+    virtual ~FoodEntity();
 };
 
 } // namespace Entities
 
-#endif //__Food_H_
+#endif //__FoodEntity_H_

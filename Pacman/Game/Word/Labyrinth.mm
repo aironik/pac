@@ -8,6 +8,7 @@
 
 #include "Labyrinth.h"
 #import "WallEntity.h"
+#import "FoodEntity.h"
 
 
 namespace {
@@ -59,11 +60,12 @@ void Labyrinth::update(NSTimeInterval timeInterval) {
 void Labyrinth::draw() const {
     DrawUnaryFunction f;
 
+    rolyPoly->draw();
+
     std::for_each(walls.begin(), walls.end(), f);
     std::for_each(ghosts.begin(), ghosts.end(), f);
     std::for_each(food.begin(), food.end(), f);
 
-    rolyPoly->draw();
 }
 
 void Labyrinth::setRolyPoly(const Entities::RolyPolyEntity::SharedPtr aRolyPoly) {
@@ -133,14 +135,23 @@ Labyrinth::SharedPtr Labyrinth::createLabyrinth(int wordNumber) {
     // 4 - сторож
     const int width = 10;
     const int height = 7;
+//    const char word[height][width] = {
+//        {2, 0, 0, 0, 0, 0, 0, 0, 0, 2},
+//        {2, 3, 3, 3, 3, 3, 3, 3, 0, 2},
+//        {2, 0, 0, 0, 0, 0, 0, 0, 0, 2},
+//        {2, 0, 0, 0, 0, 1, 0, 0, 0, 2},
+//        {2, 0, 0, 0, 0, 0, 0, 0, 0, 2},
+//        {2, 0, 3, 3, 3, 3, 3, 3, 3, 2},
+//        {2, 0, 0, 0, 0, 0, 0, 0, 0, 2}
+//    };
     const char word[height][width] = {
-        {2, 0, 0, 0, 0, 0, 0, 0, 0, 2},
-        {2, 0, 0, 0, 0, 0, 0, 0, 0, 2},
-        {2, 0, 0, 0, 0, 0, 0, 0, 0, 2},
-        {2, 0, 0, 0, 0, 1, 0, 0, 0, 2},
-        {2, 0, 0, 0, 0, 0, 0, 0, 0, 2},
-        {2, 0, 0, 0, 0, 0, 0, 0, 0, 2},
-        {2, 0, 0, 0, 0, 0, 0, 0, 0, 2}
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 3, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 1, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
     };
     for (int x = 0; x < width; ++x) {
         for (int y = 0; y < height; ++y) {
@@ -161,8 +172,13 @@ Labyrinth::SharedPtr Labyrinth::createLabyrinth(int wordNumber) {
                     result->addWall(wall);
                     break;
                 }
-                case 3:
+                case 3: {
+                    Entities::FoodEntity::SharedPtr food = Entities::FoodEntity::SharedPtr::make_shared();
+                    food->moveTo(GLKVector2Make(xPos, yPos));
+                    result->addFood(food);
                     break;
+                    break;
+                }
                 case 4:
                     break;
             }

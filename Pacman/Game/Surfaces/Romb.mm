@@ -21,50 +21,36 @@ Romb::Romb(GLuint aSectionsCount)
 }
 
 void Romb::generateVertexes() {
-//    const GLuint vertexPerTriangle = 3;
-//    const GLuint trianglesPerSection = 2;
-//    const GLsizeiptr vertexesCount = vertexPerTriangle * trianglesPerSection * sectionsCount;
-//
-//
-//    VertexList vertexDataSrc;
-//    vertexDataSrc.resize(vertexesCount);
-//
-//    for (GLuint i = 0; i < sectionsCount; ++i) {
-//        setTriangle(vertexDataPtr, i, GL_TRUE);
-//        setTriangle(vertexDataPtr, i, GL_FALSE);
-//    }
-//
-//    setVertexes(vertexDataSrc, vertexesCount * 2 * 3);
+    VertexList vertexDataOriginal;
+
+    const GLKVector3 position = GLKVector3Make(0.3f, 0.0f, 0.0f);
+    const GLKVector3 topPosition = GLKVector3Make(0.0f, 0.0f, -0.3f);
+    const GLKVector3 bottomPosition = GLKVector3Make(0.0f, 0.0f, 0.3f);
+
+    const float alphaStep = 2 * M_PI / sectionsCount;
+
+    for (GLuint i = 0; i < sectionsCount; ++i) {
+        GLKMatrix3 rotateMatrix1 = GLKMatrix3RotateZ(GLKMatrix3Identity, alphaStep * i);
+        GLKMatrix3 rotateMatrix2 = GLKMatrix3RotateZ(GLKMatrix3Identity, alphaStep * (i + 1));
+
+        GLKVector3 position1 = GLKMatrix3MultiplyVector3(rotateMatrix1, position);
+        GLKVector3 position2 = GLKMatrix3MultiplyVector3(rotateMatrix2, position);
+        GLKVector3 normal1 = GLKVector3CrossProduct(GLKVector3Subtract(position2, position1), GLKVector3Subtract(topPosition, position1));
+        GLKVector3 normal2 = GLKVector3CrossProduct(GLKVector3Subtract(bottomPosition, position2), GLKVector3Subtract(position1, position2));
+
+        vertexDataOriginal.push_back(Vertex3D(topPosition, normal1));
+        vertexDataOriginal.push_back(Vertex3D(position1, normal1));
+        vertexDataOriginal.push_back(Vertex3D(position2, normal1));
+
+        vertexDataOriginal.push_back(Vertex3D(position2, normal2));
+        vertexDataOriginal.push_back(Vertex3D(position1, normal2));
+        vertexDataOriginal.push_back(Vertex3D(bottomPosition, normal2));
+    }
+
+    setVertexes(vertexDataOriginal);
 }
 
 void Romb::destroyVertexes() {
 }
-
-void Romb::setTriangle(GLKVector3 *&vertexDataPtr, GLuint index, GLboolean isTop) {
-    const float height = 1.5f;
-    const float sign = isTop ? -1.0f : 1.0f;
-    const GLKVector3 topVertex = GLKVector3Make(0.0f, sign * height , 0.0f);
-
-    float alpha0 = index * 2 * M_PI / sectionsCount;
-    float alpha1 = (index + 1) * 2 * M_PI / sectionsCount;
-
-    const GLKVector3 vertex0 = GLKVector3Make(cosf(alpha0), 0.0f, sinf(alpha0));
-    const GLKVector3 vertex1 = GLKVector3Make(cosf(alpha1), 0.0f, sinf(alpha1));
-
-    GLKVector3 normal = GLKVector3CrossProduct(GLKVector3Subtract(vertex1, vertex0),
-                                               GLKVector3Subtract(topVertex, vertex0));
-    if (!isTop) {
-        normal = GLKVector3Negate(normal);
-    }
-
-    vertexDataPtr[0] = topVertex;
-    vertexDataPtr[1] = normal;
-    vertexDataPtr[2] = vertex0;
-    vertexDataPtr[3] = normal;
-    vertexDataPtr[4] = vertex1;
-    vertexDataPtr[5] = normal;
-    vertexDataPtr += 6;
-}
-
 
 } // namespace Surfaces

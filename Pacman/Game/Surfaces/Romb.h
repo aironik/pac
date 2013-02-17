@@ -17,15 +17,15 @@ namespace Surfaces {
 
 class Romb : public Surface {
 public:
+    typedef std::shared_ptr<Romb> SharedPtr;
+
+public:
     Romb();
     Romb(GLuint sectionsCount);
 
 protected:
     virtual void generateVertexes();
     virtual void destroyVertexes();
-
-private:
-    void setTriangle(GLKVector3 *&vertexDataPtr, GLuint index, GLboolean isTop);
 
 private:
     GLuint sectionsCount;

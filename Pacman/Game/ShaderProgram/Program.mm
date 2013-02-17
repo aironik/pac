@@ -161,7 +161,7 @@ void Program::loadIdentity() {
     UIWindow *window = [[UIApplication sharedApplication] keyWindow];
     CGSize size = window.bounds.size;
     float aspect = fabsf(size.height / size.width);
-    GLKMatrix4 newProjectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(65.0f), aspect, 0.1f, 10.0f);
+    GLKMatrix4 newProjectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(65.0f), aspect, 0.1f, 12.0f);
     setProjectionMatrix(newProjectionMatrix);
 
     setModelViewMatrix(GLKMatrix4Identity);

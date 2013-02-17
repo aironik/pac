@@ -75,7 +75,7 @@ struct GameResultDelegateImpl : public Word::GameResultDelegate {
 }
 
 - (void)setUserInput:(GLKVector2)direction {
-    _word->handleUserInput(direction);
+    _word->handleUserInput(GLKVector2Make(direction.x, -direction.y));
 }
 
 - (void)win {
