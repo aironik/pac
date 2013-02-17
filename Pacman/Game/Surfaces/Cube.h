@@ -15,6 +15,9 @@
 namespace Surfaces {
 
 class Cube : public Surface {
+public:
+    typedef std::shared_ptr<Cube> SharedPtr;
+
 protected:
     virtual void generateVertexes();
     virtual void destroyVertexes();

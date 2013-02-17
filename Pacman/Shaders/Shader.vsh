@@ -18,14 +18,13 @@ uniform vec4 diffuseColor;
 
 void main()
 {
-    vec3 eyeNormal = normalize(normalMatrix * normal);
-//    vec3 eyeNormal = normalize(normalMatrix * position);
+    vec4 vertPosition = modelViewProjectionMatrix * position;
 
-//    lightPosition = vec3(0.0, 0.0, 1.0);
-    vec3 lightPosition1 = vec3(1.0, 1.0, 1.0);
-    float nDotVP = max(0.0, dot(eyeNormal, normalize(lightPosition1)));
-    
+    vec3 lightPositionRel = lightPosition - vertPosition.xyz;
+    lightPositionRel.z = -lightPositionRel.z;
+    vec3 eyeNormal = normalize(normalMatrix * normal);
+    float nDotVP = max(0.0, dot(eyeNormal, normalize(lightPositionRel)));
     colorVarying = diffuseColor * nDotVP;
     
-    gl_Position = modelViewProjectionMatrix * position;
+    gl_Position = vertPosition;
 }

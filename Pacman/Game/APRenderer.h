@@ -10,12 +10,6 @@
 
 @interface APRenderer : NSObject
 
-- (void)renderCube;
-- (void)renderRibbon;
-- (void)renderRomb;
-- (void)renderSquare;
-- (void)renderSphere;
-
 - (void)update:(NSTimeInterval)timeInterval;
 - (void)render;
 

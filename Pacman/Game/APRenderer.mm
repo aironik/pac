@@ -21,15 +21,11 @@
 
 #import "Entity.h"
 #import "RolyPolyEntity.h"
+#import "WallEntity.h"
 
 @interface APRenderer () {
     Entities::RolyPolyEntity::SharedPtr _rolyPoly;
-
-    Surfaces::Cube *_cube;
-    Surfaces::Ribbon *_ribbon;
-    Surfaces::Romb *_romb;
-    Surfaces::Sphere *_sphere;
-    Surfaces::Square *_square;
+    Entities::WallEntity::SharedPtr _wall;
 }
 
 
@@ -42,8 +38,6 @@
 
 - (id)init {
     if (self = [super init]) {
-        [self setupSurfaces];
-
         [self setupEntities];
     }
     return self;
@@ -51,144 +45,31 @@
 
 - (void)dealloc {
     [self destroyEntities];
-
-    [self destroySurfaces];
 }
-
-- (void)setupSurfaces
-{
-    [self setupCube];
-    [self setupRibbon];
-    [self setupRomb];
-    [self setupSquare];
-    [self setupSphere];
-}
-
-- (void)destroySurfaces
-{
-    [self destroySphere];
-    [self destroySquare];
-    [self destroyRomb];
-    [self destroyRibbon];
-    [self destroyCube];
-}
-
-- (void)setupCube
-{
-    _cube = new Surfaces::Cube();
-    _cube->init();
-}
-
-- (void)destroyCube
-{
-    _cube->destroy();
-    delete _cube;
-    _cube = 0;
-}
-
-- (void)renderCube
-{
-    _cube->draw();
-}
-
-- (void)setupSphere
-{
-    _sphere = new Surfaces::Sphere();
-    _sphere->init();
-}
-
-- (void)destroySphere
-{
-    _sphere->destroy();
-    delete _sphere;
-    _sphere = 0;
-}
-
-- (void)setupSquare
-{
-    _square = new Surfaces::Square();
-    _square->init();
-}
-
-- (void)destroySquare
-{
-    _square->destroy();
-    delete _square;
-    _square = 0;
-}
-
-- (void)setupRibbon
-{
-    _ribbon = new Surfaces::Ribbon();
-    _ribbon->init();
-}
-
-- (void)destroyRibbon
-{
-    _ribbon->destroy();
-    delete _ribbon;
-    _ribbon = 0;
-}
-
-- (void)setupRomb
-{
-    _romb = new Surfaces::Romb();
-    _romb->init();
-}
-
-- (void)destroyRomb
-{
-    _romb->destroy();
-    delete _romb;
-    _romb = 0;
-}
-
-- (void)renderSphere
-{
-    _sphere->draw();
-}
-
-- (void)renderSquare
-{
-    _square->draw();
-}
-
-- (void)renderRomb
-{
-    _romb->draw();
-}
-
-- (void)renderRibbon
-{
-    _ribbon->draw();
-}
-
-
 
 - (void)setupEntities {
     _rolyPoly = Entities::RolyPolyEntity::SharedPtr::make_shared();
+    _wall = Entities::WallEntity::SharedPtr::make_shared();
 }
 
 - (void)destroyEntities {
+    _wall.reset();
     _rolyPoly.reset();
 }
 
 - (void)update:(NSTimeInterval)timeInterval {
-    _cube->update(timeInterval);
-    ((Surfaces::Surface *)_ribbon)->update(timeInterval);
-    _romb->update(timeInterval);
-    _sphere->update(timeInterval);
-    _square->update(timeInterval);
-
     _rolyPoly->update(timeInterval);
+    _wall->update(timeInterval);
 }
 
 - (void)render {
     _rolyPoly->draw();
+    _wall->draw();
 }
 
 - (void)setUserInput:(GLKVector2)direction {
-    _rolyPoly->setSpeed(GLKVector2Make(direction.x * 0.1f, direction.y * 0.1f));
+    _rolyPoly->setSpeed(GLKVector2Make(direction.x * 0.5f, direction.y * 0.5f));
+    _wall->setSpeed(GLKVector2Make(direction.x * 1.0f, direction.y * 1.0f));
 }
 
 @end

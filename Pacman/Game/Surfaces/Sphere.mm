@@ -22,7 +22,7 @@ void Sphere::generateVertexes() {
     VertexList vertexDataOriginal;
     const int alphaSectorsCount = 10;
     const int bettaSectorsCount = alphaSectorsCount * 2;
-    const GLKVector3 position = GLKVector3Make(1.0f, 0.0f, 0.0f);
+    const GLKVector3 position = GLKVector3Make(0.5f, 0.0f, 0.0f);
 
     const float alphaStep = M_PI / alphaSectorsCount;
     const float alphaStart = -M_PI_2;

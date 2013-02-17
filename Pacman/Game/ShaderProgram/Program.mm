@@ -166,7 +166,7 @@ void Program::loadIdentity() {
 
     setModelViewMatrix(GLKMatrix4Identity);
 
-    setLightPosition(GLKVector3Make(-1.0f, 0.0f, 0.0f));
+    setLightPosition(GLKVector3Make(3.0f, -1.0f, -5.0f));
     setDiffuseColor(GLKVector4Make(1.0f, 1.0f, 1.0f, 1.0f));
 }
 
