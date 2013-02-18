@@ -17,6 +17,9 @@
 
 namespace {
 
+static float kCompareMistake = 0.01f;
+
+
 struct UpdateUnaryFunction {
     UpdateUnaryFunction(NSTimeInterval aTimeInterval) : timeInterval(aTimeInterval) {}
     void operator()(Entities::Entity::SharedPtr obj) { obj->update(timeInterval); }
@@ -178,9 +181,13 @@ void Labyrinth::handleSwitchSpeedGhosts() {
     // TODO: write me
 }
 
-bool Labyrinth::checkEntityOnCrossroads(Entities::Entity::SharedPtr) {
+bool Labyrinth::checkEntityOnCrossroads(Entities::Entity::SharedPtr entity) {
     // TODO: write me
-    return true;
+    Entities::Vector2D currentPosition = entity->getPosition();
+    Entities::Vector2D stepDelta = currentPosition - entity->getPreviousPosition();
+    bool xNearInt = std::abs(currentPosition.x - std::round(currentPosition.x)) < std::abs(stepDelta.x) + kCompareMistake;
+    bool yNearInt = std::abs(currentPosition.y - std::round(currentPosition.y)) < std::abs(stepDelta.y) + kCompareMistake;
+    return (xNearInt && yNearInt);
 }
 
 bool Labyrinth::checkEntityHangesWall(Entities::Entity::SharedPtr entity) {
@@ -195,7 +202,7 @@ bool Labyrinth::checkEntityHangesWall(Entities::Entity::SharedPtr entity) {
 
             // округлим, причешем чтобы в нецелых поворотах отталкиваться от стенок
             Entities::Vector2D speed = entity->getSpeed();
-            if (speed.length() < 0.01f) {
+            if (speed.length() < kCompareMistake) {
                 // стоять-то мы можем тольько на целых значениях
                 expectedPosition.x = std::round(expectedPosition.x);
                 expectedPosition.y = std::round(expectedPosition.y);

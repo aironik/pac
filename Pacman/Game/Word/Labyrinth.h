@@ -60,8 +60,8 @@ private:
     
     void consumeFood(Entities::Entity::SharedPtr entity);
     
-    bool checkEntityOnCrossroads(Entities::Entity::SharedPtr);
-    bool checkEntityHangesWall(Entities::Entity::SharedPtr);
+    bool checkEntityOnCrossroads(Entities::Entity::SharedPtr entity);
+    bool checkEntityHangesWall(Entities::Entity::SharedPtr entity);
 
 private:
     EntitiesList walls;
