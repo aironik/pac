@@ -8,7 +8,7 @@
 
 #include "GhostEntity.h"
 
-#import "Sphere.h"
+#include "Sphere.h"
 
 
 namespace Entities {

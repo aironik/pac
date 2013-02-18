@@ -10,9 +10,6 @@
 #ifndef __GhostEntity_H_
 #define __GhostEntity_H_
 
-#include <iostream>
-
-
 #include "Entity.h"
 
 

@@ -9,7 +9,7 @@
 #ifndef __GameResultDelegate_H_
 #define __GameResultDelegate_H_
 
-#import <memory>
+#include <memory>
 
 
 namespace Word {

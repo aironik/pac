@@ -28,6 +28,7 @@ void Entity::setSpeed(const GLKVector2 &newSpeed) {
 }
 
 void Entity::update(NSTimeInterval timeInterval) {
+    previousPosition = position;
     position += speed * timeInterval;
 
     for (ModelList::const_iterator it = model.begin(); it != model.end(); ++it) {

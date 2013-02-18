@@ -8,9 +8,11 @@
 
 #include "Labyrinth.h"
 
-#import "FoodEntity.h"
-#import "GhostEntity.h"
-#import "WallEntity.h"
+#include <cmath>
+
+#include "FoodEntity.h"
+#include "GhostEntity.h"
+#include "WallEntity.h"
 
 
 namespace {
@@ -158,11 +160,56 @@ void Labyrinth::handleSwitchSpeed() {
 
 void Labyrinth::handleSwitchSpeedRolyPoly() {
     // TODO: write me
-    rolyPoly->setSpeed(nextSpeed);
+    bool speedChanging = (rolyPoly->getSpeed() == nextSpeed);
+    if (checkEntityHangesWall(rolyPoly)) {
+        if (speedChanging) {
+            rolyPoly->setSpeed(nextSpeed);
+        } else {
+            rolyPoly->setSpeed(nextSpeed);
+        }
+        nextSpeed = GLKVector2Make(0.0f, 0.0f);
+    }
+    if (checkEntityOnCrossroads(rolyPoly)) {
+        rolyPoly->setSpeed(nextSpeed);
+    }
 }
 
 void Labyrinth::handleSwitchSpeedGhosts() {
     // TODO: write me
+}
+
+bool Labyrinth::checkEntityOnCrossroads(Entities::Entity::SharedPtr) {
+    // TODO: write me
+    return true;
+}
+
+bool Labyrinth::checkEntityHangesWall(Entities::Entity::SharedPtr entity) {
+    EntitiesList::const_iterator it = walls.begin();
+    for (; it != walls.end(); ++it) {
+        Entities::Entity::SharedPtr wall = *it;
+        if (entity->isIntersect(wall)) {
+            Entities::Vector2D offset = (entity->getPosition() - wall->getPosition());
+            float distance = entity->dimensionsSize() / 2.0f + wall->dimensionsSize() / 2.0f;
+            offset *= offset.length() / distance;
+            Entities::Vector2D expectedPosition = wall->getPosition() + offset;
+
+            // округлим, причешем чтобы в нецелых поворотах отталкиваться от стенок
+            Entities::Vector2D speed = entity->getSpeed();
+            if (speed.length() < 0.01f) {
+                // стоять-то мы можем тольько на целых значениях
+                expectedPosition.x = std::round(expectedPosition.x);
+                expectedPosition.y = std::round(expectedPosition.y);
+            } else if (std::abs(speed.x) > std::abs(speed.y)) {
+                // а ходим только по целым осям
+                expectedPosition.x = std::round(expectedPosition.x);
+            } else {
+                expectedPosition.y = std::round(expectedPosition.y);
+            }
+            entity->moveTo(expectedPosition.glkVector);
+            return true;
+        }
+    }
+    return false;
 }
 
 Labyrinth::SharedPtr Labyrinth::createLabyrinth(int wordNumber) {

@@ -12,9 +12,9 @@
 
 #include <memory>
 
-#import "Entity.h"
-#import "GameResultDelegate.h"
-#import "RolyPolyEntity.h"
+#include "Entity.h"
+#include "GameResultDelegate.h"
+#include "RolyPolyEntity.h"
 
 
 namespace Word {
@@ -58,7 +58,10 @@ private:
     void handleSwitchSpeedGhosts();
     void checkGameFinished();
     
-    void consumeFood(Entities::Entity::SharedPtr);
+    void consumeFood(Entities::Entity::SharedPtr entity);
+    
+    bool checkEntityOnCrossroads(Entities::Entity::SharedPtr);
+    bool checkEntityHangesWall(Entities::Entity::SharedPtr);
 
 private:
     EntitiesList walls;

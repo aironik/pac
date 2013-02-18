@@ -33,6 +33,7 @@ public:
     virtual void update(NSTimeInterval timeInterval);
 
     const Vector2D &getPosition() const { return position; }
+    const Vector2D &getPreviousPosition() const { return previousPosition; }
     const Vector2D &getSpeed() const { return speed; }
 
     virtual float dimensionsSize() const { return 1.0f; }
@@ -53,6 +54,7 @@ private:
     ModelList model;
 
     Vector2D position;
+    Vector2D previousPosition;
     Vector2D direction;
     Vector2D speed;
 };
